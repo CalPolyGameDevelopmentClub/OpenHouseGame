@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\GameObjectPhysics.cs" />
      <Compile Include="Assets\Scripts\PlayerMovementScript.cs" />
+     <Compile Include="Assets\Scripts\TestProjectileMovement.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>C:/Users/Home/Documents/College/+CPGD+/Showcase 2015/OpenHouseGame/WizardDuel/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
