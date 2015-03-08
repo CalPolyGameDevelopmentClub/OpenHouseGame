@@ -51,7 +51,7 @@ public class TestProjectileMovement : MonoBehaviour {
 			xForce *= playerRatio;
 			yForce *= playerRatio;
 
-			coll.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(xForce, yForce));
+			coll.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(xForce, yForce) / Time.fixedDeltaTime);
 		}
 	}
 

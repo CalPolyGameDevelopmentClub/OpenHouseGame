@@ -37,19 +37,19 @@ public class PlayerMovementScript : MonoBehaviour {
 		if (Input.GetKey(KeyCode.A)) {
 			Debug.Log("A");
 			if (inAir) {
-				rb.AddForce(new Vector2(-1.0f * (moveForce - jumpMoveForce), 0.0f));
+				rb.AddForce(new Vector2(-1.0f * (moveForce - jumpMoveForce), 0.0f) / Time.fixedDeltaTime);
 			}
 			else {
-				rb.AddForce(new Vector2(-1.0f * moveForce, 0.0f));
+				rb.AddForce(new Vector2(-1.0f * moveForce, 0.0f) / Time.fixedDeltaTime);
 			}
 		}
 		else if (Input.GetKey(KeyCode.D)) {
 			Debug.Log("D");
 			if (inAir) {
-				rb.AddForce(new Vector2((moveForce - jumpMoveForce), 0.0f));
+				rb.AddForce(new Vector2((moveForce - jumpMoveForce), 0.0f) / Time.fixedDeltaTime);
 			}
 			else {
-				rb.AddForce(new Vector2(moveForce, 0.0f));
+				rb.AddForce(new Vector2(moveForce, 0.0f) / Time.fixedDeltaTime);
 			}
 
 		}

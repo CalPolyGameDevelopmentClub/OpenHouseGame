@@ -148,7 +148,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 115743862}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.4304752, y: 1.54903781, z: 0}
+  m_LocalPosition: {x: 16.1334553, y: 1.96486735, z: 0}
   m_LocalScale: {x: 5.56400776, y: 5.56400681, z: 5.56400681}
   m_Children: []
   m_Father: {fileID: 0}
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fa1ddf6406f9694dab5e8ad4cb55274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: {x: 0, y: 10000}
+  force: {x: 1000, y: 0}
   vel: {x: -60, y: 0}
 --- !u!1 &1026341829
 GameObject:
@@ -359,13 +359,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7562918ba6220d64fa727d2b17a72583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 2000
-  jumpForce: 9000
-  fallForce: 3000
+  moveForce: 20
+  jumpForce: 90
+  fallForce: 30
   maxVelocity: 20
   slow: 2
-  jumpMoveForce: 1500
-  damageRatio: 1
+  jumpMoveForce: 10
+  damageRatio: 2
 --- !u!58 &1284405337
 CircleCollider2D:
   m_ObjectHideFlags: 0
