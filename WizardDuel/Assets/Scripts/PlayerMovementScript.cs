@@ -25,9 +25,9 @@ public class PlayerMovementScript : MonoBehaviour {
 	void Update () {
 		
 		// Jumping
-		if (Input.GetKeyDown(KeyCode.W) && !inAir) {
+		if (Input.GetKey(KeyCode.W) && !inAir) {
 			Debug.Log("W");
-			rb.AddForce(new Vector2(0.0f, jumpForce));
+			rb.AddForce(new Vector2(0.0f, jumpForce) / Time.fixedDeltaTime);
 			inAir = true;
 		}
 	}
@@ -58,9 +58,10 @@ public class PlayerMovementScript : MonoBehaviour {
 
 		if (Input.GetKeyDown(KeyCode.S)) {
 			Debug.Log("S");
-			rb.AddForce(new Vector2(0.0f, -1.00f * fallForce));
+			rb.AddForce(new Vector2(0.0f, -1.00f * fallForce) / Time.fixedDeltaTime);
 		}
 
+		// Limiting Velocity
 		if (rb.velocity.x > maxVelocity) {
 			rb.velocity = new Vector2(maxVelocity, rb.velocity.y);
 		}
@@ -68,6 +69,7 @@ public class PlayerMovementScript : MonoBehaviour {
 			rb.velocity = new Vector2(-1 * maxVelocity, rb.velocity.y);
 		}
 
+		// Self slowdown
 		if (!Input.GetKey (KeyCode.A) && !Input.GetKey (KeyCode.D)
 		    && !inAir) {
 			if (rb.velocity.x > 0) {
@@ -89,7 +91,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D coll) {
+	void OnCollisionStay2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Platform") {
 			Debug.Log("Landed");
 			inAir = false;
