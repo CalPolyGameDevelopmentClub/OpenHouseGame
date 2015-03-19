@@ -11,24 +11,38 @@ public class PlayerMovementScript : MonoBehaviour {
 	public float jumpMoveForce;
 	public float damageRatio;
 
-	private bool inAir;
+	private static int MAX_JUMP = 2;
+	
+	private int jumpCount;
+	private bool fastFall;
 	private Rigidbody2D rb;
 
 	// Use this for initialization
 	void Start () {
-
-		inAir = false;
+		jumpCount = 0;
+		fastFall = false;
 		rb = gameObject.GetComponent<Rigidbody2D> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
 		// Jumping
-		if (Input.GetKey(KeyCode.W) && !inAir) {
+		if (Input.GetKeyDown(KeyCode.W) && (jumpCount < MAX_JUMP)) {
 			Debug.Log("W");
+
+			// Double jumping resets downward momentum
+
+			rb.velocity = new Vector2 (rb.velocity.x, 0);
 			rb.AddForce(new Vector2(0.0f, jumpForce) / Time.fixedDeltaTime);
-			inAir = true;
+			jumpCount++;
+		}
+
+		// Fastfall
+		if (Input.GetKeyDown(KeyCode.S) && jumpCount > 0 && !fastFall) {
+			Debug.Log("S");
+			rb.velocity = new Vector2 (rb.velocity.x, 0);
+			rb.AddForce(new Vector2(0.0f, -1.00f * fallForce) / Time.fixedDeltaTime);
+			fastFall = true;
 		}
 	}
 
@@ -36,7 +50,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		// Ground Movement
 		if (Input.GetKey(KeyCode.A)) {
 			Debug.Log("A");
-			if (inAir) {
+			if (jumpCount > 0) {
 				rb.AddForce(new Vector2(-1.0f * (moveForce - jumpMoveForce), 0.0f) / Time.fixedDeltaTime);
 			}
 			else {
@@ -45,20 +59,13 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 		else if (Input.GetKey(KeyCode.D)) {
 			Debug.Log("D");
-			if (inAir) {
+			if (jumpCount > 0) {
 				rb.AddForce(new Vector2((moveForce - jumpMoveForce), 0.0f) / Time.fixedDeltaTime);
 			}
 			else {
 				rb.AddForce(new Vector2(moveForce, 0.0f) / Time.fixedDeltaTime);
 			}
 
-		}
-
-		// Fastfall
-
-		if (Input.GetKeyDown(KeyCode.S)) {
-			Debug.Log("S");
-			rb.AddForce(new Vector2(0.0f, -1.00f * fallForce) / Time.fixedDeltaTime);
 		}
 
 		// Limiting Velocity
@@ -71,7 +78,7 @@ public class PlayerMovementScript : MonoBehaviour {
 
 		// Self slowdown
 		if (!Input.GetKey (KeyCode.A) && !Input.GetKey (KeyCode.D)
-		    && !inAir) {
+		    && jumpCount == 0) {
 			if (rb.velocity.x > 0) {
 				if (rb.velocity.x - slow > 0) {
 					rb.velocity = new Vector2(rb.velocity.x - slow, rb.velocity.y);
@@ -91,10 +98,11 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionStay2D(Collision2D coll) {
+	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Platform") {
 			Debug.Log("Landed");
-			inAir = false;
+			fastFall = false;
+			jumpCount = 0;
 		}
 	}
 }
