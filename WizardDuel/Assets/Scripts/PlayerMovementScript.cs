@@ -16,6 +16,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	private int jumpCount;
 	private bool fastFall;
 	private Rigidbody2D rb;
+	private string player = "P1";
 
 	// Use this for initialization
 	void Start () {
@@ -26,19 +27,61 @@ public class PlayerMovementScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//Joystick Movement
+		rb.velocity += new Vector2(moveForce * Input.GetAxis("LeftJoystickX" + player), 0.0f);
+		/// Up causes "feather fall", set flag, divide Y Vel by some value 
+		/*if (Input.GetAxis("LeftJoystickY" + player) > 0.55 && jumpCount < MAX_JUMP)
+		{
+			rb.AddForce(new Vector2(0.0f, jumpForce) / Time.fixedDeltaTime);
+			jumpCount++;
+		}*/
+		if (Input.GetAxis("LeftJoystickY" + player) < -0.55 && !fastFall)
+		{
+			rb.velocity = new Vector2 (rb.velocity.x, 0);
+			rb.AddForce(new Vector2(0.0f, -1.00f * fallForce) / Time.fixedDeltaTime);
+			fastFall = true;
+		}
+
 		// Jumping
+		if ((Input.GetButtonDown("RB" + player) || Input.GetButtonDown("LB" + player))
+		    && (jumpCount < MAX_JUMP)) {
+			Debug.Log("Jump!");
+			// Double jumping resets downward momentum
+			if (jumpCount < 1)
+			{
+				// First jump
+				
+				rb.velocity = new Vector2 ((rb.velocity.x / moveForce) * jumpMoveForce, 0);
+			}
+			else
+			{
+				// Double jump
+				
+				rb.velocity = new Vector2 (rb.velocity.x, 0);
+			}
+			
+			rb.AddForce(new Vector2(0.0f, jumpForce) / Time.fixedDeltaTime);
+			
+			jumpCount++;
+		}
+
 		if (Input.GetKeyDown(KeyCode.W) && (jumpCount < MAX_JUMP)) {
 			Debug.Log("W");
 
 			// Double jumping resets downward momentum
 			if (jumpCount < 1)
 			{
+				// First jump
+
 				rb.velocity = new Vector2 ((rb.velocity.x / moveForce) * jumpMoveForce, 0);
 			}
 			else
 			{
+				// Double jump
+
 				rb.velocity = new Vector2 (rb.velocity.x, 0);
 			}
+
 			rb.AddForce(new Vector2(0.0f, jumpForce) / Time.fixedDeltaTime);
 
 			jumpCount++;
@@ -61,7 +104,8 @@ public class PlayerMovementScript : MonoBehaviour {
 				rb.AddForce(new Vector2(-1.0f * (moveForce - jumpMoveForce), 0.0f) / Time.fixedDeltaTime);
 			}
 			else {
-				rb.AddForce(new Vector2(-1.0f * moveForce, 0.0f) / Time.fixedDeltaTime);
+				//rb.AddForce(new Vector2(-1.0f * moveForce, 0.0f) / Time.fixedDeltaTime);
+				rb.velocity += (new Vector2(-1.0f * moveForce, 0.0f) / Time.fixedDeltaTime);
 			}
 		}
 		else if (Input.GetKey(KeyCode.D)) {
