@@ -31,9 +31,16 @@ public class PlayerMovementScript : MonoBehaviour {
 			Debug.Log("W");
 
 			// Double jumping resets downward momentum
-
-			rb.velocity = new Vector2 (rb.velocity.x, 0);
+			if (jumpCount < 1)
+			{
+				rb.velocity = new Vector2 ((rb.velocity.x / moveForce) * jumpMoveForce, 0);
+			}
+			else
+			{
+				rb.velocity = new Vector2 (rb.velocity.x, 0);
+			}
 			rb.AddForce(new Vector2(0.0f, jumpForce) / Time.fixedDeltaTime);
+
 			jumpCount++;
 		}
 

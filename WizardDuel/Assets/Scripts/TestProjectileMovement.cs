@@ -22,7 +22,6 @@ public class TestProjectileMovement : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D coll) {
 		if (coll.gameObject.tag == "Player") {
-			Debug.Log("HERE");
 
 			float xForce;
 			float yForce;
