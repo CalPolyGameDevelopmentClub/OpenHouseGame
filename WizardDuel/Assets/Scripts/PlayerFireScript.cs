@@ -19,7 +19,7 @@ public class PlayerFireScript : MonoBehaviour
 			Vector3 mouse = Input.mousePosition;
 			Vector3 mPos = Camera.main.ScreenToWorldPoint(new Vector3(mouse.x,mouse.y,transform.position.z));
 			Vector3 vel3D = (mPos-transform.position).normalized;
-			GameObject bullet = (GameObject)Instantiate(projectile,transform.position + vel3D * 3 ,Quaternion.identity);
+			GameObject bullet = (GameObject)Instantiate(projectile,transform.position + vel3D * 5 ,Quaternion.identity);
 			Debug.DrawRay(transform.position,vel3D);
 			vel3D *= fireSpeed;
 			bullet.GetComponent<TestProjectileMovement>().vel = new Vector2(vel3D.x,vel3D.y);
