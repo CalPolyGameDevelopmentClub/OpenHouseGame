@@ -23,35 +23,13 @@ public class TestProjectileMovement : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D coll) {
 		if (coll.gameObject.tag == "Player") {
 
-			float xForce;
-			float yForce;
 			float playerRatio = coll.gameObject.GetComponent<PlayerMovementScript>().damageRatio;
 
-			if (rb.velocity.x > 0.0f) {
-				xForce = force.x;
-			}
-			else if (rb.velocity.x < 0.0f) {
-				xForce = -force.x;
-			}
-			else {
-				xForce = 0.0f;
-			}
 
-			if (rb.velocity.y > 0.0f) {
-				yForce = force.y;
-			}
-			else if (rb.velocity.y < 0.0f) {
-				yForce = -force.y;
-			}
-			else {
-				yForce = 0.0f;
-			}
 
-			xForce *= playerRatio;
-			yForce *= playerRatio;
 			Debug.Log(coll.contacts[0].normal * playerRatio);
 			GameObject.Destroy(gameObject);
-			coll.gameObject.GetComponent<Rigidbody2D>().AddForce(1000 * -coll.contacts[0].normal * playerRatio / Time.fixedDeltaTime);
+			coll.gameObject.GetComponent<Rigidbody2D>().AddForce(100 * -coll.contacts[0].normal * playerRatio / Time.fixedDeltaTime);
 
 		}
 	}
