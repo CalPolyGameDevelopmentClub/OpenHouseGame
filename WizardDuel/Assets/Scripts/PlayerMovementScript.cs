@@ -12,7 +12,8 @@ public class PlayerMovementScript : MonoBehaviour {
 	public float damageRatio;
 
 	private static int MAX_JUMP = 2;
-	
+
+	private bool canJump;
 	private int jumpCount;
 	private bool fastFall;
 	private Rigidbody2D rb;
@@ -28,7 +29,31 @@ public class PlayerMovementScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//Joystick Movement
-		rb.velocity += new Vector2(moveForce * Input.GetAxis("LeftJoystickX" + player), 0.0f);
+
+		float lJoy = Input.GetAxis("LeftJoystickX" + player);
+
+		if (jumpCount > 0) {
+			if (Mathf.Abs(rb.velocity.x + ((moveForce / jumpMoveForce) * lJoy)) < maxVelocity)
+			{
+				rb.velocity += new Vector2((moveForce / jumpMoveForce) * lJoy, 0.0f);
+			}
+			else
+			{
+				rb.velocity = new Vector2(maxVelocity * lJoy, rb.velocity.y);
+			}
+		}
+		else
+		{
+			if (Mathf.Abs(rb.velocity.x + (moveForce * lJoy)) < maxVelocity)
+			{
+				rb.velocity += new Vector2(moveForce * lJoy, 0.0f);
+			}
+			else
+			{
+				rb.velocity = new Vector2(maxVelocity * lJoy, rb.velocity.y);
+			}
+		}
+
 		/// Up causes "feather fall", set flag, divide Y Vel by some value 
 		/*if (Input.GetAxis("LeftJoystickY" + player) > 0.55 && jumpCount < MAX_JUMP)
 		{
@@ -43,15 +68,16 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 
 		// Jumping
-		if ((Input.GetButtonDown("RB" + player) || Input.GetButtonDown("LB" + player))
-		    && (jumpCount < MAX_JUMP)) {
+		if (Input.GetAxis("RT" + player) < -0.3  && (jumpCount < MAX_JUMP) && canJump) {
+			canJump = false;
+			fastFall = false;
 			Debug.Log("Jump!");
 			// Double jumping resets downward momentum
 			if (jumpCount < 1)
 			{
 				// First jump
 				
-				rb.velocity = new Vector2 ((rb.velocity.x / moveForce) * jumpMoveForce, 0);
+				rb.velocity = new Vector2 ((rb.velocity.x / 15) * jumpMoveForce, 0);
 			}
 			else
 			{
@@ -63,6 +89,10 @@ public class PlayerMovementScript : MonoBehaviour {
 			rb.AddForce(new Vector2(0.0f, jumpForce) / Time.fixedDeltaTime);
 			
 			jumpCount++;
+		}
+
+		if (!canJump && Input.GetAxis("RT" + player) > -0.3) {
+			canJump = true;
 		}
 
 		if (Input.GetKeyDown(KeyCode.W) && (jumpCount < MAX_JUMP)) {
@@ -93,38 +123,6 @@ public class PlayerMovementScript : MonoBehaviour {
 			rb.velocity = new Vector2 (rb.velocity.x, 0);
 			rb.AddForce(new Vector2(0.0f, -1.00f * fallForce) / Time.fixedDeltaTime);
 			fastFall = true;
-		}
-	}
-
-	void FixedUpdate() {
-		// Ground Movement
-		if (Input.GetKey(KeyCode.A)) {
-			Debug.Log("A");
-			if (jumpCount > 0) {
-				rb.AddForce(new Vector2(-1.0f * (moveForce - jumpMoveForce), 0.0f) / Time.fixedDeltaTime);
-			}
-			else {
-				//rb.AddForce(new Vector2(-1.0f * moveForce, 0.0f) / Time.fixedDeltaTime);
-				rb.velocity += (new Vector2(-1.0f * moveForce, 0.0f) / Time.fixedDeltaTime);
-			}
-		}
-		else if (Input.GetKey(KeyCode.D)) {
-			Debug.Log("D");
-			if (jumpCount > 0) {
-				rb.AddForce(new Vector2((moveForce - jumpMoveForce), 0.0f) / Time.fixedDeltaTime);
-			}
-			else {
-				rb.AddForce(new Vector2(moveForce, 0.0f) / Time.fixedDeltaTime);
-			}
-
-		}
-
-		// Limiting Velocity
-		if (rb.velocity.x > maxVelocity) {
-			rb.velocity = new Vector2(maxVelocity, rb.velocity.y);
-		}
-		else if (rb.velocity.x < -1 * maxVelocity) {
-			rb.velocity = new Vector2(-1 * maxVelocity, rb.velocity.y);
 		}
 
 		// Self slowdown
