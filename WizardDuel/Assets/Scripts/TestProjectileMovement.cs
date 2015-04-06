@@ -27,7 +27,7 @@ public class TestProjectileMovement : MonoBehaviour {
 
 
 
-			Debug.Log(coll.contacts[0].normal * playerRatio);
+			//Debug.Log(coll.contacts[0].normal * playerRatio);
 			GameObject.Destroy(gameObject);
 			coll.gameObject.GetComponent<Rigidbody2D>().AddForce(100 * -coll.contacts[0].normal * playerRatio / Time.fixedDeltaTime);
 
