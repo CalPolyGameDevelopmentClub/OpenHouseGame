@@ -534,6 +534,7 @@ GameObject:
   - 61: {fileID: 1284405341}
   - 114: {fileID: 1284405336}
   - 58: {fileID: 1284405337}
+  - 114: {fileID: 1284405342}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Player
@@ -638,3 +639,16 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .300000012, y: .300000012}
+--- !u!114 &1284405342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1284405335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b582f53f516a14697bf33c00a10a12a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 100000, guid: 025963904f13a41b1825c539df4bbe5e, type: 2}
+  fireSpeed: 60
