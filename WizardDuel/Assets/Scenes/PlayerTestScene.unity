@@ -554,8 +554,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveForce: 5
-  jumpForce: 160
-  fallForce: 260
+  jumpForce: 16
+  fallForce: 20
+  featherForce: 1.20000005
   maxVelocity: 20
   slow: 2
   jumpMoveForce: 6
@@ -652,3 +653,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 100000, guid: 025963904f13a41b1825c539df4bbe5e, type: 2}
   fireSpeed: 60
+  reloadTime: 1

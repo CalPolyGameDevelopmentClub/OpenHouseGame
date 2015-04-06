@@ -5,6 +5,7 @@ public class PlayerFireScript : MonoBehaviour
 {
 	public GameObject projectile;
 	public float fireSpeed;
+	public float reloadTime;
 
 	private string player = "P1";
 	private string shootTrigger = "RT";
@@ -12,6 +13,7 @@ public class PlayerFireScript : MonoBehaviour
 	private float joyY;
 	private Vector3 joyAim;
 	private bool canShoot;
+	private float reload;
 
 	// Use this for initialization
 	void Start ()
@@ -20,6 +22,7 @@ public class PlayerFireScript : MonoBehaviour
 		joyY = 0.0f;
 		joyAim = new Vector3(joyX, joyY, 0);
 		canShoot = true;
+		reload = 0.0f;
 	}
 	
 	// Update is called once per frame
@@ -44,6 +47,16 @@ public class PlayerFireScript : MonoBehaviour
 			Debug.DrawRay(transform.position, vel3D);
 			vel3D *= fireSpeed;
 			bullet.GetComponent<TestProjectileMovement>().vel = new Vector2(vel3D.x,vel3D.y);
+			canShoot = false;
+		}
+		if (!canShoot && reload < reloadTime)
+		{
+			reload += Time.deltaTime;
+		}
+		if (!canShoot && (reload >= reloadTime || Input.GetAxis(shootTrigger + player) > -0.3))
+		{
+			canShoot = true;
+			reload = 0;
 		}
 
 		if(Input.GetMouseButtonDown(0))
