@@ -18,6 +18,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	private bool fastFall;
 	private Rigidbody2D rb;
 	private string player = "P1";
+	private string jumpTrigger = "LT";
 
 	// Use this for initialization
 	void Start () {
@@ -68,7 +69,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 
 		// Jumping
-		if (Input.GetAxis("RT" + player) < -0.3  && (jumpCount < MAX_JUMP) && canJump) {
+		if (Input.GetAxis(jumpTrigger + player) > 0.3  && (jumpCount < MAX_JUMP) && canJump) {
 			canJump = false;
 			fastFall = false;
 			Debug.Log("Jump!");
@@ -91,7 +92,7 @@ public class PlayerMovementScript : MonoBehaviour {
 			jumpCount++;
 		}
 
-		if (!canJump && Input.GetAxis("RT" + player) > -0.3) {
+		if (!canJump && Input.GetAxis(jumpTrigger + player) < 0.3) {
 			canJump = true;
 		}
 

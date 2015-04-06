@@ -7,9 +7,11 @@ public class PlayerFireScript : MonoBehaviour
 	public float fireSpeed;
 
 	private string player = "P1";
+	private string shootTrigger = "RT";
 	private float joyX;
 	private float joyY;
 	private Vector3 joyAim;
+	private bool canShoot;
 
 	// Use this for initialization
 	void Start ()
@@ -17,9 +19,10 @@ public class PlayerFireScript : MonoBehaviour
 		joyX = 1.0f;
 		joyY = 0.0f;
 		joyAim = new Vector3(joyX, joyY, 0);
+		canShoot = true;
 	}
 	
-		// Update is called once per frame
+	// Update is called once per frame
 	void Update ()
 	{
 		float stickX = Input.GetAxis("RightJoystickX" + player);
@@ -32,9 +35,8 @@ public class PlayerFireScript : MonoBehaviour
 		}
 		
 		joyAim = new Vector3(joyX, joyY, 0);
-		Debug.Log(joyAim);
 
-		if (Input.GetAxis("LT" + player) > 0.3)
+		if (Input.GetAxis(shootTrigger + player) < -0.3 && canShoot)
 		{
 			Vector3 vel3D = joyAim.normalized;
 
@@ -43,6 +45,7 @@ public class PlayerFireScript : MonoBehaviour
 			vel3D *= fireSpeed;
 			bullet.GetComponent<TestProjectileMovement>().vel = new Vector2(vel3D.x,vel3D.y);
 		}
+
 		if(Input.GetMouseButtonDown(0))
 		{
 			Vector3 mouse = Input.mousePosition;
