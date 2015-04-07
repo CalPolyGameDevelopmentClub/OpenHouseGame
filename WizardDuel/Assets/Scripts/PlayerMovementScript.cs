@@ -102,6 +102,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		{
 			rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / featherForce);
 		}
+
 		// Fastfall
 		if (Input.GetAxis("LeftJoystickY" + player) < -0.55
 		    && jumpCount >= 1 && !fastFall)
@@ -113,7 +114,8 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 
 		// Self slowdown
-		if (jumpCount == 0) {
+		if (jumpCount == 0)
+		{
 			if (rb.velocity.x > 0) {
 				if (rb.velocity.x - slow > 0) {
 					rb.velocity = new Vector2(rb.velocity.x - slow, rb.velocity.y);
