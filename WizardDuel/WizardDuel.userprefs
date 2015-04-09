@@ -1,10 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerMovementScript.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerFireScript.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerMovementScript.cs" Line="132" Column="50" />
-      <File FileName="Assets\Scripts\PlayerFireScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\TestProjectileMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerMovementScript.cs" Line="189" Column="44" />
+      <File FileName="Assets\Scripts\TestProjectileMovement.cs" Line="27" Column="19" />
+      <File FileName="Assets\Scripts\PlayerFireScript.cs" Line="48" Column="93" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

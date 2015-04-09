@@ -4,23 +4,27 @@ using System.Collections;
 public class PlayerMovementScript : MonoBehaviour {
 
 	public float moveForce;
+	public float jumpMoveForce;
+	public float maxVelocity;
+	public float maxAirVelocity;
+	public float slow;
 	public float jumpForce;
 	public float fallForce;
 	public float featherForce;
-	public float maxVelocity;
-	public float slow;
-	public float jumpMoveForce;
 	public float damageRatio;
+	public float flinchTime;
 
-	private static int MAX_JUMP = 2;
-	private static string player = "P1";
-	private static string jumpTrigger = "LT";
+	private int MAX_JUMP = 2;
+	private string player = "P1";
+	private string jumpTrigger = "LT";
 
 	private bool canJump;
 	private int jumpCount;
 	private bool fastFall;
 	private bool featherFall;
 	private Rigidbody2D rb;
+	private bool flinch;
+	private float fTimer;
 
 	// Use this for initialization
 	void Start () {
@@ -28,37 +32,58 @@ public class PlayerMovementScript : MonoBehaviour {
 		fastFall = false;
 		featherFall = false;
 		rb = gameObject.GetComponent<Rigidbody2D> ();
+		flinch = false;
+		fTimer = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		float lJoy = Input.GetAxis("LeftJoystickX" + player);
+		float lJoyX = Input.GetAxis("LeftJoystickX" + player);
+
+		if (flinch)
+		{
+			if (fTimer >= flinchTime)
+			{
+				flinch = false;
+			}
+			fTimer += Time.deltaTime;
+		}
 
 		// Joystick Movement
-		if (jumpCount > 0) {
-			// Movement in the air
-
-			if (Mathf.Abs(rb.velocity.x + ((moveForce / jumpMoveForce) * lJoy)) < maxVelocity)
-			{
-				rb.velocity += new Vector2((moveForce / jumpMoveForce) * lJoy, 0.0f);
-			}
-			else
-			{
-				rb.velocity = new Vector2(maxVelocity * lJoy, rb.velocity.y);
-			}
-		}
-		else
+		if (!flinch)
 		{
-			// Movement on the ground
-
-			if (Mathf.Abs(rb.velocity.x + (moveForce * lJoy)) < maxVelocity)
-			{
-				rb.velocity += new Vector2(moveForce * lJoy, 0.0f);
+			if (jumpCount > 0) {
+				// Movement in the air
+				if (Mathf.Abs(rb.velocity.x + ((moveForce / jumpMoveForce) * lJoyX)) <= maxAirVelocity)
+				{
+					rb.velocity += new Vector2((moveForce / jumpMoveForce) * lJoyX, 0.0f);
+				}
+				else
+				{
+					if ((((moveForce / jumpMoveForce) * lJoyX) > 0 && rb.velocity.x < 0) ||
+					    (((moveForce / jumpMoveForce) * lJoyX) < 0 && rb.velocity.x > 0))
+					{
+						rb.velocity += new Vector2((moveForce / jumpMoveForce) * lJoyX, 0.0f);
+					}
+				}
 			}
 			else
 			{
-				rb.velocity = new Vector2(maxVelocity * lJoy, rb.velocity.y);
+				// Movement on the ground
+				
+				if (Mathf.Abs(rb.velocity.x + (moveForce * lJoyX)) <= maxVelocity)
+				{
+					rb.velocity += new Vector2(moveForce * lJoyX, 0.0f);
+				}
+				else
+				{
+					if (((moveForce * lJoyX) > 0 && rb.velocity.x < 0) ||
+					    ((moveForce * lJoyX) < 0 && rb.velocity.x > 0))
+					{
+						rb.velocity += new Vector2(moveForce * lJoyX, 0.0f);
+					}
+				}
 			}
 		}
 
@@ -66,19 +91,27 @@ public class PlayerMovementScript : MonoBehaviour {
 		if (Input.GetAxis(jumpTrigger + player) > 0.3  && (jumpCount < MAX_JUMP) && canJump) {
 			canJump = false;
 			fastFall = false;
-			Debug.Log("Jump!");
 			// Double jumping resets downward momentum
 			if (jumpCount < 1)
 			{
 				// First jump
-				
-				rb.velocity = new Vector2 ((rb.velocity.x / 15) * jumpMoveForce, 0);
+
+				if (rb.velocity.y < 0)
+				{
+					rb.velocity = new Vector2 ((rb.velocity.x / 15) * jumpMoveForce, 0);
+				}
+				else
+				{
+					rb.velocity = new Vector2 ((rb.velocity.x / 15) * jumpMoveForce, rb.velocity.y);
+				}
 			}
 			else
 			{
 				// Double jump
-				
-				rb.velocity = new Vector2 (rb.velocity.x, 0);
+				if (rb.velocity.y < 0)
+				{
+					rb.velocity = new Vector2 (rb.velocity.x, 0);
+				}
 			}
 			
 			rb.velocity += new Vector2(0.0f, jumpForce);
@@ -91,7 +124,7 @@ public class PlayerMovementScript : MonoBehaviour {
 			canJump = true;
 		}
 
-		// Featherfall
+		/*// Featherfall
 		if (Input.GetAxis("LeftJoystickY" + player) > 0.55
 		    && jumpCount >= 1 && !featherFall)
 		{
@@ -101,21 +134,25 @@ public class PlayerMovementScript : MonoBehaviour {
 		if (featherFall && rb.velocity.y <= 0.0f)
 		{
 			rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / featherForce);
-		}
+		}*/
 
 		// Fastfall
 		if (Input.GetAxis("LeftJoystickY" + player) < -0.55
-		    && jumpCount >= 1 && !fastFall)
+		    && jumpCount >= 1 && !fastFall && !flinch)
 		{
-			featherFall = false;
-			rb.velocity = new Vector2 (rb.velocity.x, 0);
-			rb.velocity += new Vector2(0.0f, -1.00f * fallForce);
 			fastFall = true;
+			featherFall = false;
+			if (rb.velocity.y < 0)
+			{
+				rb.velocity = new Vector2 (rb.velocity.x, 0);
+			}
+			rb.velocity += new Vector2(0.0f, -1.00f * fallForce);
 		}
 
 		// Self slowdown
-		if (jumpCount == 0)
+		if (jumpCount == 0 && (Mathf.Abs(lJoyX) < 0.1f && !flinch))
 		{
+
 			if (rb.velocity.x > 0) {
 				if (rb.velocity.x - slow > 0) {
 					rb.velocity = new Vector2(rb.velocity.x - slow, rb.velocity.y);
@@ -137,10 +174,26 @@ public class PlayerMovementScript : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Platform") {
-			Debug.Log("Landed");
 			fastFall = false;
 			featherFall = false;
 			jumpCount = 0;
 		}
 	}
+
+	public void hit(Vector2 dir, float force)
+	{
+		// Getting hit allows you to fastfall again
+		fastFall = false;
+
+		// Apply knockback
+		rb.velocity += dir * force * damageRatio;
+
+		// Damage
+		damageRatio++;
+
+		// Make the character flinch
+		flinch = true;
+		fTimer = 0;
+	}
+
 }

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class TestProjectileMovement : MonoBehaviour {
 
-	public Vector2 force;
+	public float force;
 	public Vector2 vel;
 
 	private Rigidbody2D rb;
@@ -22,15 +22,10 @@ public class TestProjectileMovement : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D coll) {
 		if (coll.gameObject.tag == "Player") {
-
-			float playerRatio = coll.gameObject.GetComponent<PlayerMovementScript>().damageRatio;
-
-
-
-			//Debug.Log(coll.contacts[0].normal * playerRatio);
+			// Hit the player
+			coll.gameObject.GetComponent<PlayerMovementScript>().hit(-coll.contacts[0].normal, force);
+			// Destroy self
 			GameObject.Destroy(gameObject);
-			coll.gameObject.GetComponent<Rigidbody2D>().AddForce(100 * -coll.contacts[0].normal * playerRatio / Time.fixedDeltaTime);
-
 		}
 	}
 
