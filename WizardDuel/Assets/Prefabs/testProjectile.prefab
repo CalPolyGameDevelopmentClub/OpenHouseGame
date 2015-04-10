@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fa1ddf6406f9694dab5e8ad4cb55274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 5
+  force: 7
   vel: {x: -60, y: 0}
 --- !u!212 &21200000
 SpriteRenderer:

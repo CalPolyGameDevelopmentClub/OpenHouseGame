@@ -13,10 +13,8 @@ public class PlayerMovementScript : MonoBehaviour {
 	public float featherForce;
 	public float damageRatio;
 	public float flinchTime;
-	
-	private string player;
+
 	private int MAX_JUMP = 2;
-	private string jumpTrigger = "LT";
 
 	private bool canJump;
 	private int jumpCount;
@@ -26,10 +24,11 @@ public class PlayerMovementScript : MonoBehaviour {
 	private Rigidbody2D rb;
 	private bool flinch;
 	private float fTimer;
+	private PlayerVars vars;
 
 	// Use this for initialization
 	void Start () {
-		player = gameObject.GetComponent<PlayerVars>().player;
+		vars = gameObject.GetComponent<PlayerVars>();
 
 		jumpCount = 0;
 		inAir = false;
@@ -43,7 +42,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		float lJoyX = Input.GetAxis("LeftJoystickX" + player);
+		float lJoyX = vars.lStickX;
 		RaycastHit2D airCheck = Physics2D.Raycast(
 			new Vector2(rb.position.x, rb.position.y - gameObject.GetComponent<SpriteRenderer>().bounds.size.y),
 			-Vector2.up);
@@ -94,7 +93,6 @@ public class PlayerMovementScript : MonoBehaviour {
 			else
 			{
 				// Movement on the ground
-				
 				if (Mathf.Abs(rb.velocity.x + (moveForce * lJoyX)) <= maxVelocity)
 				{
 					rb.velocity += new Vector2(moveForce * lJoyX, 0.0f);
@@ -111,7 +109,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 
 		// Jumping
-		if (Input.GetAxis(jumpTrigger + player) > 0.3  && (jumpCount < MAX_JUMP) && canJump) {
+		if (vars.lTrig > 0.3  && (jumpCount < MAX_JUMP) && canJump) {
 			canJump = false;
 			fastFall = false;
 			// Double jumping resets downward momentum
@@ -121,11 +119,11 @@ public class PlayerMovementScript : MonoBehaviour {
 
 				if (rb.velocity.y < 0)
 				{
-					rb.velocity = new Vector2 ((rb.velocity.x / 15) * jumpMoveForce, 0);
+					rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce, 0);
 				}
 				else
 				{
-					rb.velocity = new Vector2 ((rb.velocity.x / 15) * jumpMoveForce, rb.velocity.y);
+					rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce, rb.velocity.y);
 				}
 			}
 			else
@@ -135,6 +133,10 @@ public class PlayerMovementScript : MonoBehaviour {
 				{
 					rb.velocity = new Vector2 (rb.velocity.x, 0);
 				}
+				else
+				{
+					rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y);
+				}
 			}
 			
 			rb.velocity += new Vector2(0.0f, jumpForce);
@@ -143,12 +145,12 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 
 		// Must release some to jump again
-		if (!canJump && Input.GetAxis(jumpTrigger + player) < 0.3) {
+		if (!canJump && vars.lTrig < 0.3) {
 			canJump = true;
 		}
 
 		/*// Featherfall
-		if (Input.GetAxis("LeftJoystickY" + player) > 0.55
+		if (vars.lStickY > 0.55
 		    && inAir && !featherFall)
 		{
 			fastFall = false;
@@ -160,7 +162,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		}*/
 
 		// Fastfall
-		if (Input.GetAxis("LeftJoystickY" + player) < -0.55
+		if (vars.lStickY < -0.55
 		    && inAir && !fastFall && !flinch)
 		{
 			fastFall = true;

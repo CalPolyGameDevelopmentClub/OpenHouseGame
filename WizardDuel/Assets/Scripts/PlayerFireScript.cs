@@ -7,17 +7,15 @@ public class PlayerFireScript : MonoBehaviour
 	public float fireSpeed;
 	public float reloadTime;
 
-	private string player;
-	private string shootTrigger = "RT";
-
 	private Vector3 joyAim;
 	private bool canShoot;
 	private float reload;
+	private PlayerVars vars;
 
 	// Use this for initialization
 	void Start ()
 	{
-		player = gameObject.GetComponent<PlayerVars>().player;
+		vars = gameObject.GetComponent<PlayerVars>();
 
 		joyAim = new Vector3(1.0f, 0.0f, 0);
 		canShoot = true;
@@ -28,8 +26,8 @@ public class PlayerFireScript : MonoBehaviour
 	void Update ()
 	{
 		// Get aim directions
-		float stickX = Input.GetAxis("RightJoystickX" + player);
-		float stickY = Input.GetAxis("RightJoystickY" + player);
+		float stickX = vars.rStickX;
+		float stickY = vars.rStickY;
 
 		// Keeps the aim outside the character
 		if (Mathf.Abs(stickX) + Mathf.Abs(stickY) > 0.88f)
@@ -37,8 +35,7 @@ public class PlayerFireScript : MonoBehaviour
 			joyAim = new Vector3(stickX, stickY);
 		}
 
-
-		if (Input.GetAxis(shootTrigger + player) < -0.3 && canShoot)
+		if (vars.rTrig > 0.3 && canShoot)
 		{
 			Vector3 spriteSize = gameObject.GetComponent<SpriteRenderer>().bounds.size;
 			Vector3 vel3D = joyAim.normalized;
@@ -55,7 +52,7 @@ public class PlayerFireScript : MonoBehaviour
 		{
 			reload += Time.deltaTime;
 		}
-		if (!canShoot && (reload >= reloadTime || Input.GetAxis(shootTrigger + player) > -0.3))
+		if (!canShoot && (reload >= reloadTime || vars.rTrig < 0.3))
 		{
 			canShoot = true;
 			reload = 0;

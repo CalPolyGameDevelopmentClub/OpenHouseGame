@@ -171,7 +171,7 @@ Transform:
   m_LocalScale: {x: 5.56400776, y: 5.56400681, z: 5.56400681}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!114 &115743867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +268,7 @@ Transform:
   m_LocalScale: {x: 2.80000019, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &1026341829
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +324,7 @@ Transform:
   m_LocalScale: {x: 2.80000019, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!61 &1026341832
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -436,7 +436,7 @@ Transform:
   m_LocalScale: {x: 2.80000019, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &1166738019
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,7 +625,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.21000004, y: 1.78999996, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
-  m_Children: []
+  m_Children:
+  - {fileID: 1314649402}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!61 &1284405341
@@ -668,6 +669,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: P1
   staff: {fileID: 1314649399}
+  lStickX: 0
+  lStickY: 0
+  rStickX: 0
+  rStickY: 0
+  lTrig: 0
+  rTrig: 0
 --- !u!1 &1314649399
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,6 +684,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1314649402}
   - 212: {fileID: 1314649401}
+  - 50: {fileID: 1314649400}
   m_Layer: 0
   m_Name: projectile origin
   m_TagString: Aim
@@ -684,6 +692,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!50 &1314649400
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1314649399}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!212 &1314649401
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -717,8 +740,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1314649399}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.90030575, y: 1.82562411, z: 0}
-  m_LocalScale: {x: 5.18898678, y: 5.18898773, z: 5.18898773}
+  m_LocalPosition: {x: .461938858, y: .00712482957, z: 0}
+  m_LocalScale: {x: 1.03779733, y: 1.03779757, z: 1.03779757}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 1284405340}
+  m_RootOrder: 0

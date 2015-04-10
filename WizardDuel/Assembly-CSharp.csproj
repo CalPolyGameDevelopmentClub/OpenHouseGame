@@ -46,12 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\NewBehaviourScript.cs" />
-     <Compile Include="Assets\PlayerVars.cs" />
      <Compile Include="Assets\ProjectileOriginScript.cs" />
      <Compile Include="Assets\Scripts\GameObjectPhysics.cs" />
      <Compile Include="Assets\Scripts\PlayerFireScript.cs" />
      <Compile Include="Assets\Scripts\PlayerMovementScript.cs" />
+     <Compile Include="Assets\Scripts\PlayerVars.cs" />
      <Compile Include="Assets\Scripts\TestProjectileExplostion.cs" />
      <Compile Include="Assets\Scripts\TestProjectileMovement.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
