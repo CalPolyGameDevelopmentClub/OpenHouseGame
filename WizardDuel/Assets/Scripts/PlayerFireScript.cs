@@ -7,10 +7,9 @@ public class PlayerFireScript : MonoBehaviour
 	public float fireSpeed;
 	public float reloadTime;
 
-	private string player = "P1";
+	private string player;
 	private string shootTrigger = "RT";
-	private float joyX;
-	private float joyY;
+
 	private Vector3 joyAim;
 	private bool canShoot;
 	private float reload;
@@ -18,9 +17,9 @@ public class PlayerFireScript : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		joyX = 1.0f;
-		joyY = 0.0f;
-		joyAim = new Vector3(joyX, joyY, 0);
+		player = gameObject.GetComponent<PlayerVars>().player;
+
+		joyAim = new Vector3(1.0f, 0.0f, 0);
 		canShoot = true;
 		reload = 0.0f;
 	}
@@ -33,19 +32,20 @@ public class PlayerFireScript : MonoBehaviour
 		float stickY = Input.GetAxis("RightJoystickY" + player);
 
 		// Keeps the aim outside the character
-		if (Mathf.Abs(stickX) + Mathf.Abs(stickY) > 0.9f)
+		if (Mathf.Abs(stickX) + Mathf.Abs(stickY) > 0.88f)
 		{
-			joyX = stickX;
-			joyY = stickY;
+			joyAim = new Vector3(stickX, stickY);
 		}
-		
-		joyAim = new Vector3(joyX, joyY, 0);
+
 
 		if (Input.GetAxis(shootTrigger + player) < -0.3 && canShoot)
 		{
+			Vector3 spriteSize = gameObject.GetComponent<SpriteRenderer>().bounds.size;
 			Vector3 vel3D = joyAim.normalized;
 
-			GameObject bullet = (GameObject)Instantiate(projectile, transform.position + vel3D * 1.65f, Quaternion.identity);
+			GameObject bullet = (GameObject)Instantiate(projectile, 
+			                                            transform.position + vel3D * 1.6f,
+			                                            Quaternion.identity);
 			Debug.DrawRay(transform.position, vel3D);
 			vel3D *= fireSpeed;
 			bullet.GetComponent<TestProjectileMovement>().vel = new Vector2(vel3D.x,vel3D.y);

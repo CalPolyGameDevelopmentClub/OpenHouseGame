@@ -13,9 +13,9 @@ public class PlayerMovementScript : MonoBehaviour {
 	public float featherForce;
 	public float damageRatio;
 	public float flinchTime;
-
+	
+	private string player;
 	private int MAX_JUMP = 2;
-	private string player = "P1";
 	private string jumpTrigger = "LT";
 
 	private bool canJump;
@@ -29,6 +29,8 @@ public class PlayerMovementScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		player = gameObject.GetComponent<PlayerVars>().player;
+
 		jumpCount = 0;
 		inAir = false;
 		fastFall = false;
@@ -147,7 +149,7 @@ public class PlayerMovementScript : MonoBehaviour {
 
 		/*// Featherfall
 		if (Input.GetAxis("LeftJoystickY" + player) > 0.55
-		    && jumpCount >= 1 && !featherFall)
+		    && inAir && !featherFall)
 		{
 			fastFall = false;
 			featherFall = true;
@@ -159,7 +161,7 @@ public class PlayerMovementScript : MonoBehaviour {
 
 		// Fastfall
 		if (Input.GetAxis("LeftJoystickY" + player) < -0.55
-		    && jumpCount >= 1 && !fastFall && !flinch)
+		    && inAir && !fastFall && !flinch)
 		{
 			fastFall = true;
 			featherFall = false;
@@ -203,6 +205,8 @@ public class PlayerMovementScript : MonoBehaviour {
 
 	public void hit(Vector2 dir, float force)
 	{
+		rb.velocity = new Vector2(0, 0);
+
 		// Getting hit allows you to fastfall again
 		fastFall = false;
 

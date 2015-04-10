@@ -171,7 +171,7 @@ Transform:
   m_LocalScale: {x: 5.56400776, y: 5.56400681, z: 5.56400681}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!114 &115743867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +268,7 @@ Transform:
   m_LocalScale: {x: 2.80000019, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!1 &1026341829
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +324,7 @@ Transform:
   m_LocalScale: {x: 2.80000019, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!61 &1026341832
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -436,7 +436,7 @@ Transform:
   m_LocalScale: {x: 2.80000019, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1 &1166738019
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,8 +532,10 @@ GameObject:
   - 212: {fileID: 1284405339}
   - 50: {fileID: 1284405338}
   - 61: {fileID: 1284405341}
+  - 114: {fileID: 1284405343}
   - 114: {fileID: 1284405342}
   - 114: {fileID: 1284405336}
+  - 114: {fileID: 1284405337}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Player
@@ -553,7 +555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveForce: 5
-  jumpMoveForce: 10
+  jumpMoveForce: 5
   maxVelocity: 20
   maxAirVelocity: 10
   slow: 2
@@ -562,6 +564,17 @@ MonoBehaviour:
   featherForce: 1.20000005
   damageRatio: 1
   flinchTime: .200000003
+--- !u!114 &1284405337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1284405335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e7784b5dc2edb428a128358443ff1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &1284405338
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -610,7 +623,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1284405335}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.30969429, y: 1.7943759, z: 0}
+  m_LocalPosition: {x: -9.21000004, y: 1.78999996, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -642,3 +655,70 @@ MonoBehaviour:
   projectile: {fileID: 100000, guid: 025963904f13a41b1825c539df4bbe5e, type: 2}
   fireSpeed: 60
   reloadTime: .200000003
+--- !u!114 &1284405343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1284405335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88207ca786f9514bbd35fb042c1e6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: P1
+  staff: {fileID: 1314649399}
+--- !u!1 &1314649399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1314649402}
+  - 212: {fileID: 1314649401}
+  m_Layer: 0
+  m_Name: projectile origin
+  m_TagString: Aim
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &1314649401
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1314649399}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_ImportantGI: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: f4ca65b1247762140875715de7eeee6b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!4 &1314649402
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1314649399}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.90030575, y: 1.82562411, z: 0}
+  m_LocalScale: {x: 5.18898678, y: 5.18898773, z: 5.18898773}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
