@@ -20,6 +20,7 @@ public class PlayerMovementScript : MonoBehaviour {
 
 	private bool canJump;
 	private int jumpCount;
+	private bool inAir;
 	private bool fastFall;
 	private bool featherFall;
 	private Rigidbody2D rb;
@@ -29,6 +30,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		jumpCount = 0;
+		inAir = false;
 		fastFall = false;
 		featherFall = false;
 		rb = gameObject.GetComponent<Rigidbody2D> ();
@@ -40,6 +42,25 @@ public class PlayerMovementScript : MonoBehaviour {
 	void Update () {
 
 		float lJoyX = Input.GetAxis("LeftJoystickX" + player);
+		RaycastHit2D airCheck = Physics2D.Raycast(
+			new Vector2(rb.position.x, rb.position.y - gameObject.GetComponent<SpriteRenderer>().bounds.size.y),
+			-Vector2.up);
+
+		if (airCheck.collider != null && airCheck.collider.tag == "Platform")
+		{
+			if (airCheck.distance > 0)
+			{
+				inAir = true;
+			}
+			if (airCheck.distance == 0)
+			{
+				inAir = false;
+			}
+		}
+		else if (airCheck.collider == null)
+		{
+			inAir = true;
+		}
 
 		if (flinch)
 		{
@@ -53,7 +74,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		// Joystick Movement
 		if (!flinch)
 		{
-			if (jumpCount > 0) {
+			if (inAir) {
 				// Movement in the air
 				if (Mathf.Abs(rb.velocity.x + ((moveForce / jumpMoveForce) * lJoyX)) <= maxAirVelocity)
 				{
@@ -150,7 +171,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 
 		// Self slowdown
-		if (jumpCount == 0 && (Mathf.Abs(lJoyX) < 0.1f && !flinch))
+		if (!inAir && (Mathf.Abs(lJoyX) < 0.1f && !flinch))
 		{
 
 			if (rb.velocity.x > 0) {
