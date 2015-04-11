@@ -54,7 +54,7 @@ public class PlayerMovementScript : MonoBehaviour {
 			{
 				inAir = true;
 			}
-			if (inAir && airCheck.distance == 0)
+			if (airCheck.distance == 0)
 			{
 				inAir = false;
 				featherFall = false;
@@ -141,6 +141,11 @@ public class PlayerMovementScript : MonoBehaviour {
 					rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce, rb.velocity.y);
 				}
 				rb.velocity += new Vector2(0.0f, jumpForce);
+				canJump = false;
+				fastFall = false;
+				
+				jumpCount++;
+
 			}
 
 
@@ -156,6 +161,11 @@ public class PlayerMovementScript : MonoBehaviour {
 				}
 				rb.velocity += new Vector2(0.0f, jumpForce);
 				jumpCount = 0;
+				canJump = false;
+				fastFall = false;
+				
+				jumpCount++;
+
 			}
 			else if(lWallCheck.distance == 0)
 			{
@@ -169,6 +179,11 @@ public class PlayerMovementScript : MonoBehaviour {
 				}
 				rb.velocity += new Vector2(0.0f, jumpForce);
 				jumpCount = 0;
+				canJump = false;
+				fastFall = false;
+				
+				jumpCount++;
+
 			}
 			else if(jumpCount < MAX_JUMP && canJump && inAir && rb.velocity.x <= maxVelocity)
 			{
@@ -182,14 +197,15 @@ public class PlayerMovementScript : MonoBehaviour {
 					rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y);
 				}
 				rb.velocity += new Vector2(0.0f, jumpForce);
+				canJump = false;
+				fastFall = false;
+				
+				jumpCount++;
+
 			}
 
 
-			canJump = false;
-			fastFall = false;
-			
-			jumpCount++;
-			
+
 
 		}
 
