@@ -114,7 +114,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 
 		// Jumping
-		if (vars.jumpTrig > 0.3  &&  !flinch) {
+		if (vars.jumpTrig > 0.3  &&  canJump && !flinch) {
 
 			RaycastHit2D lWallCheck = Physics2D.Raycast(
 				new Vector2(rb.position.x - gameObject.GetComponent<SpriteRenderer>().bounds.size.x,rb.position.y),
