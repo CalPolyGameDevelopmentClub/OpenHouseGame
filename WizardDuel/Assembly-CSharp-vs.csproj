@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BoundsCheckerScript.cs" />
      <Compile Include="Assets\Scripts\ExplosionScript.cs" />
+     <Compile Include="Assets\Scripts\ExplosionParticleSpawner.cs" />
      <Compile Include="Assets\Scripts\GameObjectPhysics.cs" />
      <Compile Include="Assets\Scripts\PlayerFireScript.cs" />
      <Compile Include="Assets\Scripts\PlayerMovementScript.cs" />
