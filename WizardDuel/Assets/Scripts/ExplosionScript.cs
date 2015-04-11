@@ -19,8 +19,8 @@ public class ExplosionScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		gameObject.GetComponent<CircleCollider2D>().radius = r * (explosionTimer + 1.0f);
-		gameObject.transform.localScale = scale * (explosionTimer + 1.0f);
+		/*gameObject.GetComponent<CircleCollider2D>().radius = r * (explosionTimer + 1.0f);*/
+		/*gameObject.transform.localScale = scale * (explosionTimer + 1.0f);*/
 
 		explosionTimer += Time.fixedDeltaTime;
 
@@ -35,10 +35,12 @@ public class ExplosionScript : MonoBehaviour {
 			float dist;
 			float damage;
 
+			Debug.Log("Hitting " + coll.gameObject.GetComponent<PlayerVars>().player + "!!");
+
 			// Calculate damge
 			dist = Vector2.Distance(coll.transform.position, gameObject.transform.position);
 
-			damage = 1.0f / (dist + 0.1f);
+			damage = 1.0f /  (2.0f * (dist + 0.1f));
 
 			// Hit the player
 			coll.gameObject.GetComponent<PlayerMovementScript>().hit(-coll.contacts[0].normal, force, damage);
