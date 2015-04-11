@@ -41,7 +41,7 @@ public class PlayerFireScript : MonoBehaviour
 			Vector3 vel3D = joyAim.normalized;
 
 			GameObject bullet = (GameObject)Instantiate(projectile, 
-			                                            transform.position + childPos * 9.0f,
+			                                            transform.position + childPos * 13.0f,
 			                                            Quaternion.identity);
 			vel3D *= fireSpeed;
 			bullet.GetComponent<TestProjectileMovement>().vel = new Vector2(vel3D.x,vel3D.y);

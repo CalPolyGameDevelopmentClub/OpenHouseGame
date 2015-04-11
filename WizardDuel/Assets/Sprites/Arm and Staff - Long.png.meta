@@ -1,11 +1,9 @@
 fileFormatVersion: 2
-guid: 9a28696d0e85d6f45bc4169a0091f445
-timeCreated: 1428787442
+guid: 8de975889e91bee4fa850abb2ec14e6e
+timeCreated: 1428793729
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Idle Cycle_0
-    21300002: Idle Cycle_1
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -39,7 +37,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -50,27 +48,7 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites:
-    - name: Idle Cycle_0
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 0
-        width: 16
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Idle Cycle_1
-      rect:
-        serializedVersion: 2
-        x: 19
-        y: 0
-        width: 16
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+    sprites: []
   spritePackingTag: 
   userData: 
   assetBundleName: 
