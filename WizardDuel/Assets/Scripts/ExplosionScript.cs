@@ -40,10 +40,10 @@ public class ExplosionScript : MonoBehaviour {
 			// Calculate damge
 			dist = Vector2.Distance(coll.transform.position, gameObject.transform.position);
 
-			damage = 1.0f /  (2.0f * (dist + 0.1f));
+			damage = 1.0f / dist + 0.1f;
 
 			// Hit the player
-			coll.gameObject.GetComponent<PlayerMovementScript>().hit(-coll.contacts[0].normal, force, damage);
+			coll.gameObject.GetComponent<PlayerMovementScript>().hit(-coll.contacts[0].normal, force, damage * 3.0f);
 		}
 	}
 }
