@@ -13,7 +13,7 @@ GameObject:
   - 61: {fileID: 6182196}
   - 114: {fileID: 11458168}
   m_Layer: 0
-  m_Name: LevelWall 100
+  m_Name: LevelWallnew
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

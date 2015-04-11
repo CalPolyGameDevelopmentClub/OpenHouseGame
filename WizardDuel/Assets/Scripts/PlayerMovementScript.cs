@@ -57,6 +57,8 @@ public class PlayerMovementScript : MonoBehaviour {
 			if (airCheck.distance == 0)
 			{
 				inAir = false;
+				featherFall = false;
+				jumpCount = 0;
 			}
 		}
 		else if (airCheck.collider == null)
@@ -112,6 +114,17 @@ public class PlayerMovementScript : MonoBehaviour {
 
 		// Jumping
 		if (vars.jumpTrig > 0.3  && jumpCount < MAX_JUMP && canJump && !flinch) {
+
+			RaycastHit2D lWallCheck = Physics2D.Raycast(
+				new Vector2(rb.position.x - gameObject.GetComponent<SpriteRenderer>().bounds.size.x,rb.position.y),
+				Vector2.right);
+
+			RaycastHit2D rWallCheck = Physics2D.Raycast(
+				new Vector2(rb.position.x + gameObject.GetComponent<SpriteRenderer>().bounds.size.x,rb.position.y),
+				-Vector2.right);
+
+
+
 			canJump = false;
 			fastFall = false;
 			// Double jumping resets downward momentum
@@ -127,8 +140,37 @@ public class PlayerMovementScript : MonoBehaviour {
 				{
 					rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce, rb.velocity.y);
 				}
+				rb.velocity += new Vector2(0.0f, jumpForce);
 			}
-			else
+
+
+			else if(rWallCheck.distance == 0)
+			{
+				if (rb.velocity.y < 0)
+				{
+					rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce - jumpForce, 0);
+				}
+				else
+				{
+					rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce - jumpForce, rb.velocity.y);
+				}
+				rb.velocity += new Vector2(0.0f, jumpForce);
+				jumpCount = 0;
+			}
+			else if(lWallCheck.distance == 0)
+			{
+				if (rb.velocity.y < 0)
+				{
+					rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce + jumpForce, 0);
+				}
+				else
+				{
+					rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce + jumpForce, rb.velocity.y);
+				}
+				rb.velocity += new Vector2(0.0f, jumpForce);
+				jumpCount = 0;
+			}
+			else if(inAir && rb.velocity.x <= maxVelocity)
 			{
 				// Double jump
 				if (rb.velocity.y < 0)
@@ -139,9 +181,13 @@ public class PlayerMovementScript : MonoBehaviour {
 				{
 					rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y);
 				}
+				rb.velocity += new Vector2(0.0f, jumpForce);
 			}
+
+
+
 			
-			rb.velocity += new Vector2(0.0f, jumpForce);
+
 			
 			jumpCount++;
 		}
@@ -200,11 +246,13 @@ public class PlayerMovementScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
+		/*
 		if (coll.gameObject.tag == "Platform") {
 			fastFall = false;
 			featherFall = false;
 			jumpCount = 0;
 		}
+		*/
 	}
 
 	public void hit(Vector2 dir, float force, float damage)
