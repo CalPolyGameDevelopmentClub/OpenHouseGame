@@ -42,6 +42,8 @@ public class PlayerMovementScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		Debug.Log(jumpCount);
+
 		float lJoyX = vars.lStickX;
 		RaycastHit2D airCheck = Physics2D.Raycast(
 			new Vector2(rb.position.x, rb.position.y - gameObject.GetComponent<SpriteRenderer>().bounds.size.y),
@@ -123,9 +125,6 @@ public class PlayerMovementScript : MonoBehaviour {
 			RaycastHit2D rWallCheck = Physics2D.Raycast(
 				new Vector2(rb.position.x + gameObject.GetComponent<SpriteRenderer>().bounds.size.x,rb.position.y),
 				-Vector2.right);
-
-
-
 
 			// Double jumping resets downward momentum
 			if ( jumpCount < MAX_JUMP && canJump && !inAir && rb.velocity.x <= maxVelocity)
