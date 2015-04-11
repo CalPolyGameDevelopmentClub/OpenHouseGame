@@ -27,7 +27,21 @@ public class PlayerVars : MonoBehaviour {
 		rStickX = Input.GetAxis("RightJoystickX" + player);
 		rStickY = Input.GetAxis("RightJoystickY" + player);
 
+		if(Input.GetKey(KeyCode.A))
+		{
+			lStickX = -1;
+		}
+		else if(Input.GetKey(KeyCode.D))
+		{
+			lStickX = 1;
+		}
+
+
 		jumpTrig = Input.GetAxis(jump + player);
 		shootTrig = Input.GetAxis(shoot + player);
+		if(Input.GetKeyDown(KeyCode.Space))
+		{
+			jumpTrig = 0.5f;
+		}
 	}
 }
