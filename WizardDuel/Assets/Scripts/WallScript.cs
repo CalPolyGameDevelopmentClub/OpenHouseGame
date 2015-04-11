@@ -6,6 +6,7 @@ public class WallScript : MonoBehaviour {
 	public float breakThreshhold = 150f;
 	public float forceThreshhold = 100f;
 	bool isWall = true;
+	bool isCollisionDisabled=false;
 	// Use this for initialization
 	void Start () {
 		this.GetComponent<Rigidbody2D>().isKinematic = true;
@@ -15,11 +16,19 @@ public class WallScript : MonoBehaviour {
 	void Update () {
 		
 	}
+	void FixedUpdate()
+	{
+		if(!isCollisionDisabled && !isWall)
+		{
+			this.GetComponent<Rigidbody2D>().GetComponent<Collider2D>().isTrigger=true;
+			isCollisionDisabled=true;
+		}
+	}
 	void OnCollisionEnter2D(Collision2D col)
 	{
 		
 		Vector2 force = col.rigidbody.mass * col.rigidbody.velocity / Time.fixedDeltaTime;
-		print (col.rigidbody.velocity);
+//		print (col.rigidbody.velocity);
 		if(force.magnitude > forceThreshhold)
 		{
 			breakThreshhold -= force.magnitude;
@@ -29,7 +38,6 @@ public class WallScript : MonoBehaviour {
 				body.isKinematic = false;
 				body.AddForce(new Vector2(-force.x,force.y));
 				body.AddTorque(Random.Range(-25f,25f));
-				body.GetComponent<Collider2D>().isTrigger=true;
 			}
 			else
 			{

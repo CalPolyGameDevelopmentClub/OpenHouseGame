@@ -104,7 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 100000, guid: 025963904f13a41b1825c539df4bbe5e, type: 2}
   fireSpeed: 60
-  reloadTime: .200000003
+  reloadTime: .300000012
 --- !u!114 &11467880
 MonoBehaviour:
   m_ObjectHideFlags: 1

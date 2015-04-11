@@ -134,6 +134,10 @@ Prefab:
       propertyPath: player
       value: P4
       objectReference: {fileID: 0}
+    - target: {fileID: 11430864, guid: fc1606a6d11bb0544860504fd0a3309a, type: 2}
+      propertyPath: reloadTime
+      value: .699999988
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc1606a6d11bb0544860504fd0a3309a, type: 2}
   m_IsPrefabParent: 0
@@ -180,6 +184,10 @@ Prefab:
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11430864, guid: fc1606a6d11bb0544860504fd0a3309a, type: 2}
+      propertyPath: reloadTime
+      value: .699999988
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc1606a6d11bb0544860504fd0a3309a, type: 2}
   m_IsPrefabParent: 0
@@ -222,88 +230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9cb1c873a189a4dabe96ad6d2aafda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &621447500
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 621447502}
-  - 212: {fileID: 621447501}
-  - 58: {fileID: 621447504}
-  - 114: {fileID: 621447503}
-  m_Layer: 0
-  m_Name: Explosion
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &621447501
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 621447500}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b5165729a16bcea45881959aeb1220aa, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!4 &621447502
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 621447500}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.44000006, y: 2.11999989, z: 0}
-  m_LocalScale: {x: 24.0999374, y: 24.0999298, z: 24.0999298}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
---- !u!114 &621447503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 621447500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b84a8235a397f7344a735583801e9e58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionTime: 100
-  force: 10
---- !u!58 &621447504
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 621447500}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: .100000001
 --- !u!1001 &815238697
 Prefab:
   m_ObjectHideFlags: 0
@@ -350,6 +276,10 @@ Prefab:
     - target: {fileID: 11468520, guid: fc1606a6d11bb0544860504fd0a3309a, type: 2}
       propertyPath: player
       value: P2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430864, guid: fc1606a6d11bb0544860504fd0a3309a, type: 2}
+      propertyPath: reloadTime
+      value: .699999988
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc1606a6d11bb0544860504fd0a3309a, type: 2}
@@ -569,6 +499,10 @@ Prefab:
     - target: {fileID: 11468520, guid: fc1606a6d11bb0544860504fd0a3309a, type: 2}
       propertyPath: player
       value: P3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430864, guid: fc1606a6d11bb0544860504fd0a3309a, type: 2}
+      propertyPath: reloadTime
+      value: .699999988
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc1606a6d11bb0544860504fd0a3309a, type: 2}

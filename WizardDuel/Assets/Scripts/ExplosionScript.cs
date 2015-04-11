@@ -22,7 +22,7 @@ public class ExplosionScript : MonoBehaviour {
 		/*gameObject.GetComponent<CircleCollider2D>().radius = r * (explosionTimer + 1.0f);*/
 		/*gameObject.transform.localScale = scale * (explosionTimer + 1.0f);*/
 
-		explosionTimer += Time.fixedDeltaTime;
+		explosionTimer += Time.deltaTime;
 
 		if (explosionTimer >= explosionTime)
 		{
@@ -32,6 +32,7 @@ public class ExplosionScript : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D coll) {
 		if (coll.gameObject.tag == "Player") {
+			// Still needs exponential force
 			float dist;
 			float damage;
 

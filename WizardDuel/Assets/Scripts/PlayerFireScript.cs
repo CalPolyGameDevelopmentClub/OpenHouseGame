@@ -51,7 +51,7 @@ public class PlayerFireScript : MonoBehaviour
 		{
 			reload += Time.deltaTime;
 		}
-		if (!canShoot && (reload >= reloadTime || vars.shootTrig < 0.3))
+		if (!canShoot && (reload >= reloadTime/* || vars.shootTrig < 0.3)*/))
 		{
 			canShoot = true;
 			reload = 0;
