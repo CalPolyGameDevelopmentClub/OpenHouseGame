@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\GameObjectPhysics.cs" />
      <Compile Include="Assets\Scripts\PlayerFireScript.cs" />
      <Compile Include="Assets\Scripts\PlayerMovementScript.cs" />
+     <Compile Include="Assets\Scripts\PlayerSlideScript.cs" />
      <Compile Include="Assets\Scripts\PlayerVars.cs" />
      <Compile Include="Assets\Scripts\ProjectileOriginScript.cs" />
      <Compile Include="Assets\Scripts\TestProjectileExplostion.cs" />
