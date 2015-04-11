@@ -54,11 +54,12 @@ public class PlayerMovementScript : MonoBehaviour {
 			{
 				inAir = true;
 			}
-			if (airCheck.distance == 0)
+			if (inAir && airCheck.distance == 0)
 			{
 				inAir = false;
 				featherFall = false;
 				jumpCount = 0;
+
 			}
 		}
 		else if (airCheck.collider == null)
@@ -113,7 +114,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 
 		// Jumping
-		if (vars.jumpTrig > 0.3  && jumpCount < MAX_JUMP && canJump && !flinch) {
+		if (vars.jumpTrig > 0.3  &&  !flinch) {
 
 			RaycastHit2D lWallCheck = Physics2D.Raycast(
 				new Vector2(rb.position.x - gameObject.GetComponent<SpriteRenderer>().bounds.size.x,rb.position.y),
@@ -125,10 +126,9 @@ public class PlayerMovementScript : MonoBehaviour {
 
 
 
-			canJump = false;
-			fastFall = false;
+
 			// Double jumping resets downward momentum
-			if (!inAir && rb.velocity.x <= maxVelocity)
+			if ( jumpCount < MAX_JUMP && canJump && !inAir && rb.velocity.x <= maxVelocity)
 			{
 				// First jump
 
@@ -170,7 +170,7 @@ public class PlayerMovementScript : MonoBehaviour {
 				rb.velocity += new Vector2(0.0f, jumpForce);
 				jumpCount = 0;
 			}
-			else if(inAir && rb.velocity.x <= maxVelocity)
+			else if(jumpCount < MAX_JUMP && canJump && inAir && rb.velocity.x <= maxVelocity)
 			{
 				// Double jump
 				if (rb.velocity.y < 0)
@@ -185,11 +185,12 @@ public class PlayerMovementScript : MonoBehaviour {
 			}
 
 
-
-			
-
+			canJump = false;
+			fastFall = false;
 			
 			jumpCount++;
+			
+
 		}
 
 		// Must release some to jump again
