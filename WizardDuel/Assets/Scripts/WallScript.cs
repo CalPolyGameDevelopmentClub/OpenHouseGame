@@ -26,22 +26,24 @@ public class WallScript : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		
-		Vector2 force = col.rigidbody.mass * col.rigidbody.velocity / Time.fixedDeltaTime;
-//		print (col.rigidbody.velocity);
-		if(force.magnitude > forceThreshhold)
+		if (col.gameObject.tag != "Platform")
 		{
-			breakThreshhold -= force.magnitude;
-			if (breakThreshhold < 0) {
-				isWall = false;
-				Rigidbody2D body = this.GetComponent<Rigidbody2D>();
-				body.isKinematic = false;
-				body.AddForce(new Vector2(-force.x,force.y));
-				body.AddTorque(Random.Range(-25f,25f));
-			}
-			else
+			Vector2 force = col.rigidbody.mass * col.rigidbody.velocity / Time.fixedDeltaTime;
+			//		print (col.rigidbody.velocity);
+			if(force.magnitude > forceThreshhold)
 			{
-				//col.collider.rigidbody2D.AddForce(-2*force);
+				breakThreshhold -= force.magnitude;
+				if (breakThreshhold < 0) {
+					isWall = false;
+					Rigidbody2D body = this.GetComponent<Rigidbody2D>();
+					body.isKinematic = false;
+					body.AddForce(new Vector2(-force.x,force.y));
+					body.AddTorque(Random.Range(-25f,25f));
+				}
+				else
+				{
+					//col.collider.rigidbody2D.AddForce(-2*force);
+				}
 			}
 		}
 	}
