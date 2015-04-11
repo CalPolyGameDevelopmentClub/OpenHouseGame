@@ -11,7 +11,7 @@ public class ProjectileOriginScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		vars = gameObject.GetComponent<PlayerVars>();
+		vars = gameObject.GetComponentInParent<PlayerVars>();
 	}
 	
 	// Update is called once per frame
@@ -21,13 +21,12 @@ public class ProjectileOriginScript : MonoBehaviour {
 		float stickY = vars.rStickY;
 
 		// Keeps the aim outside the character
-		if (Mathf.Abs(stickX) + Mathf.Abs(stickY) > 0.88f)
+		if (Mathf.Abs(stickX) + Mathf.Abs(stickY) > vars.shootStickSensitivity)
 		{
 			dirX = stickX;
 			dirY = stickY;
 		}
-		vars.staff.GetComponent<Rigidbody2D>().position = new Vector2(dirX, dirY);
-		//gameObject.GetComponentInChildren<Rigidbody2D>().position = new Vector2(dirX * 2, dirY * 2);
+		gameObject.transform.localPosition = new Vector2(dirX, dirY).normalized * 0.2f;
 		
 		if (dirX > 0)
 		{

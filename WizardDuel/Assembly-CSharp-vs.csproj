@@ -46,11 +46,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ProjectileOriginScript.cs" />
+     <Compile Include="Assets\Scripts\BoundsCheckerScript.cs" />
      <Compile Include="Assets\Scripts\GameObjectPhysics.cs" />
      <Compile Include="Assets\Scripts\PlayerFireScript.cs" />
      <Compile Include="Assets\Scripts\PlayerMovementScript.cs" />
      <Compile Include="Assets\Scripts\PlayerVars.cs" />
+     <Compile Include="Assets\Scripts\ProjectileOriginScript.cs" />
      <Compile Include="Assets\Scripts\TestProjectileExplostion.cs" />
      <Compile Include="Assets\Scripts\TestProjectileMovement.cs" />
      <Compile Include="Assets\Scripts\WallScript.cs" />

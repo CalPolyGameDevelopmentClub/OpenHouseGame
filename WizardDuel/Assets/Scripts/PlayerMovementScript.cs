@@ -47,6 +47,7 @@ public class PlayerMovementScript : MonoBehaviour {
 			new Vector2(rb.position.x, rb.position.y - gameObject.GetComponent<SpriteRenderer>().bounds.size.y),
 			-Vector2.up);
 
+		// Vector to check if the character is in the air
 		if (airCheck.collider != null && airCheck.collider.tag == "Platform")
 		{
 			if (airCheck.distance > 0)
@@ -63,6 +64,7 @@ public class PlayerMovementScript : MonoBehaviour {
 			inAir = true;
 		}
 
+		// Count up the flinch timer
 		if (flinch)
 		{
 			if (fTimer >= flinchTime)
@@ -109,11 +111,11 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 
 		// Jumping
-		if (vars.lTrig > 0.3  && (jumpCount < MAX_JUMP) && canJump) {
+		if (vars.jumpTrig > 0.3  && jumpCount < MAX_JUMP && canJump && !flinch) {
 			canJump = false;
 			fastFall = false;
 			// Double jumping resets downward momentum
-			if (jumpCount < 1)
+			if (!inAir && rb.velocity.x <= maxVelocity)
 			{
 				// First jump
 
@@ -145,7 +147,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 
 		// Must release some to jump again
-		if (!canJump && vars.lTrig < 0.3) {
+		if (!canJump && vars.jumpTrig < 0.3) {
 			canJump = true;
 		}
 
@@ -205,7 +207,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 	}
 
-	public void hit(Vector2 dir, float force)
+	public void hit(Vector2 dir, float force, float damage)
 	{
 		rb.velocity = new Vector2(0, 0);
 
@@ -216,7 +218,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		rb.velocity += dir * force * damageRatio;
 
 		// Damage
-		damageRatio++;
+		damageRatio += damage;
 
 		// Make the character flinch
 		flinch = true;

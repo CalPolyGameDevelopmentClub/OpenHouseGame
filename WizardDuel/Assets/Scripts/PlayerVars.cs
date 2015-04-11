@@ -11,9 +11,13 @@ public class PlayerVars : MonoBehaviour {
 
 	public float rStickX;
 	public float rStickY;
+	public float shootStickSensitivity = 0.88f;
 
-	public float lTrig;
-	public float rTrig;
+	public float jumpTrig;
+	public float shootTrig;
+
+	public string shoot = "RT";
+	public string jump = "LT";
 
 	void Update()
 	{
@@ -23,9 +27,7 @@ public class PlayerVars : MonoBehaviour {
 		rStickX = Input.GetAxis("RightJoystickX" + player);
 		rStickY = Input.GetAxis("RightJoystickY" + player);
 
-		lTrig = Input.GetAxis("LT" + player);
-		rTrig = Input.GetAxis("RT" + player);
-
-		Debug.Log("L" + lTrig + " R" + rTrig);
+		jumpTrig = Input.GetAxis(jump + player);
+		shootTrig = Input.GetAxis(shoot + player);
 	}
 }
