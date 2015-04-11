@@ -37,11 +37,11 @@ public class PlayerFireScript : MonoBehaviour
 
 		if (vars.shootTrig > 0.3 && canShoot)
 		{
-			Vector3 childPos = GetComponentInChildren<Transform>().transform.position;
+			Vector3 childPos = this.transform.GetChild(0).transform.localPosition;
 			Vector3 vel3D = joyAim.normalized;
 
 			GameObject bullet = (GameObject)Instantiate(projectile, 
-			                                            transform.position + vel3D * 1.6f,
+			                                            transform.position + childPos * 9.0f,
 			                                            Quaternion.identity);
 			vel3D *= fireSpeed;
 			bullet.GetComponent<TestProjectileMovement>().vel = new Vector2(vel3D.x,vel3D.y);

@@ -12,6 +12,8 @@ public class ProjectileOriginScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		vars = gameObject.GetComponentInParent<PlayerVars>();
+		dirX = vars.rStickX;
+		dirY = vars.rStickY;
 	}
 	
 	// Update is called once per frame
