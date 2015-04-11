@@ -13,7 +13,7 @@ GameObject:
   - 58: {fileID: 5800000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: testProjectile
+  m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 16.1299992, y: 8.26000023, z: 0}
-  m_LocalScale: {x: 5.56400776, y: 5.56400681, z: 5.56400681}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -70,7 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fa1ddf6406f9694dab5e8ad4cb55274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 7
+  explosion: {fileID: 109370, guid: 03681b74db30bfb4a9670682182b9ab8, type: 2}
+  force: 10
   vel: {x: -60, y: 0}
 --- !u!212 &21200000
 SpriteRenderer:
@@ -96,7 +97,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f4ca65b1247762140875715de7eeee6b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b5165729a16bcea45881959aeb1220aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

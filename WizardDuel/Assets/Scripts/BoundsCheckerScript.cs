@@ -16,7 +16,6 @@ public class BoundsCheckerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log(camPos);
 
 		Object[] players = GameObject.FindGameObjectsWithTag("Player");
 		foreach (GameObject player in players)
