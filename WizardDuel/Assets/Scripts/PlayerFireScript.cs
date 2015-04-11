@@ -30,20 +30,19 @@ public class PlayerFireScript : MonoBehaviour
 		float stickY = vars.rStickY;
 
 		// Keeps the aim outside the character
-		if (Mathf.Abs(stickX) + Mathf.Abs(stickY) > 0.88f)
+		if (Mathf.Abs(stickX) + Mathf.Abs(stickY) > vars.shootStickSensitivity)
 		{
 			joyAim = new Vector3(stickX, stickY);
 		}
 
-		if (vars.rTrig > 0.3 && canShoot)
+		if (vars.shootTrig > 0.3 && canShoot)
 		{
-			Vector3 spriteSize = gameObject.GetComponent<SpriteRenderer>().bounds.size;
+			Vector3 childPos = GetComponentInChildren<Transform>().transform.position;
 			Vector3 vel3D = joyAim.normalized;
 
 			GameObject bullet = (GameObject)Instantiate(projectile, 
 			                                            transform.position + vel3D * 1.6f,
 			                                            Quaternion.identity);
-			Debug.DrawRay(transform.position, vel3D);
 			vel3D *= fireSpeed;
 			bullet.GetComponent<TestProjectileMovement>().vel = new Vector2(vel3D.x,vel3D.y);
 			canShoot = false;
@@ -52,13 +51,13 @@ public class PlayerFireScript : MonoBehaviour
 		{
 			reload += Time.deltaTime;
 		}
-		if (!canShoot && (reload >= reloadTime || vars.rTrig < 0.3))
+		if (!canShoot && (reload >= reloadTime || vars.shootTrig < 0.3))
 		{
 			canShoot = true;
 			reload = 0;
 		}
 
-		if(Input.GetMouseButtonDown(0))
+		/*if(Input.GetMouseButtonDown(0))
 		{
 			Vector3 mouse = Input.mousePosition;
 			Vector3 mPos = Camera.main.ScreenToWorldPoint(new Vector3(mouse.x,mouse.y,transform.position.z));
@@ -68,7 +67,7 @@ public class PlayerFireScript : MonoBehaviour
 			vel3D *= fireSpeed;
 			bullet.GetComponent<TestProjectileMovement>().vel = new Vector2(vel3D.x,vel3D.y);
 			
-		}
+		}*/
 	}
 
 }
