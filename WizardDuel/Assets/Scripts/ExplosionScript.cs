@@ -32,18 +32,6 @@ public class ExplosionScript : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D coll) {
 		if (coll.gameObject.tag == "Player") {
-			// Still needs exponential force
-			float dist;
-			float damage;
-
-			Debug.Log("Hitting " + coll.gameObject.GetComponent<PlayerVars>().player + "!!");
-
-			// Calculate damge
-			dist = Vector2.Distance(coll.transform.position, gameObject.transform.position);
-
-			damage = 1.0f / (Mathf.Pow(dist,1.1f) + 0.01f);
-			Debug.Log(damage);
-
 			// Hit the player
 			coll.gameObject.GetComponent<PlayerMovementScript>().hit(-coll.contacts[0].normal, force, 1);
 		}

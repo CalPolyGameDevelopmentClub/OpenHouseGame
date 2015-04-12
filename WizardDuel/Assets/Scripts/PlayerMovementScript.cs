@@ -42,8 +42,6 @@ public class PlayerMovementScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		Debug.Log(jumpCount);
-
 		float lJoyX = vars.lStickX;
 		RaycastHit2D airCheck = Physics2D.Raycast(
 			new Vector2(rb.position.x, rb.position.y - gameObject.GetComponent<SpriteRenderer>().bounds.size.y),

@@ -1,13 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerMovementScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\BoundsCheckerScript.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerFireScript.cs" Line="26" Column="16" />
-      <File FileName="Assets\Scripts\PlayerMovementScript.cs" Line="146" Column="16" />
-      <File FileName="Assets\Scripts\ExplosionScript.cs" Line="18" Column="3" />
-      <File FileName="Assets\Scripts\TestProjectileMovement.cs" Line="33" Column="3" />
-      <File FileName="Assets\Scripts\WallScript.cs" Line="15" Column="36" />
-      <File FileName="Assets\Scripts\BoundsCheckerScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerMovementScript.cs" Line="44" Column="3" />
+      <File FileName="Assets\Scripts\PlayerFireScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ExplosionScript.cs" Line="39" Column="6" />
+      <File FileName="Assets\Scripts\TestProjectileMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\WallScript.cs" Line="41" Column="45" />
+      <File FileName="Assets\Scripts\BoundsCheckerScript.cs" Line="28" Column="72" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

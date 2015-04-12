@@ -31,12 +31,4 @@ public class TestProjectileMovement : MonoBehaviour {
 		// Destroy self
 		GameObject.Destroy(gameObject);
 	}
-
-	/*
-	void OnCollisionStay2D (Collision2D coll) {
-		if (coll.gameObject.tag == "Player") {
-			Debug.Log("HITING!");
-			coll.gameObject.GetComponent<Rigidbody2D>().AddForce(rb.velocity + (new Vector2(100, 100)));
-		}
-	}*/
 }
