@@ -56,7 +56,7 @@ public class PlayerMovementScript : MonoBehaviour {
 			{
 				inAir = true;
 			}
-			if (airCheck.distance == 0)
+			if (airCheck.distance == 0 && this.GetComponent<Rigidbody2D>().velocity.y < 0)
 			{
 				inAir = false;
 				featherFall = false;
@@ -116,7 +116,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 
 		// Jumping
-		if (vars.jumpTrig > 0.3  &&  canJump && !flinch) {
+		if (vars.jumpTrig > 0.3  && canJump && !flinch) {
 
 			RaycastHit2D lWallCheck = Physics2D.Raycast(
 				new Vector2(rb.position.x - gameObject.GetComponent<SpriteRenderer>().bounds.size.x,rb.position.y),
@@ -144,7 +144,6 @@ public class PlayerMovementScript : MonoBehaviour {
 				fastFall = false;
 				
 				jumpCount++;
-
 			}
 
 
@@ -164,7 +163,6 @@ public class PlayerMovementScript : MonoBehaviour {
 				fastFall = false;
 				
 				jumpCount++;
-
 			}
 			else if(lWallCheck.distance == 0)
 			{
@@ -202,10 +200,6 @@ public class PlayerMovementScript : MonoBehaviour {
 				jumpCount++;
 
 			}
-
-
-
-
 		}
 
 		// Must release some to jump again
