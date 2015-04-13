@@ -9,11 +9,13 @@ public class TestProjectileMovement : MonoBehaviour {
 
 	private Rigidbody2D rb;
 
+
 	// Use this for initialization
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody2D> ();
 		//gameObject.GetComponent<Rigidbody2D>().AddForce(force);
 		rb.velocity = vel;
+		Physics2D.IgnoreCollision(explosion.gameObject.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), true);
 	}
 	
 	// Update is called once per frame
@@ -22,13 +24,39 @@ public class TestProjectileMovement : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D coll) {
-		GameObject boom = (GameObject)Instantiate(explosion, 
-		                                            transform.position,
-		                                            Quaternion.identity);
+		if (coll.gameObject.tag == "Explosion")
+		{
+			Debug.Log("IGNORE ME!");
 
-		boom.GetComponent<ExplosionScript>().force = force;
-
-		// Destroy self
-		GameObject.Destroy(gameObject);
+		}
+		else
+		{
+			GameObject boom = (GameObject)Instantiate(explosion, 
+			                                          transform.position,
+			                                          Quaternion.identity);
+			
+			boom.GetComponent<ExplosionScript>().force = force;
+			
+			// Destroy self
+			GameObject.Destroy(gameObject);
+		}
 	}
+	/*void OnTriggerEnter2D (Collider2D coll)
+	{
+		if (coll.gameObject.tag == "Explosion")
+		{
+			Physics2D.IgnoreCollision(coll.gameObject.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+		}
+		else
+		{
+			GameObject boom = (GameObject)Instantiate(explosion, 
+			                                          transform.position,
+			                                          Quaternion.identity);
+			
+			boom.GetComponent<ExplosionScript>().force = force;
+			
+			// Destroy self
+			GameObject.Destroy(gameObject);
+		}
+	}*/
 }

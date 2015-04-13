@@ -8,7 +8,7 @@ public class BoundsCheckerScript : MonoBehaviour {
 	private Camera cam;
 	private bool dead;
 	private float starVel;
-
+	
 	// Use this for initialization
 	void Start () {
 		cam = gameObject.GetComponentInParent<Camera>();

@@ -42,24 +42,27 @@ public class PlayerMovementScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+
+
 		float lJoyX = vars.lStickX;
 		RaycastHit2D airCheck = Physics2D.Raycast(
 			new Vector2(rb.position.x, rb.position.y - gameObject.GetComponent<SpriteRenderer>().bounds.size.y),
 			-Vector2.up);
 
+		
 		// Vector to check if the character is in the air
 		if (airCheck.collider != null && airCheck.collider.tag == "Platform")
 		{
 			if (airCheck.distance > 0)
 			{
+				//Debug.Log("FOOF!");
 				inAir = true;
 			}
-			if (airCheck.distance == 0 && this.GetComponent<Rigidbody2D>().velocity.y < 0)
+			else if (airCheck.distance <= 0 && rb.velocity.y <= 0)
 			{
 				inAir = false;
 				featherFall = false;
 				jumpCount = 0;
-
 			}
 		}
 		else if (airCheck.collider == null)

@@ -35,5 +35,9 @@ public class ExplosionScript : MonoBehaviour {
 			// Hit the player
 			coll.gameObject.GetComponent<PlayerMovementScript>().hit(-coll.contacts[0].normal, force, 1);
 		}
+		else if (coll.gameObject.tag == "Platform")
+		{
+			coll.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2 (force, force));
+		}
 	}
 }

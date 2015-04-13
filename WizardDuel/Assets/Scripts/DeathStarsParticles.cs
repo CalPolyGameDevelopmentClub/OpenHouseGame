@@ -25,7 +25,7 @@ public class DeathStarsParticles : MonoBehaviour {
 			                                          pos,
 			                                          Quaternion.identity);
 			star.GetComponent<Rigidbody2D>().velocity = 
-				new Vector2(dir.x * vel * Random.Range(-1.0f, 1.0f), dir.y * vel * Random.Range(-1.0f, 1.0f));
+				new Vector2(dir.x * vel * Random.Range(-1.5f, 1.5f), dir.y * vel * Random.Range(-1.5f, 1.5f));
 		}
 	}
 }
