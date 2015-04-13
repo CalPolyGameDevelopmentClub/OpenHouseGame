@@ -8,7 +8,7 @@ public class BoundsCheckerScript : MonoBehaviour {
 	private Camera cam;
 	private bool dead;
 	private float starVel;
-	
+
 	// Use this for initialization
 	void Start () {
 		cam = gameObject.GetComponentInParent<Camera>();
@@ -20,8 +20,9 @@ public class BoundsCheckerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Object[] deathXs = GameObject.FindGameObjectsWithTag("DeathX");
 		Object[] players = GameObject.FindGameObjectsWithTag("Player");
-		Vector2 dir = new Vector2 (0.0f, 0.0f);;
+		Vector2 dir = new Vector2 (0.0f, 0.0f);
 
 		foreach (GameObject player in players)
 		{
@@ -55,7 +56,16 @@ public class BoundsCheckerScript : MonoBehaviour {
 
 			if (dead)
 			{
-				Debug.Log(player.GetComponent<PlayerVars>().player + " IS DEAD!!");
+				string name = player.GetComponent<PlayerVars>().player;
+				Debug.Log(name + " IS DEAD!!");
+
+				foreach (GameObject deathX in deathXs)
+				{
+					if (name == deathX.GetComponent<UIPlayerInfo>().player)
+					{
+						deathX.gameObject.GetComponent<CanvasGroup>().alpha = 1;
+					}
+				}
 
 				Vector2 pos = player.transform.position;
 				GameObject.Destroy(player);

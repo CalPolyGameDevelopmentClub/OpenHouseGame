@@ -8,6 +8,9 @@ TagManager:
   - Platform
   - Star
   - Explosion
+  - BoundsChecker
+  - UI
+  - DeathX
   layers:
   - Default
   - TransparentFX
