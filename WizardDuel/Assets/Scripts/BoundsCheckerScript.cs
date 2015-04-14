@@ -61,16 +61,16 @@ public class BoundsCheckerScript : MonoBehaviour {
 
 				foreach (GameObject deathX in deathXs)
 				{
-					if (name == deathX.GetComponent<UIPlayerInfo>().player)
+					if (name == deathX.GetComponent<DeathX>().getPlayer())
 					{
-						deathX.gameObject.GetComponent<CanvasGroup>().alpha = 1;
+						deathX.gameObject.GetComponent<CanvasGroup>().alpha = 0.8f;
 					}
 				}
 
 				Vector2 pos = player.transform.position;
 				GameObject.Destroy(player);
 				GetComponentInChildren<DeathStarsParticles>().Shoot(pos, dir, starVel,
-				                                                    player.GetComponent<PlayerMovementScript>().damageRatio);
+				                                                    player.GetComponent<PlayerVars>().damageRatio / 10);
 			}
 
 			dead = false;

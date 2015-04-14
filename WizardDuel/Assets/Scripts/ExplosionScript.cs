@@ -33,7 +33,7 @@ public class ExplosionScript : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D coll) {
 		if (coll.gameObject.tag == "Player") {
 			// Hit the player
-			coll.gameObject.GetComponent<PlayerMovementScript>().hit(-coll.contacts[0].normal, force, 1);
+			coll.gameObject.GetComponent<PlayerMovementScript>().hit(-coll.contacts[0].normal, force, 10);
 		}
 		else if (coll.gameObject.tag == "Platform")
 		{

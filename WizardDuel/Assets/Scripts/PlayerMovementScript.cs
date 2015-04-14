@@ -11,7 +11,6 @@ public class PlayerMovementScript : MonoBehaviour {
 	public float jumpForce;
 	public float fallForce;
 	public float featherForce;
-	public float damageRatio;
 	public float flinchTime;
 
 	private int MAX_JUMP = 2;
@@ -274,10 +273,10 @@ public class PlayerMovementScript : MonoBehaviour {
 		fastFall = false;
 
 		// Apply knockback
-		rb.velocity += dir * force * damageRatio;
+		rb.velocity += dir * force * vars.damageRatio / 10;
 
 		// Damage
-		damageRatio += damage;
+		vars.damageRatio += damage;
 
 		// Make the character flinch
 		flinch = true;

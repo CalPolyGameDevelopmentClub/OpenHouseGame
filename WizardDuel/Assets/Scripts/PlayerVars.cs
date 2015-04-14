@@ -19,6 +19,8 @@ public class PlayerVars : MonoBehaviour {
 	public string shoot = "RT";
 	public string jump = "LT";
 
+	public float damageRatio = 0.0f;
+
 	void Update()
 	{
 		lStickX = Input.GetAxis("LeftJoystickX" + player);

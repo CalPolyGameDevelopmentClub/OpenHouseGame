@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BoundsCheckerScript.cs" />
+     <Compile Include="Assets\Scripts\DamagePercent.cs" />
      <Compile Include="Assets\Scripts\DeathStarsParticles.cs" />
+     <Compile Include="Assets\Scripts\DeathX.cs" />
      <Compile Include="Assets\Scripts\ExplosionParticleSpawner.cs" />
      <Compile Include="Assets\Scripts\ExplosionScript.cs" />
      <Compile Include="Assets\Scripts\GameObjectPhysics.cs" />
