@@ -11,6 +11,7 @@ GameObject:
   - 222: {fileID: 22207306}
   - 114: {fileID: 11473302}
   - 225: {fileID: 22571396}
+  - 114: {fileID: 11470112}
   m_Layer: 5
   m_Name: DeathP1
   m_TagString: DeathX
@@ -97,7 +98,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 30
-    m_FontStyle: 0
+    m_FontStyle: 3
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -107,6 +108,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &11470112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c10104799633a74e888d51df1363f4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11471952
 MonoBehaviour:
   m_ObjectHideFlags: 1

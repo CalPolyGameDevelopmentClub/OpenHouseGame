@@ -462,6 +462,11 @@ Prefab:
       propertyPath: player
       value: P3
       objectReference: {fileID: 0}
+    - target: {fileID: 11471952, guid: bd233c12c0192d34192c2d19ab0086e5, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300002, guid: 14573093b0155fb418734e1fd46655f4,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd233c12c0192d34192c2d19ab0086e5, type: 2}
   m_IsPrefabParent: 0
@@ -1071,6 +1076,11 @@ Prefab:
       propertyPath: player
       value: P2
       objectReference: {fileID: 0}
+    - target: {fileID: 11471952, guid: bd233c12c0192d34192c2d19ab0086e5, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300004, guid: 14573093b0155fb418734e1fd46655f4,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd233c12c0192d34192c2d19ab0086e5, type: 2}
   m_IsPrefabParent: 0
@@ -1344,6 +1354,11 @@ Prefab:
       propertyPath: player
       value: P4
       objectReference: {fileID: 0}
+    - target: {fileID: 11471952, guid: bd233c12c0192d34192c2d19ab0086e5, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 14573093b0155fb418734e1fd46655f4,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd233c12c0192d34192c2d19ab0086e5, type: 2}
   m_IsPrefabParent: 0
