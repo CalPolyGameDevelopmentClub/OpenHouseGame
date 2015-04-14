@@ -20,6 +20,14 @@ public class DamagePercent : MonoBehaviour {
 			if (pv.player == GetComponentInParent<UIPlayerInfo>().player)
 			{
 				gameObject.GetComponent<Text>().text = pv.damageRatio * 10 + "%";
+				if (pv.damageRatio >= 8)
+				{
+					gameObject.GetComponent<Text>().color = new Color(0.8f, 0, 0);
+				}
+				else if (pv.damageRatio >= 4)
+				{
+					gameObject.GetComponent<Text>().color = new Color(0.8f, 0.8f, 0);
+				}
 			}
 		}
 	}
