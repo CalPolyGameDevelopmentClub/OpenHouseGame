@@ -19,7 +19,7 @@ public class DamagePercent : MonoBehaviour {
 			PlayerVars pv = p.GetComponent<PlayerVars>();
 			if (pv.player == GetComponentInParent<UIPlayerInfo>().player)
 			{
-				gameObject.GetComponent<Text>().text = pv.damageRatio.ToString() + "%";
+				gameObject.GetComponent<Text>().text = pv.damageRatio * 10 + "%";
 			}
 		}
 	}

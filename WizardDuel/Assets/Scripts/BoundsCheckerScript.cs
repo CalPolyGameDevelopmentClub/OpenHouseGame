@@ -70,7 +70,7 @@ public class BoundsCheckerScript : MonoBehaviour {
 				Vector2 pos = player.transform.position;
 				GameObject.Destroy(player);
 				GetComponentInChildren<DeathStarsParticles>().Shoot(pos, dir, starVel,
-				                                                    player.GetComponent<PlayerVars>().damageRatio / 10);
+				                                                    player.GetComponent<PlayerVars>().damageRatio);
 			}
 
 			dead = false;
