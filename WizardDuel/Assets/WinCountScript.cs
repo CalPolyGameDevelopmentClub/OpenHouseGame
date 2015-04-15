@@ -1,35 +1,28 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
-public class UIPlayerInfo : MonoBehaviour {
 
-	public string player;
+public class WinCountScript : MonoBehaviour {
+
+	private string player;
 
 	// Use this for initialization
 	void Start () {
-
+		player = gameObject.GetComponentInParent<UIPlayerInfo>().player;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		GameMonitorScript gm = GameObject.FindGameObjectWithTag("GameMonitor").GetComponent<GameMonitorScript>();
-		bool active = false;
-
 		foreach (PlayerInfo pi in gm.activePlayers)
 		{
-			if (player == pi.playerNum)
+			if (pi.playerNum == player)
 			{
-				active = true;
+				gameObject.GetComponent<Text>().text = pi.wins.ToString();
 			}
 		}
-		
-		if (active)
-		{
-			gameObject.GetComponent<CanvasGroup>().alpha = 1.0f;
-		}
-		else
-		{
-			gameObject.GetComponent<CanvasGroup>().alpha = 0.0f;
-		}
+
 	}
 }

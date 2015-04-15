@@ -273,7 +273,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		fastFall = false;
 
 		// Apply knockback
-		rb.velocity += dir * force * vars.damageRatio;
+		rb.velocity += dir * force * Mathf.Sqrt(vars.damageRatio * 4.0f);
 
 		// Damage
 		vars.damageRatio += damage;

@@ -54,18 +54,36 @@ public class BoundsCheckerScript : MonoBehaviour {
 				dead = true;
 			}
 
+			// A player is dead
 			if (dead)
 			{
-				string name = player.GetComponent<PlayerVars>().player;
-				Debug.Log(name + " IS DEAD!!");
+				GameMonitorScript gm = GameObject.FindGameObjectWithTag("GameMonitor").GetComponent<GameMonitorScript>();
+				string playerNum = player.GetComponent<PlayerVars>().player;
+				Debug.Log(playerNum + " IS DEAD!!");
 
-				foreach (GameObject deathX in deathXs)
+				foreach (PlayerInfo pi in gm.activePlayers)
 				{
-					if (name == deathX.GetComponent<DeathX>().getPlayer())
+					if (playerNum == pi.playerNum)
 					{
-						deathX.gameObject.GetComponent<CanvasGroup>().alpha = 0.8f;
+						pi.alive = false;
 					}
 				}
+				/*if (playerNum == "P1")
+				{
+					gm.p1Alive = false;
+				}
+				else if (playerNum == "P2")
+				{
+					gm.p2Alive = false;
+				}
+				else if (playerNum == "P3")
+				{
+					gm.p3Alive = false;
+				}
+				else if (playerNum == "P4")
+				{
+					gm.p4Alive = false;
+				}*/
 
 				Vector2 pos = player.transform.position;
 				GameObject.Destroy(player);
