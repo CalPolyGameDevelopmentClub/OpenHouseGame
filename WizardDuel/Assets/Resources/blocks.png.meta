@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 48df7c388b659eb4cb75cf1d4f118eed
-timeCreated: 1429140138
+guid: fb3d017ec9d2647fb8a6bee1d6bf241f
+timeCreated: 1429140434
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: stone blocks_0
-    21300002: stone blocks_1
-    21300004: stone blocks_2
-    21300006: stone blocks_3
-    21300008: stone blocks_4
-    21300010: stone blocks_5
-    21300012: stone blocks_6
-    21300014: stone blocks_7
-    21300016: stone blocks_8
-    21300018: stone blocks_9
-    21300020: stone blocks_10
-    21300022: stone blocks_11
-    21300024: stone blocks_12
-    21300026: stone blocks_13
-    21300028: stone blocks_14
-    21300030: stone blocks_15
+    21300000: blocks_0
+    21300002: blocks_1
+    21300004: blocks_2
+    21300006: blocks_3
+    21300008: blocks_4
+    21300010: blocks_5
+    21300012: blocks_6
+    21300014: blocks_7
+    21300016: blocks_8
+    21300018: blocks_9
+    21300020: blocks_10
+    21300022: blocks_11
+    21300024: blocks_12
+    21300026: blocks_13
+    21300028: blocks_14
+    21300030: blocks_15
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -65,7 +65,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: stone blocks_0
+    - name: blocks_0
       rect:
         serializedVersion: 2
         x: 0
@@ -75,7 +75,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: stone blocks_1
+    - name: blocks_1
       rect:
         serializedVersion: 2
         x: 16
@@ -85,7 +85,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: stone blocks_2
+    - name: blocks_2
       rect:
         serializedVersion: 2
         x: 32
@@ -95,7 +95,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: stone blocks_3
+    - name: blocks_3
       rect:
         serializedVersion: 2
         x: 48
@@ -105,7 +105,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: stone blocks_4
+    - name: blocks_4
       rect:
         serializedVersion: 2
         x: 0
@@ -115,7 +115,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: stone blocks_5
+    - name: blocks_5
       rect:
         serializedVersion: 2
         x: 16
@@ -125,7 +125,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: stone blocks_6
+    - name: blocks_6
       rect:
         serializedVersion: 2
         x: 32
@@ -135,7 +135,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: stone blocks_7
+    - name: blocks_7
       rect:
         serializedVersion: 2
         x: 48
@@ -145,7 +145,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: stone blocks_8
+    - name: blocks_8
       rect:
         serializedVersion: 2
         x: 0
@@ -155,7 +155,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: stone blocks_9
+    - name: blocks_9
       rect:
         serializedVersion: 2
         x: 16
@@ -165,7 +165,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: stone blocks_10
+    - name: blocks_10
       rect:
         serializedVersion: 2
         x: 32
@@ -175,7 +175,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: stone blocks_11
+    - name: blocks_11
       rect:
         serializedVersion: 2
         x: 48
@@ -185,7 +185,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: stone blocks_12
+    - name: blocks_12
       rect:
         serializedVersion: 2
         x: 0
@@ -195,7 +195,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: stone blocks_13
+    - name: blocks_13
       rect:
         serializedVersion: 2
         x: 16
@@ -205,7 +205,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: stone blocks_14
+    - name: blocks_14
       rect:
         serializedVersion: 2
         x: 32
@@ -215,7 +215,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: stone blocks_15
+    - name: blocks_15
       rect:
         serializedVersion: 2
         x: 48

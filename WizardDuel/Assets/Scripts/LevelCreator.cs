@@ -3,7 +3,8 @@ using System.Collections;
 
 public class LevelCreator : MonoBehaviour {
 	public GameObject testSprite;
-	public Sprite[] spriteSheet;
+	Sprite[] mossSprites;
+	Sprite[] iceSprites;
 	//Lookup for uldr bstring to tilesheet.
 	int[] tileTable=
 	{
@@ -40,6 +41,7 @@ public class LevelCreator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		loadSprites();
 		int lvWdith = testLevel[0].Length;
 		int lvHeight = testLevel.Length;
 		bool[,] lvArray = new bool[lvWdith+2,lvHeight+2];
@@ -74,7 +76,7 @@ public class LevelCreator : MonoBehaviour {
 					float dx = mapTopLeft.x+x*blockwd;
 					float dy = mapTopLeft.y+ (lvHeight-y)*blockwd;
 					GameObject obj = (GameObject)Instantiate(testSprite,new Vector3(dx,dy,0), Quaternion.identity);
-					obj.GetComponent<SpriteRenderer>().sprite=spriteSheet[tileTable[tileIdx]];
+					obj.GetComponent<SpriteRenderer>().sprite=mossSprites[tileTable[tileIdx]];
 				}
 			}
 		}
@@ -85,4 +87,11 @@ public class LevelCreator : MonoBehaviour {
 	void Update () {
 	
 	}
+	void loadSprites()
+	{
+		iceSprites = Resources.LoadAll<Sprite>(string.Format("blocks"));
+		mossSprites = Resources.LoadAll<Sprite>(string.Format("stone blocks"));
+
+	}
+
 }

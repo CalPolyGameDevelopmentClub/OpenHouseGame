@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakThreshhold: 15000
-  forceThreshhold: 1000
+  forceThreshhold: 8000
 --- !u!212 &21202388
 SpriteRenderer:
   m_ObjectHideFlags: 1
