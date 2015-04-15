@@ -22,22 +22,6 @@ public class UIPlayerInfo : MonoBehaviour {
 				active = true;
 			}
 		}
-		/*if (player == "P1")
-		{
-			active = gameMonitor.GetComponent<GameMonitorScript>().p1Active;
-		}
-		else if (player == "P2")
-		{
-			active = gameMonitor.GetComponent<GameMonitorScript>().p2Active;
-		}
-		else if (player == "P3")
-		{
-			active = gameMonitor.GetComponent<GameMonitorScript>().p3Active;
-		}
-		else if (player == "P4")
-		{
-			active = gameMonitor.GetComponent<GameMonitorScript>().p4Active;
-		}*/
 		
 		if (active)
 		{
