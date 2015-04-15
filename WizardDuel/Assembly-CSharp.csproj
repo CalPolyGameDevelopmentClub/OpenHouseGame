@@ -52,8 +52,10 @@
      <Compile Include="Assets\Scripts\DeathX.cs" />
      <Compile Include="Assets\Scripts\ExplosionParticleSpawner.cs" />
      <Compile Include="Assets\Scripts\ExplosionScript.cs" />
+     <Compile Include="Assets\Scripts\GameMonitorScript.cs" />
      <Compile Include="Assets\Scripts\GameObjectPhysics.cs" />
      <Compile Include="Assets\Scripts\PlayerFireScript.cs" />
+     <Compile Include="Assets\Scripts\PlayerInfo.cs" />
      <Compile Include="Assets\Scripts\PlayerMovementScript.cs" />
      <Compile Include="Assets\Scripts\PlayerSlideScript.cs" />
      <Compile Include="Assets\Scripts\PlayerVars.cs" />
@@ -62,6 +64,7 @@
      <Compile Include="Assets\Scripts\TestProjectileMovement.cs" />
      <Compile Include="Assets\Scripts\UIPlayerInfo.cs" />
      <Compile Include="Assets\Scripts\WallScript.cs" />
+     <Compile Include="Assets\WinCountScript.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Programs/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

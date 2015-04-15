@@ -1,15 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerMovementScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameMonitorScript.cs">
     <Files>
-      <File FileName="Assets\Scripts\DamagePercent.cs" Line="22" Column="65" />
-      <File FileName="Assets\Scripts\PlayerVars.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerMovementScript.cs" Line="263" Column="18" />
-      <File FileName="Assets\Scripts\ExplosionScript.cs" Line="36" Column="95" />
-      <File FileName="Assets\Scripts\BoundsCheckerScript.cs" Line="72" Column="60" />
-      <File FileName="Assets\Scripts\UIPlayerInfo.cs" Line="6" Column="23" />
-      <File FileName="Assets\Scripts\DeathX.cs" Line="20" Column="22" />
-      <File FileName="Assets\Scripts\DeathStarsParticles.cs" Line="28" Column="99" />
+      <File FileName="Assets\Scripts\GameMonitorScript.cs" Line="34" Column="27" />
+      <File FileName="Assets\Scripts\DamagePercent.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\BoundsCheckerScript.cs" Line="67" Column="7" />
+      <File FileName="Assets\Scripts\UIPlayerInfo.cs" Line="18" Column="45" />
+      <File FileName="Assets\Scripts\DeathX.cs" Line="16" Column="45" />
+      <File FileName="Assets\Scripts\PlayerInfo.cs" Line="8" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
