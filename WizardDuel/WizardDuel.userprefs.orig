@@ -1,0 +1,24 @@
+﻿<Properties>
+<<<<<<< HEAD
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ExplosionParticleSpawner.cs">
+    <Files>
+      <File FileName="Assets/Scripts/WallScript.cs" Line="32" Column="46" />
+      <File FileName="Assets/Scripts/ExplosionParticleSpawner.cs" Line="11" Column="35" />
+=======
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ExplosionScript.cs">
+    <Files>
+      <File FileName="Assets\Scripts\PlayerFireScript.cs" Line="58" Column="4" />
+      <File FileName="Assets\Scripts\PlayerMovementScript.cs" Line="2" Column="17" />
+      <File FileName="Assets\Scripts\TestProjectileExplostion.cs" Line="9" Column="2" />
+      <File FileName="Assets\Scripts\ExplosionScript.cs" Line="38" Column="85" />
+      <File FileName="Assets\Scripts\TestProjectileMovement.cs" Line="30" Column="3" />
+>>>>>>> 25e8f8657ec1228d2c0dd35c5bf0348a789fe2c3
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
