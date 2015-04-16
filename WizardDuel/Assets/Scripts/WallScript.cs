@@ -28,6 +28,12 @@ public class WallScript : MonoBehaviour {
 	{
 		if (col.gameObject.tag != "Platform")
 		{
+			if(col.gameObject.tag == "Player")
+			{
+				if(!col.gameObject.GetComponent<PlayerMovementScript>().isFlinching())
+					return;
+			}
+
 			Vector2 force = col.rigidbody.mass * col.rigidbody.velocity / Time.fixedDeltaTime;
 			//		print (col.rigidbody.velocity);
 			if(force.magnitude > forceThreshhold)

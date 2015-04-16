@@ -45,5 +45,18 @@ public class PlayerVars : MonoBehaviour {
 		{
 			jumpTrig = 0.5f;
 		}
+
+		if(Input.GetMouseButton(0))
+		{
+			Vector3 mousePt = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			rStickX = mousePt.x/mousePt.magnitude;
+			rStickY = mousePt.y/mousePt.magnitude;
+		}
+		if(Input.GetMouseButtonDown(0))
+		{
+
+			shootTrig=1.0f;
+
+		}
 	}
 }

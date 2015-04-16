@@ -311,5 +311,9 @@ public class PlayerMovementScript : MonoBehaviour {
 		flinch = true;
 		fTimer = 0;
 	}
+	public bool isFlinching()
+	{
+		return flinch;
+	}
 
 }
