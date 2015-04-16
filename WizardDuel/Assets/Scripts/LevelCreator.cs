@@ -6,6 +6,8 @@ public class LevelCreator : MonoBehaviour {
 	public int UIOFFSET;
 	Sprite[] mossSprites;
 	Sprite[] iceSprites;
+	string[] currentLevel;
+	ArrayList currentTiles = new ArrayList();
 	//Lookup for uldr bstring to tilesheet.
 	int[] tileTable=
 	{
@@ -46,6 +48,19 @@ public class LevelCreator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		loadSprites();
+		loadLevel(testLevel);
+
+	}
+
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
+
+	public void loadLevel(string[] level)
+	{
+		currentLevel=level;
 		int lvWdith = testLevel[0].Length;
 		int lvHeight = testLevel.Length;
 		bool[,] lvArray = new bool[lvWdith+2,lvHeight+2];
@@ -60,7 +75,7 @@ public class LevelCreator : MonoBehaviour {
 			}
 		}
 		float blockwd=  testSprite.GetComponent<SpriteRenderer>().bounds.size.x;
-//		Debug.Log(blockwd);
+		//		Debug.Log(blockwd);
 		Vector3 mapTopLeft = this.transform.position - new Vector3(blockwd*lvWdith/2, blockwd*lvHeight/2);
 		for(int y = 1; y <= lvHeight; y++)
 		{
@@ -74,22 +89,26 @@ public class LevelCreator : MonoBehaviour {
 					tileIdx |= (lvArray[x-1,y]?0:1)<<2;
 					tileIdx |= (lvArray[x,y+1]?0:1)<<1;
 					tileIdx |= (lvArray[x+1,y]?0:1)<<0;
-
-
-
+					
+					
+					
 					float dx = mapTopLeft.x+x*blockwd;
 					float dy = mapTopLeft.y+ (lvHeight-y)*blockwd + UIOFFSET;
 					GameObject obj = (GameObject)Instantiate(testSprite,new Vector3(dx,dy,0), Quaternion.identity);
 					obj.GetComponent<SpriteRenderer>().sprite=mossSprites[tileTable[tileIdx]];
+					currentTiles.Add(obj);
 				}
 			}
 		}
 	}
 
-	
-	// Update is called once per frame
-	void Update () {
-	
+	public void reset()
+	{
+		foreach(Object o in currentTiles)
+		{
+			Destroy(o);
+		}
+		loadLevel(currentLevel);
 	}
 	void loadSprites()
 	{
