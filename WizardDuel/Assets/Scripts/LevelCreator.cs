@@ -60,7 +60,7 @@ public class LevelCreator : MonoBehaviour {
 			}
 		}
 		float blockwd=  testSprite.GetComponent<SpriteRenderer>().bounds.size.x;
-		Debug.Log(blockwd);
+//		Debug.Log(blockwd);
 		Vector3 mapTopLeft = this.transform.position - new Vector3(blockwd*lvWdith/2, blockwd*lvHeight/2);
 		for(int y = 1; y <= lvHeight; y++)
 		{

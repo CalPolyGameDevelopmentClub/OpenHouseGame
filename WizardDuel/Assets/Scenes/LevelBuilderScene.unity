@@ -502,6 +502,7 @@ GameObject:
   - 223: {fileID: 662804290}
   - 114: {fileID: 662804289}
   - 114: {fileID: 662804288}
+  - 95: {fileID: 662804291}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -584,6 +585,23 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!95 &662804291
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 662804286}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 17154be9a18c7f842a6fdfa2f30cb367, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &741030909
 Prefab:
   m_ObjectHideFlags: 0
