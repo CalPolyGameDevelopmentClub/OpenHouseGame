@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveForce: 5
-  jumpMoveForce: 5
+  jumpMoveForce: 10
   maxVelocity: 20
   maxAirVelocity: 10
   slow: 2
