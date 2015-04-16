@@ -83,8 +83,8 @@ public class LevelCreator : MonoBehaviour {
 				else if(int.TryParse(""+level[y][x], out player)){
 					if(player <= players)
 					{
-						float dx = mapTopLeft.x+x*blockwd;
-						float dy = mapTopLeft.y+ (lvHeight-y)*blockwd + UIOFFSET;
+						float dx = mapTopLeft.x+(x+1)*blockwd;
+						float dy = mapTopLeft.y+ (lvHeight-(y+1))*blockwd + UIOFFSET;
 						GameObject obj = (GameObject)Instantiate(playerGameObject,new Vector3(dx,dy,0), Quaternion.identity);
 						obj.GetComponent<PlayerVars>().player="P"+player;
 						currentTiles.Add (obj);
