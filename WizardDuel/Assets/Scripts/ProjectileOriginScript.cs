@@ -38,11 +38,11 @@ public class ProjectileOriginScript : MonoBehaviour {
 			
 			if (dirX > 0)
 			{
-				xOff = -0.02f;
+				xOff = -0.03f;
 			}
 			else if (dirX < 0)
 			{
-				xOff = 0.02f;
+				xOff = 0.03f;
 			}
 			
 			gameObject.transform.localPosition = (new Vector2(dirX, dirY).normalized * 0.2f) + new Vector2(xOff, 0.0f);
