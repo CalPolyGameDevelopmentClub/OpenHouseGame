@@ -34,12 +34,6 @@ public class GameMonitorScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-		if (Input.GetKeyDown(KeyCode.Space))
-		{
-			gameOver = true;
-		}
-
 		if (!gameOver)
 		{
 			checkWin();
