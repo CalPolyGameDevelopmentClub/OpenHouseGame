@@ -25,6 +25,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	private float fTimer;
 	private PlayerVars vars;
 	private Animator animator;
+	private bool isHit;
 
 	// Use this for initialization
 	void Start () {
@@ -38,6 +39,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		flinch = false;
 		fTimer = 0;
 		animator = gameObject.GetComponent<Animator>();
+		isHit = false;
 	}
 	
 	// Update is called once per frame
@@ -256,6 +258,11 @@ public class PlayerMovementScript : MonoBehaviour {
 		animate();
 	}
 
+	void FixedUpdate()
+	{
+		isHit = false;
+	}
+
 	public void animate() {
 		//0 Is right idle
 		//1 is left idle
@@ -272,7 +279,6 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 		else {
 			if(vars.lStickX > 0.0f) {
-				Debug.Log ("HERE!");
 				animator.SetInteger ("Direction", 2);
 			}
 			else if(vars.lStickX < 0.0f) {
@@ -285,20 +291,24 @@ public class PlayerMovementScript : MonoBehaviour {
 
 	public void hit(Vector2 dir, float force, float damage)
 	{
-		rb.velocity = new Vector2(0, 0);
-
-		// Getting hit allows you to fastfall again
-		fastFall = false;
-
-		// Apply knockback
-		rb.velocity += dir * force * Mathf.Sqrt(vars.damageRatio * 4.0f);
-
-		// Damage
-		vars.damageRatio += damage;
-
-		// Make the character flinch
-		flinch = true;
-		fTimer = 0;
+		if (!isHit)
+		{
+			isHit = true;
+			rb.velocity = new Vector2(0, 0);
+			
+			// Getting hit allows you to fastfall again
+			fastFall = false;
+			
+			// Apply knockback
+			rb.velocity += dir * force * Mathf.Sqrt(vars.damageRatio * 4.0f);
+			
+			// Damage
+			vars.damageRatio += damage;
+			
+			// Make the character flinch
+			flinch = true;
+			fTimer = 0;
+		}
 	}
 	public bool isFlinching()
 	{

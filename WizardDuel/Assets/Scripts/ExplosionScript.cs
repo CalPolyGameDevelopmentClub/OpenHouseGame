@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ExplosionScript : MonoBehaviour {
 
+	public float damage;
 	public float explosionTime;
 	public float force;
 
@@ -32,12 +33,9 @@ public class ExplosionScript : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D coll) {
 		if (coll.gameObject.tag == "Player") {
+			Debug.Log("Hitting " + coll.gameObject.GetComponent<PlayerVars>().name);
 			// Hit the player
-			coll.gameObject.GetComponent<PlayerMovementScript>().hit(-coll.contacts[0].normal, force, 1);
-		}
-		else if (coll.gameObject.tag == "Platform")
-		{
-			coll.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2 (force, force));
+			coll.gameObject.GetComponent<PlayerMovementScript>().hit(-coll.contacts[0].normal, force, damage);
 		}
 	}
 }
