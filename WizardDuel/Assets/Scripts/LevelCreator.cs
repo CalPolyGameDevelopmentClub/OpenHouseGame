@@ -122,7 +122,7 @@ public class LevelCreator : MonoBehaviour {
 	{
 		foreach(Object o in currentTiles)
 		{
-			Destroy(o);
+			DestroyImmediate(o);
 		}
 		loadLevel(currentLevel,numPlayers);
 	}
