@@ -269,8 +269,8 @@ AnimatorState:
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_Motion: {fileID: 7400000, guid: 2b7570660d93d1a409a06d75fee62d89, type: 2}
+  m_Mirror: 1
+  m_Motion: {fileID: 7400000, guid: c7c65c42bef6b194592d611c146654e3, type: 2}
   m_Tag: 
 --- !u!1102 &110213462
 AnimatorState:
@@ -345,10 +345,10 @@ AnimatorStateMachine:
     m_Position: {x: 576, y: 60, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
-  - {fileID: 110102766}
   - {fileID: 110181140}
-  - {fileID: 110110102}
+  - {fileID: 110102766}
   - {fileID: 110147476}
+  - {fileID: 110110102}
   m_EntryTransitions: []
   m_StateMachineTransitions:
     data:

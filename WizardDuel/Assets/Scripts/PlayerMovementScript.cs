@@ -261,9 +261,9 @@ public class PlayerMovementScript : MonoBehaviour {
 		//1 is left idle
 		//2 is right walk
 		//3 is left walk
-
-		int rand = animator.GetInteger("Direction");
+		
 		if (vars.lStickX == 0) {
+			int rand = animator.GetInteger("Direction");
 			if(rand == 2 || rand == 0) {
 				animator.SetInteger ("Direction", 0);
 			}
@@ -279,6 +279,7 @@ public class PlayerMovementScript : MonoBehaviour {
 				animator.SetInteger ("Direction", 3);
 			}
 		}
+
 
 	}
 
