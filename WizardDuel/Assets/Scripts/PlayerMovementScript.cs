@@ -340,19 +340,4 @@ public class PlayerMovementScript : MonoBehaviour {
 		return flinch;
 	}
 
-	public void newGame()
-	{
-		vars.newGame();
-		rb.velocity = new Vector2(0.0f, 0.0f);
-		rb.gravityScale = startGrav;
-		rb.position = startPos;
-	}
-
-	public void dead()
-	{
-		rb.gravityScale = 0;
-		rb.velocity = new Vector2(0.0f, 0.0f);
-		rb.position = new Vector2(-1000.0f, -1000.0f);
-	}
-
 }

@@ -3,10 +3,12 @@ using System.Collections;
 
 public class LevelCreator : MonoBehaviour {
 	public GameObject testSprite;
+	public GameObject playerGameObject;
 	public int UIOFFSET;
 	Sprite[] mossSprites;
 	Sprite[] iceSprites;
 	string[] currentLevel;
+	int numPlayers;
 	ArrayList currentTiles = new ArrayList();
 	//Lookup for uldr bstring to tilesheet.
 	int[] tileTable=
@@ -48,7 +50,7 @@ public class LevelCreator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		loadSprites();
-		loadLevel(testLevel);
+		loadLevel(testLevel,4);
 
 	}
 
@@ -58,25 +60,39 @@ public class LevelCreator : MonoBehaviour {
 	
 	}
 
-	public void loadLevel(string[] level)
+	public void loadLevel(string[] level, int players)
 	{
+		this.numPlayers=players;
 		currentLevel=level;
 		int lvWdith = testLevel[0].Length;
 		int lvHeight = testLevel.Length;
 		bool[,] lvArray = new bool[lvWdith+2,lvHeight+2];
+		float blockwd=  testSprite.GetComponent<SpriteRenderer>().bounds.size.x;
+		Vector3 mapTopLeft = this.transform.position - new Vector3(blockwd*lvWdith/2, blockwd*lvHeight/2);
+		
 		for(int y = 0; y < lvHeight; y++)
 		{
 			for(int x = 0; x < lvWdith; x++)
 			{
-				if(testLevel[y][x] == '#')
+				int player;
+				if(level[y][x] == '#')
 				{
 					lvArray[x+1,y+1] = true;
 				}
+
+				else if(int.TryParse(""+level[y][x], out player)){
+					if(player <= players)
+					{
+						float dx = mapTopLeft.x+x*blockwd;
+						float dy = mapTopLeft.y+ (lvHeight-y)*blockwd + UIOFFSET;
+						GameObject obj = (GameObject)Instantiate(playerGameObject,new Vector3(dx,dy,0), Quaternion.identity);
+						obj.GetComponent<PlayerVars>().player="P"+player;
+						currentTiles.Add (obj);
+					}
+				}
 			}
 		}
-		float blockwd=  testSprite.GetComponent<SpriteRenderer>().bounds.size.x;
 		//		Debug.Log(blockwd);
-		Vector3 mapTopLeft = this.transform.position - new Vector3(blockwd*lvWdith/2, blockwd*lvHeight/2);
 		for(int y = 1; y <= lvHeight; y++)
 		{
 			for(int x = 1; x <= lvWdith; x++)
@@ -108,7 +124,7 @@ public class LevelCreator : MonoBehaviour {
 		{
 			Destroy(o);
 		}
-		loadLevel(currentLevel);
+		loadLevel(currentLevel,numPlayers);
 	}
 	void loadSprites()
 	{

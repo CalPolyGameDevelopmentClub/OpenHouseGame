@@ -40,6 +40,7 @@ public class GameOverTextScript : MonoBehaviour {
 			{
 				text.color = new Color(1.0f, 1.0f, 1.0f);
 			}
+
 			text.text = winner + " WINS!!";
 		}
 		else

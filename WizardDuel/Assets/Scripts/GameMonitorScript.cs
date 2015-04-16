@@ -86,13 +86,6 @@ public class GameMonitorScript : MonoBehaviour {
 		GameObject lc = GameObject.FindGameObjectWithTag("LevelCreator");
 		lc.gameObject.GetComponent<LevelCreator>().reset();
 
-		Object[] players = GameObject.FindGameObjectsWithTag("Player");
-		foreach (GameObject p in players)
-		{
-			Debug.Log("Reseting " + p.GetComponent<PlayerVars>().player);
-			p.gameObject.GetComponent<PlayerMovementScript>().newGame();
-		}
-
 		gameOverTimer = 0.0f;
 		gameOver = false;
 	}

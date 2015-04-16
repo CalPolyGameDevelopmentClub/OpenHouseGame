@@ -69,12 +69,11 @@ public class BoundsCheckerScript : MonoBehaviour {
 					{
 						if (playerNum == pi.playerNum && pi.alive)
 						{
-							Debug.Log(gm.isGameOver());
 							pi.alive = false;
 							Vector2 pos = player.transform.position;
 							GetComponentInChildren<DeathStarsParticles>().Shoot(pos, dir, starVel,
 							                                                    player.GetComponent<PlayerVars>().damageRatio);
-							player.GetComponent<PlayerMovementScript>().dead();
+							GameObject.Destroy(player);
 						}
 					}
 					
