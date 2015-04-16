@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f1ada8a635cf4ae2b98031809f5307d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakThreshhold: 15000
+  breakThreshhold: 150000
   forceThreshhold: 8000
 --- !u!212 &21202388
 SpriteRenderer:

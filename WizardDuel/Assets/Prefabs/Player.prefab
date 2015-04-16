@@ -11,10 +11,12 @@ GameObject:
   - 212: {fileID: 21213066}
   - 50: {fileID: 5027336}
   - 61: {fileID: 6168314}
+  - 58: {fileID: 5861388}
   - 114: {fileID: 11468520}
   - 114: {fileID: 11430864}
   - 114: {fileID: 11467880}
   - 95: {fileID: 9569692}
+  - 68: {fileID: 6805966}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -79,8 +81,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
---- !u!61 &6168314
-BoxCollider2D:
+--- !u!58 &5861388
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -89,9 +91,36 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: 60f1abcec77777046a395b15a20457ce, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -.0199999996, y: -.0299999993}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: .150000006, y: .200000003}
+  m_Radius: .119999997
+--- !u!61 &6168314
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144260}
+  m_Enabled: 0
+  m_Material: {fileID: 6200000, guid: 60f1abcec77777046a395b15a20457ce, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: .00999999978, y: .00999999978}
+  serializedVersion: 2
+  m_Size: {x: .119999997, y: .200000003}
+--- !u!68 &6805966
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144260}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+  - {x: -.100000001, y: 0}
+  - {x: .100000001, y: 0}
 --- !u!95 &9569692
 Animator:
   serializedVersion: 3

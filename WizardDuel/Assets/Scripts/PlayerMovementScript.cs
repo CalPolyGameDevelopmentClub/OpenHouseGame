@@ -43,8 +43,6 @@ public class PlayerMovementScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
-
 		float lJoyX = vars.lStickX;
 		RaycastHit2D airCheck = Physics2D.Raycast(
 			new Vector2(rb.position.x, rb.position.y - gameObject.GetComponent<SpriteRenderer>().bounds.size.y),
@@ -264,8 +262,8 @@ public class PlayerMovementScript : MonoBehaviour {
 		//2 is right walk
 		//3 is left walk
 
-		if (rb.velocity.x == 0) {
-			int rand = animator.GetInteger("Direction");
+		int rand = animator.GetInteger("Direction");
+		if (vars.lStickX == 0) {
 			if(rand == 2 || rand == 0) {
 				animator.SetInteger ("Direction", 0);
 			}
@@ -274,24 +272,14 @@ public class PlayerMovementScript : MonoBehaviour {
 			}
 		}
 		else {
-			if(rb.velocity.x > 0) {
+			if(vars.lStickX > 0.0f) {
 				animator.SetInteger ("Direction", 2);
 			}
-			else if(rb.velocity.x < 0) {
+			else if(vars.lStickX < 0.0f) {
 				animator.SetInteger ("Direction", 3);
 			}
 		}
 
-	}
-
-	void OnCollisionEnter2D(Collision2D coll) {
-		/*
-		if (coll.gameObject.tag == "Platform") {
-			fastFall = false;
-			featherFall = false;
-			jumpCount = 0;
-		}
-		*/
 	}
 
 	public void hit(Vector2 dir, float force, float damage)
