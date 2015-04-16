@@ -3,6 +3,7 @@ using System.Collections;
 
 public class LevelCreator : MonoBehaviour {
 	public GameObject testSprite;
+	public int UIOFFSET;
 	Sprite[] mossSprites;
 	Sprite[] iceSprites;
 	//Lookup for uldr bstring to tilesheet.
@@ -30,6 +31,9 @@ public class LevelCreator : MonoBehaviour {
 		"#          ###          #",
 		"#          ###          #",
 		"#                       #",
+		"#     ###       ###     #",
+		"#     ###       ###     #",
+		"#     ###       ###     #",
 		"#           #           #",
 		"#   1               2   #",
 		"#  ###             ###  #",
@@ -74,7 +78,7 @@ public class LevelCreator : MonoBehaviour {
 
 
 					float dx = mapTopLeft.x+x*blockwd;
-					float dy = mapTopLeft.y+ (lvHeight-y)*blockwd;
+					float dy = mapTopLeft.y+ (lvHeight-y)*blockwd + UIOFFSET;
 					GameObject obj = (GameObject)Instantiate(testSprite,new Vector3(dx,dy,0), Quaternion.identity);
 					obj.GetComponent<SpriteRenderer>().sprite=mossSprites[tileTable[tileIdx]];
 				}
