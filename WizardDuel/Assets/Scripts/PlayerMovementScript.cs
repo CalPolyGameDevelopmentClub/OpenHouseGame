@@ -24,6 +24,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	private bool flinch;
 	private float fTimer;
 	private PlayerVars vars;
+	private Animator animator;
 
 	// Use this for initialization
 	void Start () {
@@ -36,6 +37,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		rb = gameObject.GetComponent<Rigidbody2D> ();
 		flinch = false;
 		fTimer = 0;
+		animator = gameObject.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -253,6 +255,33 @@ public class PlayerMovementScript : MonoBehaviour {
 				}
 			}
 		}
+		animate();
+	}
+
+	public void animate() {
+		//0 Is right idle
+		//1 is left idle
+		//2 is right walk
+		//3 is left walk
+
+		if (rb.velocity.x == 0) {
+			int rand = animator.GetInteger("Direction");
+			if(rand == 2 || rand == 0) {
+				animator.SetInteger ("Direction", 0);
+			}
+			else if(rand == 3 || rand == 1) {
+				animator.SetInteger ("Direction", 1);
+			}
+		}
+		else {
+			if(rb.velocity.x > 0) {
+				animator.SetInteger ("Direction", 2);
+			}
+			else if(rb.velocity.x < 0) {
+				animator.SetInteger ("Direction", 3);
+			}
+		}
+
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
