@@ -11,7 +11,7 @@ TagManager:
   - BoundsChecker
   - UI
   - DeathX
-  - GameMonitor
+  - FireBall
   layers:
   - Default
   - TransparentFX

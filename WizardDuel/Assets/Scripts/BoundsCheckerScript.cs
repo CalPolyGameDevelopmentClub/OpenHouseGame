@@ -68,22 +68,6 @@ public class BoundsCheckerScript : MonoBehaviour {
 						pi.alive = false;
 					}
 				}
-				/*if (playerNum == "P1")
-				{
-					gm.p1Alive = false;
-				}
-				else if (playerNum == "P2")
-				{
-					gm.p2Alive = false;
-				}
-				else if (playerNum == "P3")
-				{
-					gm.p3Alive = false;
-				}
-				else if (playerNum == "P4")
-				{
-					gm.p4Alive = false;
-				}*/
 
 				Vector2 pos = player.transform.position;
 				GameObject.Destroy(player);
@@ -101,6 +85,18 @@ public class BoundsCheckerScript : MonoBehaviour {
 				(star.transform.position.y + star.GetComponent<Collider2D>().bounds.size.y * 2 < camPos.y - camSize))
 			{
 				GameObject.Destroy(star);
+			}
+		}
+
+		Object[] balls = GameObject.FindGameObjectsWithTag("FireBall");
+		foreach (GameObject ball in balls)
+		{
+			if ((ball.transform.position.x > camPos.x + camSize * 2) ||
+			    (ball.transform.position.y + ball.GetComponent<Collider2D>().bounds.size.y * 2 < camPos.y - camSize) ||
+			    (ball.transform.position.x < camPos.x - camSize * 2) ||
+			    (ball.transform.position.y - ball.GetComponent<Collider2D>().bounds.size.y * 2 > camPos.y + camSize))
+			{
+				GameObject.Destroy(ball);
 			}
 		}
 	}
