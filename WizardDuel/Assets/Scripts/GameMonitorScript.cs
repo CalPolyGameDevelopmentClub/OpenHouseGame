@@ -83,6 +83,9 @@ public class GameMonitorScript : MonoBehaviour {
 			pi.alive = true;
 		}
 
+		GameObject lc = GameObject.FindGameObjectWithTag("LevelCreator");
+		lc.gameObject.GetComponent<LevelCreator>().reset();
+
 		Object[] players = GameObject.FindGameObjectsWithTag("Player");
 		foreach (GameObject p in players)
 		{

@@ -13,6 +13,7 @@ TagManager:
   - DeathX
   - FireBall
   - GameMonitor
+  - LevelCreator
   layers:
   - Default
   - TransparentFX

@@ -29,9 +29,12 @@ public class PlayerMovementScript : MonoBehaviour {
 
 	private Vector2 startPos;
 	private float startGrav;
+	private GameMonitorScript gm;
+	private bool slowMo;
 
 	// Use this for initialization
 	void Start () {
+		gm = GameObject.FindGameObjectWithTag("GameMonitor").gameObject.GetComponent<GameMonitorScript>();
 		vars = gameObject.GetComponent<PlayerVars>();
 		rb = gameObject.GetComponent<Rigidbody2D> ();
 		startPos = rb.position;
@@ -46,221 +49,240 @@ public class PlayerMovementScript : MonoBehaviour {
 		fTimer = 0;
 		animator = gameObject.GetComponent<Animator>();
 		isHit = false;
+		slowMo = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		float lJoyX = vars.lStickX;
-		RaycastHit2D airCheck = Physics2D.Raycast(
-			new Vector2(rb.position.x, rb.position.y - gameObject.GetComponent<SpriteRenderer>().bounds.size.y),
-			-Vector2.up);
-
-		
-		// Vector to check if the character is in the air
-		if (airCheck.collider != null && airCheck.collider.tag == "Platform")
+		if (!gm.isGameOver())
 		{
-			if (airCheck.distance > 0)
+			slowMo = false;
+			float lJoyX = vars.lStickX;
+			RaycastHit2D airCheck = Physics2D.Raycast(
+				new Vector2(rb.position.x, rb.position.y - gameObject.GetComponent<SpriteRenderer>().bounds.size.y),
+				-Vector2.up);
+			
+			
+			// Vector to check if the character is in the air
+			if (airCheck.collider != null && airCheck.collider.tag == "Platform")
+			{
+				if (airCheck.distance > 0)
+				{
+					inAir = true;
+				}
+				else if (airCheck.distance <= 0 && rb.velocity.y <= 0)
+				{
+					inAir = false;
+					featherFall = false;
+					jumpCount = 0;
+				}
+			}
+			else if (airCheck.collider == null)
 			{
 				inAir = true;
 			}
-			else if (airCheck.distance <= 0 && rb.velocity.y <= 0)
+			
+			// Count up the flinch timer
+			if (flinch)
 			{
-				inAir = false;
-				featherFall = false;
-				jumpCount = 0;
-			}
-		}
-		else if (airCheck.collider == null)
-		{
-			inAir = true;
-		}
-
-		// Count up the flinch timer
-		if (flinch)
-		{
-			if (fTimer >= flinchTime)
-			{
-				flinch = false;
-			}
-			fTimer += Time.deltaTime;
-		}
-
-		// Joystick Movement
-		if (!flinch)
-		{
-			if (inAir) {
-				// Movement in the air
-				if (Mathf.Abs(rb.velocity.x + ((moveForce / jumpMoveForce) * lJoyX)) <= maxAirVelocity)
+				if (fTimer >= flinchTime)
 				{
-					rb.velocity += new Vector2((moveForce / jumpMoveForce) * lJoyX, 0.0f);
+					flinch = false;
 				}
-				else
-				{
-					if ((((moveForce / jumpMoveForce) * lJoyX) > 0 && rb.velocity.x < 0) ||
-					    (((moveForce / jumpMoveForce) * lJoyX) < 0 && rb.velocity.x > 0))
+				fTimer += Time.deltaTime;
+			}
+			
+			// Joystick Movement
+			if (!flinch)
+			{
+				if (inAir) {
+					// Movement in the air
+					if (Mathf.Abs(rb.velocity.x + ((moveForce / jumpMoveForce) * lJoyX)) <= maxAirVelocity)
 					{
 						rb.velocity += new Vector2((moveForce / jumpMoveForce) * lJoyX, 0.0f);
 					}
-				}
-			}
-			else
-			{
-				// Movement on the ground
-				if (Mathf.Abs(rb.velocity.x + (moveForce * lJoyX)) <= maxVelocity)
-				{
-					rb.velocity += new Vector2(moveForce * lJoyX, 0.0f);
+					else
+					{
+						if ((((moveForce / jumpMoveForce) * lJoyX) > 0 && rb.velocity.x < 0) ||
+						    (((moveForce / jumpMoveForce) * lJoyX) < 0 && rb.velocity.x > 0))
+						{
+							rb.velocity += new Vector2((moveForce / jumpMoveForce) * lJoyX, 0.0f);
+						}
+					}
 				}
 				else
 				{
-					if (((moveForce * lJoyX) > 0 && rb.velocity.x < 0) ||
-					    ((moveForce * lJoyX) < 0 && rb.velocity.x > 0))
+					// Movement on the ground
+					if (Mathf.Abs(rb.velocity.x + (moveForce * lJoyX)) <= maxVelocity)
 					{
 						rb.velocity += new Vector2(moveForce * lJoyX, 0.0f);
 					}
+					else
+					{
+						if (((moveForce * lJoyX) > 0 && rb.velocity.x < 0) ||
+						    ((moveForce * lJoyX) < 0 && rb.velocity.x > 0))
+						{
+							rb.velocity += new Vector2(moveForce * lJoyX, 0.0f);
+						}
+					}
 				}
 			}
-		}
-
-		// Jumping
-		if (vars.jumpTrig > 0.3  && canJump && !flinch) {
-
-			RaycastHit2D lWallCheck = Physics2D.Raycast(
-				new Vector2(rb.position.x - gameObject.GetComponent<SpriteRenderer>().bounds.size.x,rb.position.y),
-				Vector2.right);
-
-			RaycastHit2D rWallCheck = Physics2D.Raycast(
-				new Vector2(rb.position.x + gameObject.GetComponent<SpriteRenderer>().bounds.size.x,rb.position.y),
-				-Vector2.right);
-
-			// Double jumping resets downward momentum
-			if ( jumpCount < MAX_JUMP && canJump && !inAir && rb.velocity.x <= maxVelocity)
-			{
-				// First jump
-
-				if (rb.velocity.y < 0)
-				{
-					rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce, 0);
-				}
-				else
-				{
-					rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce, rb.velocity.y);
-				}
-				rb.velocity += new Vector2(0.0f, jumpForce);
-				canJump = false;
-				fastFall = false;
+			
+			// Jumping
+			if (vars.jumpTrig > 0.3  && canJump && !flinch) {
 				
-				jumpCount++;
-			}
-
-
-			else if(rWallCheck.distance == 0)
-			{
-				if (rb.velocity.y < 0)
-				{
-					rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce - jumpForce, 0);
-				}
-				else
-				{
-					rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce - jumpForce, rb.velocity.y);
-				}
-				rb.velocity += new Vector2(0.0f, jumpForce);
-				jumpCount = 0;
-				canJump = false;
-				fastFall = false;
+				RaycastHit2D lWallCheck = Physics2D.Raycast(
+					new Vector2(rb.position.x - gameObject.GetComponent<SpriteRenderer>().bounds.size.x,rb.position.y),
+					Vector2.right);
 				
-				jumpCount++;
-			}
-			else if(lWallCheck.distance == 0)
-			{
-				if (rb.velocity.y < 0)
-				{
-					rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce + jumpForce, 0);
-				}
-				else
-				{
-					rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce + jumpForce, rb.velocity.y);
-				}
-				rb.velocity += new Vector2(0.0f, jumpForce);
-				jumpCount = 0;
-				canJump = false;
-				fastFall = false;
+				RaycastHit2D rWallCheck = Physics2D.Raycast(
+					new Vector2(rb.position.x + gameObject.GetComponent<SpriteRenderer>().bounds.size.x,rb.position.y),
+					-Vector2.right);
 				
-				jumpCount++;
-
+				// Double jumping resets downward momentum
+				if ( jumpCount < MAX_JUMP && canJump && !inAir && rb.velocity.x <= maxVelocity)
+				{
+					// First jump
+					
+					if (rb.velocity.y < 0)
+					{
+						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce, 0);
+					}
+					else
+					{
+						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce, rb.velocity.y);
+					}
+					rb.velocity += new Vector2(0.0f, jumpForce);
+					canJump = false;
+					fastFall = false;
+					
+					jumpCount++;
+				}
+				
+				
+				else if(rWallCheck.distance == 0)
+				{
+					if (rb.velocity.y < 0)
+					{
+						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce - jumpForce, 0);
+					}
+					else
+					{
+						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce - jumpForce, rb.velocity.y);
+					}
+					rb.velocity += new Vector2(0.0f, jumpForce);
+					jumpCount = 0;
+					canJump = false;
+					fastFall = false;
+					
+					jumpCount++;
+				}
+				else if(lWallCheck.distance == 0)
+				{
+					if (rb.velocity.y < 0)
+					{
+						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce + jumpForce, 0);
+					}
+					else
+					{
+						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce + jumpForce, rb.velocity.y);
+					}
+					rb.velocity += new Vector2(0.0f, jumpForce);
+					jumpCount = 0;
+					canJump = false;
+					fastFall = false;
+					
+					jumpCount++;
+					
+				}
+				else if(jumpCount < MAX_JUMP && canJump && inAir && rb.velocity.x <= maxVelocity)
+				{
+					// Double jump
+					if (rb.velocity.y < 0)
+					{
+						rb.velocity = new Vector2 (rb.velocity.x, 0);
+					}
+					else
+					{
+						rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y);
+					}
+					rb.velocity += new Vector2(0.0f, jumpForce);
+					canJump = false;
+					fastFall = false;
+					
+					jumpCount++;
+					
+				}
 			}
-			else if(jumpCount < MAX_JUMP && canJump && inAir && rb.velocity.x <= maxVelocity)
+			
+			// Must release some to jump again
+			if (!canJump && vars.jumpTrig < 0.3) {
+				canJump = true;
+			}
+			
+			/*// Featherfall
+			if (vars.lStickY > 0.55
+			    && inAir && !featherFall)
 			{
-				// Double jump
+				fastFall = false;
+				featherFall = true;
+			}
+			if (featherFall && rb.velocity.y <= 0.0f)
+			{
+				rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / featherForce);
+			}*/
+				
+				// Fastfall
+				if (vars.lStickY < -0.55
+				    && inAir && !fastFall && !flinch)
+			{
+				fastFall = true;
+				featherFall = false;
 				if (rb.velocity.y < 0)
 				{
 					rb.velocity = new Vector2 (rb.velocity.x, 0);
 				}
-				else
-				{
-					rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y);
-				}
-				rb.velocity += new Vector2(0.0f, jumpForce);
-				canJump = false;
-				fastFall = false;
-				
-				jumpCount++;
-
+				rb.velocity += new Vector2(0.0f, -1.00f * fallForce);
 			}
-		}
-
-		// Must release some to jump again
-		if (!canJump && vars.jumpTrig < 0.3) {
-			canJump = true;
-		}
-
-		/*// Featherfall
-		if (vars.lStickY > 0.55
-		    && inAir && !featherFall)
-		{
-			fastFall = false;
-			featherFall = true;
-		}
-		if (featherFall && rb.velocity.y <= 0.0f)
-		{
-			rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / featherForce);
-		}*/
-
-		// Fastfall
-		if (vars.lStickY < -0.55
-		    && inAir && !fastFall && !flinch)
-		{
-			fastFall = true;
-			featherFall = false;
-			if (rb.velocity.y < 0)
+			
+			// Self slowdown
+			if (!inAir && (Mathf.Abs(lJoyX) < 0.1f && !flinch))
 			{
-				rb.velocity = new Vector2 (rb.velocity.x, 0);
+				if (rb.velocity.x > 0) {
+					if (rb.velocity.x - slow > 0) {
+						rb.velocity = new Vector2(rb.velocity.x - slow, rb.velocity.y);
+					}
+					else {
+						rb.velocity = new Vector2(0, rb.velocity.y);
+					}
+				}
+				else if (rb.velocity.x < 0){
+					if (rb.velocity.x + slow < 0) {
+						rb.velocity = new Vector2(rb.velocity.x + slow, rb.velocity.y);
+					}
+					else {
+						rb.velocity = new Vector2(0, rb.velocity.y);
+					}
+				}
 			}
-			rb.velocity += new Vector2(0.0f, -1.00f * fallForce);
+			animate();
 		}
 
-		// Self slowdown
-		if (!inAir && (Mathf.Abs(lJoyX) < 0.1f && !flinch))
+		// Game over
+		else
 		{
-
-			if (rb.velocity.x > 0) {
-				if (rb.velocity.x - slow > 0) {
-					rb.velocity = new Vector2(rb.velocity.x - slow, rb.velocity.y);
-				}
-				else {
-					rb.velocity = new Vector2(0, rb.velocity.y);
-				}
+			if (!slowMo)
+			{
+				rb.velocity = new Vector2(rb.velocity.x / 5.0f, rb.velocity.y / 2.0f);
+				slowMo = true;
 			}
-			else if (rb.velocity.x < 0){
-				if (rb.velocity.x + slow < 0) {
-					rb.velocity = new Vector2(rb.velocity.x + slow, rb.velocity.y);
-				}
-				else {
-					rb.velocity = new Vector2(0, rb.velocity.y);
-				}
+			else
+			{
+				rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 1.5f);
 			}
 		}
-		animate();
+
 	}
 
 	void FixedUpdate()
@@ -321,6 +343,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	public void newGame()
 	{
 		vars.newGame();
+		rb.velocity = new Vector2(0.0f, 0.0f);
 		rb.gravityScale = startGrav;
 		rb.position = startPos;
 	}
