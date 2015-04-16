@@ -5,8 +5,16 @@ public class GameMonitorScript : MonoBehaviour {
 
 	public ArrayList activePlayers;
 
+	private bool gameOver;
+	private float gameOverTimer;
+	private PlayerInfo winner;
+
+	private float gameOverTime = 5.0f;
+
 	// Use this for initialization
 	void Start () {
+		gameOverTimer = 0.0f;
+
 		activePlayers = new ArrayList();
 		for (int i = 1; i <= 4; i++)
 		{
@@ -26,12 +34,29 @@ public class GameMonitorScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		checkWin();
+		
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			gameOver = true;
+		}
+
+		if (!gameOver)
+		{
+			checkWin();
+		}
+		else 
+		{
+			if (gameOverTimer >= gameOverTime)
+			{
+				newGame();
+			}
+			gameOverTimer += Time.fixedDeltaTime;
+		}
 	}
 
 	void checkWin()
 	{
-		PlayerInfo winner = null;
+		winner = null;
 		int numAlivePlayers = 0;
 
 		foreach (PlayerInfo pi in activePlayers)
@@ -46,7 +71,36 @@ public class GameMonitorScript : MonoBehaviour {
 		{
 			winner.wins++;
 			Debug.Log(winner.playerNum + " WINS!!");
-			// Start new round!
+			gameOver = true;
 		}
+	}
+
+	void newGame()
+	{
+		Debug.Log("New Game!");
+		foreach(PlayerInfo pi in activePlayers)
+		{
+			pi.alive = true;
+		}
+
+		Object[] players = GameObject.FindGameObjectsWithTag("Player");
+		foreach (GameObject p in players)
+		{
+			Debug.Log("Reseting " + p.GetComponent<PlayerVars>().player);
+			p.gameObject.GetComponent<PlayerMovementScript>().newGame();
+		}
+
+		gameOverTimer = 0.0f;
+		gameOver = false;
+	}
+
+	public bool isGameOver()
+	{
+		return gameOver;
+	}
+
+	public string getWinner()
+	{
+		return winner.playerNum;
 	}
 }

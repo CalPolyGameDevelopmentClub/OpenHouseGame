@@ -27,15 +27,21 @@ public class PlayerMovementScript : MonoBehaviour {
 	private Animator animator;
 	private bool isHit;
 
+	private Vector2 startPos;
+	private float startGrav;
+
 	// Use this for initialization
 	void Start () {
 		vars = gameObject.GetComponent<PlayerVars>();
+		rb = gameObject.GetComponent<Rigidbody2D> ();
+		startPos = rb.position;
+		startGrav = rb.gravityScale;
 
 		jumpCount = 0;
 		inAir = false;
 		fastFall = false;
 		featherFall = false;
-		rb = gameObject.GetComponent<Rigidbody2D> ();
+
 		flinch = false;
 		fTimer = 0;
 		animator = gameObject.GetComponent<Animator>();
@@ -56,7 +62,6 @@ public class PlayerMovementScript : MonoBehaviour {
 		{
 			if (airCheck.distance > 0)
 			{
-				//Debug.Log("FOOF!");
 				inAir = true;
 			}
 			else if (airCheck.distance <= 0 && rb.velocity.y <= 0)
@@ -285,8 +290,6 @@ public class PlayerMovementScript : MonoBehaviour {
 				animator.SetInteger ("Direction", 3);
 			}
 		}
-
-
 	}
 
 	public void hit(Vector2 dir, float force, float damage)
@@ -313,6 +316,20 @@ public class PlayerMovementScript : MonoBehaviour {
 	public bool isFlinching()
 	{
 		return flinch;
+	}
+
+	public void newGame()
+	{
+		vars.newGame();
+		rb.gravityScale = startGrav;
+		rb.position = startPos;
+	}
+
+	public void dead()
+	{
+		rb.gravityScale = 0;
+		rb.velocity = new Vector2(0.0f, 0.0f);
+		rb.position = new Vector2(-1000.0f, -1000.0f);
 	}
 
 }

@@ -20,6 +20,10 @@ public class DeathX : MonoBehaviour {
 				gameObject.GetComponent<CanvasGroup>().alpha = 1.0f;
 
 			}
+			else if (pi.playerNum == player && pi.alive)
+			{
+				gameObject.GetComponent<CanvasGroup>().alpha = 0.0f;
+			}
 		}
 	}
 

@@ -12,6 +12,7 @@ TagManager:
   - UI
   - DeathX
   - FireBall
+  - GameMonitor
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - GameOverText
   - 
   - 
   - 
@@ -48,4 +49,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: GameOverText
+    uniqueID: 2281048589
     locked: 0

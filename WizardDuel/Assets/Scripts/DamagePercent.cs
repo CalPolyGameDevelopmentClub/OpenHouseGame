@@ -28,6 +28,10 @@ public class DamagePercent : MonoBehaviour {
 				{
 					gameObject.GetComponent<Text>().color = new Color(0.8f, 0.8f, 0);
 				}
+				else
+				{
+					gameObject.GetComponent<Text>().color = new Color(1.0f, 1.0f, 1.0f);
+				}
 			}
 		}
 	}

@@ -18,6 +18,7 @@ public class ProjectileOriginScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		float xOff = 0.0f;
 		// Get aim directions
 		float stickX = vars.rStickX;
 		float stickY = vars.rStickY;
@@ -28,17 +29,17 @@ public class ProjectileOriginScript : MonoBehaviour {
 			dirX = stickX;
 			dirY = stickY;
 		}
-		gameObject.transform.localPosition = new Vector2(dirX, dirY).normalized * 0.2f;
+
 		
 		if (dirX > 0)
 		{
-			
+			xOff = -0.02f;
 		}
 		else if (dirX < 0)
 		{
-			
+			xOff = 0.02f;
 		}
 
-
+		gameObject.transform.localPosition = (new Vector2(dirX, dirY).normalized * 0.2f) + new Vector2(xOff, 0.0f);
 	}
 }

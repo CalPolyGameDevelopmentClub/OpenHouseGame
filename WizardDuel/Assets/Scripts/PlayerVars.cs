@@ -59,4 +59,9 @@ public class PlayerVars : MonoBehaviour {
 
 		}
 	}
+
+	public void newGame()
+	{
+		damageRatio = 0.0f;
+	}
 }

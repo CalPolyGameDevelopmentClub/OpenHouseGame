@@ -26,7 +26,7 @@ public class TestProjectileMovement : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D coll) {
 		if (coll.gameObject.tag == "Explosion")
 		{
-			Debug.Log("IGNORE ME!");
+			//Debug.Log("IGNORE ME!");
 
 		}
 		else
