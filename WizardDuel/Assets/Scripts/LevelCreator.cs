@@ -8,7 +8,7 @@ public class LevelCreator : MonoBehaviour {
 	Sprite[] mossSprites;
 	Sprite[] iceSprites;
 	string[] currentLevel;
-	int numPlayers;
+	bool[] currPlayers;
 	ArrayList currentTiles = new ArrayList();
 	//Lookup for uldr bstring to tilesheet.
 	int[] tileTable=
@@ -30,7 +30,7 @@ public class LevelCreator : MonoBehaviour {
 		0,
 		3
 	};
-	string[] testLevel ={
+	public string[] testLevel ={
 		"#########################",
 		"#          ###          #",
 		"#          ###          #",
@@ -50,7 +50,7 @@ public class LevelCreator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		loadSprites();
-		loadLevel(testLevel,4);
+
 
 	}
 
@@ -60,9 +60,9 @@ public class LevelCreator : MonoBehaviour {
 	
 	}
 
-	public void loadLevel(string[] level, int players)
+	public void loadLevel(string[] level, bool[] players)
 	{
-		this.numPlayers=players;
+		this.currPlayers=players;
 		currentLevel=level;
 		int lvWdith = testLevel[0].Length;
 		int lvHeight = testLevel.Length;
@@ -81,7 +81,7 @@ public class LevelCreator : MonoBehaviour {
 				}
 
 				else if(int.TryParse(""+level[y][x], out player)){
-					if(player <= players)
+					if(players[player-1])
 					{
 						float dx = mapTopLeft.x+(x+1)*blockwd;
 						float dy = mapTopLeft.y+ (lvHeight-(y+1))*blockwd + UIOFFSET;
@@ -124,7 +124,7 @@ public class LevelCreator : MonoBehaviour {
 		{
 			DestroyImmediate(o);
 		}
-		loadLevel(currentLevel,numPlayers);
+		loadLevel(currentLevel,currPlayers);
 	}
 	void loadSprites()
 	{
