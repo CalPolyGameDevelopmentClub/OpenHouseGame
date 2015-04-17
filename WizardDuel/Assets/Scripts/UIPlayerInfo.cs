@@ -19,7 +19,6 @@ public class UIPlayerInfo : MonoBehaviour {
 		{
 			if (player == pi.playerNum)
 			{
-				Debug.Log(player + " online!");
 				active = true;
 			}
 		}
