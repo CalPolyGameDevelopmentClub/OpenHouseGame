@@ -11,13 +11,16 @@ public class PlayerMenuHandler : MonoBehaviour {
 	public GameObject player2Sprite;
 	public GameObject player3Sprite;
 	public GameObject player4Sprite;
+	public AudioClip startSound;
 	float offset = 40;
 	float speed = 5;
 	public LevelCreator creator;
 
 	private int numPlayers;
+	private AudioSource audioSource;
 	// Use this for initialization
 	void Start () {
+		audioSource = gameObject.GetComponent<AudioSource>();
 		numPlayers = 0;
 		player1In = false;
 		player2In = false;
@@ -125,9 +128,10 @@ public class PlayerMenuHandler : MonoBehaviour {
 			   Input.GetButtonDown("StartButton") &&
 			   numPlayers >= 2)
 			{
+				audioSource.PlayOneShot(startSound);
 				PlayerInfo addPlayer;
 				gamePlaying = !gamePlaying;
-				creator.loadLevel(creator.testLevel,new bool[]{player1In,player2In,player3In,player4In});
+				creator.loadLevel(creator.getLevel(),new bool[]{player1In,player2In,player3In,player4In});
 				if (player1In)
 				{
 					addPlayer = new PlayerInfo();

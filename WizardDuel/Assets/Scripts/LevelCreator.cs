@@ -30,22 +30,22 @@ public class LevelCreator : MonoBehaviour {
 		0,
 		3
 	};
-	public string[] testLevel ={
-		"#########################",
-		"#     #           #     #",
-		"#  1  #           #  2  #",
-		"#     #           #     #",
-		"#########################",
-		"#     ##   # #   ##     #",
-		"#     # # #   # # #     #",
-		"#######  #     #  #######",
-		"#     # # #   # # #     #",
-		"#     ##   # #   ##     #",
-		"#########################",
-		"#     #           #     #",
-		"#  3  #           #  4  #",
-		"#     #           #     #",
-		"#########################"};
+	private string[] testLevel ={
+		"###########   ###########",
+		"                         ",
+		"                         ",
+		"####       ###       ####",
+		"#          ###          #",
+		"#          ###          #",
+		"#       1       2       #",
+		"       ###     ###       ",
+		" 3                     4 ",
+		"###                   ###",
+		"#         #####         #",
+		"#         #   #         #",
+		"#   ##    #   #    ##   #",
+		"#   ##    #   #    ##   #",
+		"###########   ###########"};
 
 	// Use this for initialization
 	void Start () {
@@ -132,5 +132,8 @@ public class LevelCreator : MonoBehaviour {
 		mossSprites = Resources.LoadAll<Sprite>(string.Format("stone blocks"));
 
 	}
-
+	public string[] getLevel()
+	{
+		return testLevel;
+	}
 }

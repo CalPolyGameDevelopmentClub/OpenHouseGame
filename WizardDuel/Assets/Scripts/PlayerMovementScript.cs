@@ -163,16 +163,16 @@ public class PlayerMovementScript : MonoBehaviour {
 					jumpCount++;
 				}
 				
-				
+				// Right wall jump
 				else if(rWallCheck.distance == 0)
 				{
 					if (rb.velocity.y < 0)
 					{
-						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce - jumpForce, 0);
+						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce - jumpForce / 1.5f, 0);
 					}
 					else
 					{
-						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce - jumpForce, rb.velocity.y);
+						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce - jumpForce / 1.5f, rb.velocity.y);
 					}
 					audioSouce.PlayOneShot(jump1Sound);
 					rb.velocity += new Vector2(0.0f, jumpForce);
@@ -182,15 +182,16 @@ public class PlayerMovementScript : MonoBehaviour {
 					
 					jumpCount++;
 				}
+				// Left wall jump
 				else if(lWallCheck.distance == 0)
 				{
 					if (rb.velocity.y < 0)
 					{
-						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce + jumpForce, 0);
+						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce + jumpForce / 1.5f, 0);
 					}
 					else
 					{
-						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce + jumpForce, rb.velocity.y);
+						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce + jumpForce / 1.5f, rb.velocity.y);
 					}
 					audioSouce.PlayOneShot(jump1Sound);
 					rb.velocity += new Vector2(0.0f, jumpForce);
