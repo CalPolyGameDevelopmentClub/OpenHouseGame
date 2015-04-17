@@ -312,6 +312,7 @@ public class PlayerMovementScript : MonoBehaviour {
 				animator.SetInteger ("Direction", 3);
 			}
 		}
+
 	}
 
 	public void hit(Vector2 dir, float force, float damage)

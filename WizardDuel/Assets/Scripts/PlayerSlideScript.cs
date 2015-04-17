@@ -22,7 +22,7 @@ public class PlayerSlideScript : MonoBehaviour {
 		{
 			lerp -= speed;
 		}
-		transform.position = new Vector3(startPos.x - offset*(1.0f-lerp),startPos.y,startPos.z);
+		transform.position = new Vector3(startPos.x - offset*(1.0f-lerp),transform.position.y,transform.position.z);
 		                           
 	}
 	void setPlaying(bool playing)
