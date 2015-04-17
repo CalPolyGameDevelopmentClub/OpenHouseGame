@@ -15,6 +15,7 @@ TagManager:
   - GameMonitor
   - LevelCreator
   - Sound
+  - StartPrompt
   layers:
   - Default
   - TransparentFX

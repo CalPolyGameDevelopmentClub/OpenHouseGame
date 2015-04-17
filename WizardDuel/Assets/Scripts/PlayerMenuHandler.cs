@@ -14,8 +14,11 @@ public class PlayerMenuHandler : MonoBehaviour {
 	float offset = 40;
 	float speed = 5;
 	public LevelCreator creator;
+
+	private int numPlayers;
 	// Use this for initialization
 	void Start () {
+		numPlayers = 0;
 		player1In = false;
 		player2In = false;
 		player3In = false;
@@ -26,69 +29,101 @@ public class PlayerMenuHandler : MonoBehaviour {
 	void Update () {
 		if(!gamePlaying)
 		{
-			Debug.Log(Input.GetButtonDown("AP2"));
-			Debug.Log(player1In + " " + player2In + " " + player3In + " " + player4In);
+			if (numPlayers >= 2)
+			{
+				GameObject.FindGameObjectWithTag("StartPrompt").gameObject.GetComponent<SpriteRenderer>().color= new Color(1.0f, 1.0f, 1.0f, 1.0f);
+			}
+			else
+			{
+				GameObject.FindGameObjectWithTag("StartPrompt").gameObject.GetComponent<SpriteRenderer>().color= new Color(1.0f, 1.0f, 1.0f, 0.0f);
+			}
 			if(Input.GetButtonDown("AP1"))
 			{
+				numPlayers++;
 				player1In = true;
 				updatePlayer(1);
 			}
 			if(Input.GetButtonDown("BP1"))
 			{
+				numPlayers--;
 				player1In = false;
 				updatePlayer(1);
 			}
 			if(Input.GetButtonDown("AP2"))
 			{
+				numPlayers++;
 				player2In = true;
 				updatePlayer(2);
 			}
 			if(Input.GetButtonDown("BP2"))
 			{
+				numPlayers--;
 				player2In = false;
 				updatePlayer(2);
 			}
 			if(Input.GetButtonDown("AP3"))
 			{
+				numPlayers++;
 				player3In = true;
 				updatePlayer(3);
 			}
 			if(Input.GetButtonDown("BP3"))
 			{
+				numPlayers--;
 				player3In = false;
 				updatePlayer(3);
 			}
 			if(Input.GetButtonDown("AP4"))
 			{
+				numPlayers++;
 				player4In = true;
 				updatePlayer(4);
 			}
 			if(Input.GetButtonDown("BP4"))
 			{
+				numPlayers--;
 				player4In = false;
 				updatePlayer(4);
 			}
 			if(Input.GetKeyDown(KeyCode.Alpha1))
 			{
+				if (player1In)
+					numPlayers--;
+				else
+					numPlayers++;
 				player1In = !player1In;
 				updatePlayer(1);
 			}
 			if(Input.GetKeyDown(KeyCode.Alpha2))
 			{
+				if (player2In)
+					numPlayers--;
+				else
+					numPlayers++;
 				player2In = !player2In;
 				updatePlayer(2);
 			}
 			if(Input.GetKeyDown(KeyCode.Alpha3))
 			{
+				if (player3In)
+					numPlayers--;
+				else
+					numPlayers++;
 				player3In = !player3In;
 				updatePlayer(3);
 			}
 			if(Input.GetKeyDown(KeyCode.Alpha4))
 			{
+				if (player4In)
+					numPlayers--;
+				else
+					numPlayers++;
 				player4In = !player4In;
 				updatePlayer(4);
 			}
-			if(Input.GetKeyDown(KeyCode.Space))
+			if(Input.GetKeyDown(KeyCode.Space) ||
+			   Input.GetButtonDown("StartButton") &&
+			   numPlayers >= 2)
 			{
 				PlayerInfo addPlayer;
 				gamePlaying = !gamePlaying;
