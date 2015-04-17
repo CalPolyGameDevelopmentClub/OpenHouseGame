@@ -12,6 +12,9 @@ public class PlayerMovementScript : MonoBehaviour {
 	public float fallForce;
 	public float featherForce;
 	public float flinchTime;
+	public AudioClip jump1Sound;
+	public AudioClip jump2Sound;
+	public AudioClip hurtSound;
 
 	private int MAX_JUMP = 2;
 
@@ -26,19 +29,17 @@ public class PlayerMovementScript : MonoBehaviour {
 	private PlayerVars vars;
 	private Animator animator;
 	private bool isHit;
-
-	private Vector2 startPos;
-	private float startGrav;
-	private GameMonitorScript gm;
 	private bool slowMo;
+	private AudioSource audioSouce;
 
+	private GameMonitorScript gm;
+	
 	// Use this for initialization
 	void Start () {
 		gm = GameObject.FindGameObjectWithTag("GameMonitor").gameObject.GetComponent<GameMonitorScript>();
+		audioSouce = gameObject.GetComponent<AudioSource>();
 		vars = gameObject.GetComponent<PlayerVars>();
 		rb = gameObject.GetComponent<Rigidbody2D> ();
-		startPos = rb.position;
-		startGrav = rb.gravityScale;
 
 		jumpCount = 0;
 		inAir = false;
@@ -147,10 +148,12 @@ public class PlayerMovementScript : MonoBehaviour {
 					
 					if (rb.velocity.y < 0)
 					{
-						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce, 0);
+						audioSouce.PlayOneShot(jump1Sound);
+;						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce, 0);
 					}
 					else
 					{
+						audioSouce.PlayOneShot(jump1Sound);
 						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce, rb.velocity.y);
 					}
 					rb.velocity += new Vector2(0.0f, jumpForce);
@@ -171,6 +174,7 @@ public class PlayerMovementScript : MonoBehaviour {
 					{
 						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce - jumpForce, rb.velocity.y);
 					}
+					audioSouce.PlayOneShot(jump1Sound);
 					rb.velocity += new Vector2(0.0f, jumpForce);
 					jumpCount = 0;
 					canJump = false;
@@ -188,6 +192,7 @@ public class PlayerMovementScript : MonoBehaviour {
 					{
 						rb.velocity = new Vector2 (rb.velocity.x / jumpMoveForce + jumpForce, rb.velocity.y);
 					}
+					audioSouce.PlayOneShot(jump1Sound);
 					rb.velocity += new Vector2(0.0f, jumpForce);
 					jumpCount = 0;
 					canJump = false;
@@ -201,10 +206,15 @@ public class PlayerMovementScript : MonoBehaviour {
 					// Double jump
 					if (rb.velocity.y < 0)
 					{
+						if (jumpCount == 0)
+							audioSouce.PlayOneShot(jump1Sound);
+						if (jumpCount > 0)
+							audioSouce.PlayOneShot(jump2Sound);
 						rb.velocity = new Vector2 (rb.velocity.x, 0);
 					}
 					else
 					{
+						audioSouce.PlayOneShot(jump2Sound);
 						rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y);
 					}
 					rb.velocity += new Vector2(0.0f, jumpForce);
@@ -318,6 +328,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	{
 		if (!isHit)
 		{
+			audioSouce.PlayOneShot(hurtSound);
 			isHit = true;
 			rb.velocity = new Vector2(0, 0);
 			

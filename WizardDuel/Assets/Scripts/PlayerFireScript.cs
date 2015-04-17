@@ -6,11 +6,13 @@ public class PlayerFireScript : MonoBehaviour
 	public GameObject projectile;
 	public float fireSpeed;
 	public float reloadTime;
+	public AudioClip shootSound;
 
 	private Vector3 joyAim;
 	private bool canShoot;
 	private float reload;
 	private PlayerVars vars;
+	private AudioSource audioSource;
 
 	private GameMonitorScript gm;
 
@@ -18,6 +20,7 @@ public class PlayerFireScript : MonoBehaviour
 	void Start ()
 	{
 		gm = GameObject.FindGameObjectWithTag("GameMonitor").gameObject.GetComponent<GameMonitorScript>();
+		audioSource = gameObject.GetComponent<AudioSource>();
 		vars = gameObject.GetComponent<PlayerVars>();
 
 		joyAim = new Vector3(1.0f, 0.0f, 0);
@@ -42,6 +45,7 @@ public class PlayerFireScript : MonoBehaviour
 			
 			if (vars.shootTrig > 0.3 && canShoot)
 			{
+				audioSource.PlayOneShot(shootSound);
 				Vector3 childPos = this.transform.GetChild(0).transform.localPosition;
 				Vector3 vel3D = joyAim.normalized;
 				

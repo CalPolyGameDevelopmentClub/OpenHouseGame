@@ -15,7 +15,7 @@ public class ProjectileOriginScript : MonoBehaviour {
 	void Start () {
 		gm = GameObject.FindGameObjectWithTag("GameMonitor").gameObject.GetComponent<GameMonitorScript>();
 		vars = gameObject.GetComponentInParent<PlayerVars>();
-		dirX = vars.rStickX;
+		dirX = 1.0f;
 		dirY = vars.rStickY;
 	}
 	
@@ -23,7 +23,7 @@ public class ProjectileOriginScript : MonoBehaviour {
 	void Update () {
 		if (!gm.isGameOver())
 		{
-			float xOff = 0.0f;
+			float xOff = 0.03f;
 			// Get aim directions
 			float stickX = vars.rStickX;
 			float stickY = vars.rStickY;
@@ -35,14 +35,9 @@ public class ProjectileOriginScript : MonoBehaviour {
 				dirY = stickY;
 			}
 			
-			
 			if (dirX > 0)
 			{
-				xOff = -0.03f;
-			}
-			else if (dirX < 0)
-			{
-				xOff = 0.03f;
+				xOff = -xOff;
 			}
 			
 			gameObject.transform.localPosition = (new Vector2(dirX, dirY).normalized * 0.2f) + new Vector2(xOff, 0.0f);

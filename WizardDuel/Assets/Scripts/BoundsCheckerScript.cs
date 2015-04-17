@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class BoundsCheckerScript : MonoBehaviour {
+	public AudioClip deathSound;
 
 	private float camSize;
 	private Vector2 camPos;
@@ -9,9 +10,11 @@ public class BoundsCheckerScript : MonoBehaviour {
 	private bool dead;
 	private float starVel;
 	private GameMonitorScript gm;
+	private AudioSource audioSource;
 
 	// Use this for initialization
 	void Start () {
+		audioSource = gameObject.GetComponent<AudioSource>();
 		cam = gameObject.GetComponentInParent<Camera>();
 		camSize = cam.orthographicSize;
 		camPos = Camera.main.transform.position;
@@ -71,6 +74,7 @@ public class BoundsCheckerScript : MonoBehaviour {
 						{
 							pi.alive = false;
 							Vector2 pos = player.transform.position;
+							audioSource.PlayOneShot(deathSound);
 							GetComponentInChildren<DeathStarsParticles>().Shoot(pos, dir, starVel,
 							                                                    player.GetComponent<PlayerVars>().damageRatio);
 							GameObject.Destroy(player);
@@ -101,6 +105,18 @@ public class BoundsCheckerScript : MonoBehaviour {
 				    (ball.transform.position.y - ball.GetComponent<Collider2D>().bounds.size.y * 2 > camPos.y + camSize))
 				{
 					GameObject.Destroy(ball);
+				}
+			}
+
+			Object[] walls = GameObject.FindGameObjectsWithTag("Platform");
+			foreach (GameObject wall in walls)
+			{
+				if ((wall.transform.position.x > camPos.x + camSize * 2) ||
+				    (wall.transform.position.y + wall.GetComponent<Collider2D>().bounds.size.y * 2 < camPos.y - camSize) ||
+				    (wall.transform.position.x < camPos.x - camSize * 2) ||
+				    (wall.transform.position.y - wall.GetComponent<Collider2D>().bounds.size.y * 2 > camPos.y + camSize))
+				{
+					GameObject.Destroy(wall);
 				}
 			}
 		}

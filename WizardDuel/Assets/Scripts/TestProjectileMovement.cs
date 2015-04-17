@@ -6,12 +6,14 @@ public class TestProjectileMovement : MonoBehaviour {
 	public GameObject explosion;
 	public float force;
 	public Vector2 vel;
+	public AudioClip explosionSound;
 
 	private Rigidbody2D rb;
-
+	private AudioSource audioSouce;
 
 	// Use this for initialization
 	void Start () {
+		audioSouce = gameObject.GetComponent<AudioSource>();
 		rb = gameObject.GetComponent<Rigidbody2D> ();
 		//gameObject.GetComponent<Rigidbody2D>().AddForce(force);
 		rb.velocity = vel;
@@ -24,22 +26,15 @@ public class TestProjectileMovement : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D coll) {
-		if (coll.gameObject.tag == "Explosion")
-		{
-			//Debug.Log("IGNORE ME!");
-
-		}
-		else
-		{
-			GameObject boom = (GameObject)Instantiate(explosion, 
-			                                          transform.position,
-			                                          Quaternion.identity);
-			
-			boom.GetComponent<ExplosionScript>().force = force;
-			
-			// Destroy self
-			GameObject.Destroy(gameObject);
-		}
+		audioSouce.PlayOneShot(explosionSound);
+		GameObject boom = (GameObject)Instantiate(explosion, 
+		                                          transform.position,
+		                                          Quaternion.identity);
+		
+		boom.GetComponent<ExplosionScript>().force = force;
+		
+		// Destroy self
+		GameObject.Destroy(gameObject);
 	}
 	/*void OnTriggerEnter2D (Collider2D coll)
 	{

@@ -5,10 +5,14 @@ public class WallScript : MonoBehaviour {
 	
 	public float breakThreshhold = 150f;
 	public float forceThreshhold = 100f;
+	public AudioClip breakSound;
+
 	bool isWall = true;
 	bool isCollisionDisabled=false;
+	private AudioSource audioSource;
 	// Use this for initialization
 	void Start () {
+		audioSource = gameObject.GetComponent<AudioSource>();
 		this.GetComponent<Rigidbody2D>().isKinematic = true;
 	}
 	
@@ -20,6 +24,7 @@ public class WallScript : MonoBehaviour {
 	{
 		if(!isCollisionDisabled && !isWall)
 		{
+			audioSource.PlayOneShot(breakSound);
 			this.GetComponent<Rigidbody2D>().GetComponent<Collider2D>().isTrigger=true;
 			isCollisionDisabled=true;
 		}
