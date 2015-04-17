@@ -26,6 +26,7 @@ public class PlayerMenuHandler : MonoBehaviour {
 	void Update () {
 		if(!gamePlaying)
 		{
+			Debug.Log(Input.GetButtonDown("AP2"));
 			Debug.Log(player1In + " " + player2In + " " + player3In + " " + player4In);
 			if(Input.GetButtonDown("AP1"))
 			{
