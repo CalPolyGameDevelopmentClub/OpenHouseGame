@@ -16,7 +16,6 @@ public class WallScript : MonoBehaviour {
 		audioSource = gameObject.GetComponent<AudioSource>();
 		this.GetComponent<Rigidbody2D>().isKinematic = true;
 		shatterThreshhold = -breakThreshhold * 2.0f;
-		Debug.Log (shatterThreshhold);
 	}
 	
 	// Update is called once per frame
@@ -44,11 +43,9 @@ public class WallScript : MonoBehaviour {
 			}
 
 			Vector2 force = col.rigidbody.mass * col.rigidbody.velocity / Time.fixedDeltaTime;
-			//		print (col.rigidbody.velocity);
 			if(force.magnitude > forceThreshhold)
 			{
 				breakThreshhold -= force.magnitude;
-				Debug.Log(breakThreshhold);
 				if (breakThreshhold < 0 && isWall ) {
 					isWall = false;
 					Rigidbody2D body = this.GetComponent<Rigidbody2D>();

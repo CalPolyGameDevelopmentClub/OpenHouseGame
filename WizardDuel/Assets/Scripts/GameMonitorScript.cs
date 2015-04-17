@@ -4,8 +4,10 @@ using System.Collections;
 public class GameMonitorScript : MonoBehaviour {
 
 	public ArrayList activePlayers;
+	public int numWins = 3;
 
 	private bool gameOver;
+	private bool gameOverOver;
 	private float gameOverTimer;
 	private PlayerInfo winner;
 
@@ -15,6 +17,8 @@ public class GameMonitorScript : MonoBehaviour {
 	void Start () {
 		activePlayers = new ArrayList();
 		gameOverTimer = 0.0f;
+		gameOver = false;
+		gameOverOver = false;
 	}
 	
 	// Update is called once per frame
@@ -25,9 +29,33 @@ public class GameMonitorScript : MonoBehaviour {
 		}
 		else 
 		{
+			foreach (PlayerInfo p in activePlayers)
+			{
+				if (p.wins >= numWins)
+				{
+					winner = p;
+					gameOverOver = true;
+				}
+			}
 			if (gameOverTimer >= gameOverTime)
 			{
-				newGame();
+				if (gameOverOver)
+				{
+					Debug.Log(winner.playerNum + " WINS!!");
+
+					foreach (PlayerInfo pl in activePlayers)
+					{
+						pl.wins = 0;
+					}
+
+					// Clear map
+					gameOverOver = false;
+					GameObject.FindGameObjectWithTag("MenuManager").gameObject.GetComponent<PlayerMenuHandler>().gamePlaying = false;
+				}
+				else
+				{
+					newGame();
+				}
 			}
 			gameOverTimer += Time.fixedDeltaTime;
 		}
@@ -49,7 +77,7 @@ public class GameMonitorScript : MonoBehaviour {
 		if (numAlivePlayers == 1)
 		{
 			winner.wins++;
-			Debug.Log(winner.playerNum + " WINS!!");
+
 			gameOver = true;
 		}
 	}
@@ -72,6 +100,11 @@ public class GameMonitorScript : MonoBehaviour {
 	public bool isGameOver()
 	{
 		return gameOver;
+	}
+
+	public bool isGameOverOver()
+	{
+		return gameOverOver;
 	}
 
 	public string getWinner()
