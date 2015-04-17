@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\LevelCreator.cs" />
      <Compile Include="Assets\Scripts\PlayerFireScript.cs" />
      <Compile Include="Assets\Scripts\PlayerInfo.cs" />
+     <Compile Include="Assets\Scripts\PlayerMenuHandler.cs" />
      <Compile Include="Assets\Scripts\PlayerMovementScript.cs" />
      <Compile Include="Assets\Scripts\PlayerSlideScript.cs" />
      <Compile Include="Assets\Scripts\PlayerVars.cs" />

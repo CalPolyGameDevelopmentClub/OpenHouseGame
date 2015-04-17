@@ -6,6 +6,7 @@ public class WallScript : MonoBehaviour {
 	public float breakThreshhold = 150f;
 	public float forceThreshhold = 100f;
 	public AudioClip breakSound;
+	public float shatterThreshhold;
 
 	bool isWall = true;
 	bool isCollisionDisabled=false;
@@ -14,6 +15,8 @@ public class WallScript : MonoBehaviour {
 	void Start () {
 		audioSource = gameObject.GetComponent<AudioSource>();
 		this.GetComponent<Rigidbody2D>().isKinematic = true;
+		shatterThreshhold = -breakThreshhold * 2.0f;
+		Debug.Log (shatterThreshhold);
 	}
 	
 	// Update is called once per frame
@@ -25,9 +28,10 @@ public class WallScript : MonoBehaviour {
 		if(!isCollisionDisabled && !isWall)
 		{
 			audioSource.PlayOneShot(breakSound);
-			this.GetComponent<Rigidbody2D>().GetComponent<Collider2D>().isTrigger=true;
+			//this.GetComponent<Rigidbody2D>().GetComponent<Collider2D>().isTrigger=true;
 			isCollisionDisabled=true;
 		}
+	
 	}
 	void OnCollisionEnter2D(Collision2D col)
 	{
@@ -44,12 +48,19 @@ public class WallScript : MonoBehaviour {
 			if(force.magnitude > forceThreshhold)
 			{
 				breakThreshhold -= force.magnitude;
-				if (breakThreshhold < 0) {
+				Debug.Log(breakThreshhold);
+				if (breakThreshhold < 0 && isWall ) {
 					isWall = false;
 					Rigidbody2D body = this.GetComponent<Rigidbody2D>();
 					body.isKinematic = false;
 					body.AddForce(new Vector2(-force.x,force.y));
 					body.AddTorque(Random.Range(-25f,25f));
+				}
+				else if(breakThreshhold < shatterThreshhold)
+				{
+					this.GetComponent<Rigidbody2D>().GetComponent<Collider2D>().isTrigger=true;
+					Destroy(this.GetComponent<Rigidbody2D>());
+					Destroy(gameObject);
 				}
 				else
 				{

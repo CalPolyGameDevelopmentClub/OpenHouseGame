@@ -16,13 +16,17 @@ public class PlayerMenuHandler : MonoBehaviour {
 	public LevelCreator creator;
 	// Use this for initialization
 	void Start () {
-	
+		player1In = false;
+		player2In = false;
+		player3In = false;
+		player4In = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(!gamePlaying)
 		{
+			Debug.Log(player1In + " " + player2In + " " + player3In + " " + player4In);
 			if(Input.GetButtonDown("AP1"))
 			{
 				player1In = true;
@@ -85,8 +89,37 @@ public class PlayerMenuHandler : MonoBehaviour {
 			}
 			if(Input.GetKeyDown(KeyCode.Space))
 			{
+				PlayerInfo addPlayer;
 				gamePlaying = !gamePlaying;
 				creator.loadLevel(creator.testLevel,new bool[]{player1In,player2In,player3In,player4In});
+				if (player1In)
+				{
+					addPlayer = new PlayerInfo();
+					addPlayer.alive = true;
+					addPlayer.playerNum = "P1";
+					GameObject.FindGameObjectWithTag("GameMonitor").gameObject.GetComponent<GameMonitorScript>().activePlayers.Add(addPlayer);
+				}
+				if (player2In)
+				{
+					addPlayer = new PlayerInfo();
+					addPlayer.alive = true;
+					addPlayer.playerNum = "P2";
+					GameObject.FindGameObjectWithTag("GameMonitor").gameObject.GetComponent<GameMonitorScript>().activePlayers.Add(addPlayer);
+				}
+				if (player3In)
+				{
+					addPlayer = new PlayerInfo();
+					addPlayer.alive = true;
+					addPlayer.playerNum = "P3";
+					GameObject.FindGameObjectWithTag("GameMonitor").gameObject.GetComponent<GameMonitorScript>().activePlayers.Add(addPlayer);
+				}
+				if (player4In)
+				{
+					addPlayer = new PlayerInfo();
+					addPlayer.alive = true;
+					addPlayer.playerNum = "P4";
+					GameObject.FindGameObjectWithTag("GameMonitor").gameObject.GetComponent<GameMonitorScript>().activePlayers.Add(addPlayer);
+				}
 			}
 		}
 		if(gamePlaying && transform.position.y > -offset)

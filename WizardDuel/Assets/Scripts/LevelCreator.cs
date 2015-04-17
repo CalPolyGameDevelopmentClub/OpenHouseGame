@@ -32,20 +32,20 @@ public class LevelCreator : MonoBehaviour {
 	};
 	public string[] testLevel ={
 		"#########################",
-		"#          ###          #",
-		"#          ###          #",
-		"#                       #",
-		"#     ###       ###     #",
-		"#     ###       ###     #",
-		"#     ###       ###     #",
-		"#           #           #",
-		"#   1               2   #",
-		"#  ###             ###  #",
-		"#        ## # ##        #",
-		"# 3      ## # ##      4 #",
-		"#####               #####",
-		"#                       #",
-		"     ###############     "};
+		"#     #           #     #",
+		"#  1  #           #  2  #",
+		"#     #           #     #",
+		"#########################",
+		"#     ##   # #   ##     #",
+		"#     # # #   # # #     #",
+		"#######  #     #  #######",
+		"#     # # #   # # #     #",
+		"#     ##   # #   ##     #",
+		"#########################",
+		"#     #           #     #",
+		"#  3  #           #  4  #",
+		"#     #           #     #",
+		"#########################"};
 
 	// Use this for initialization
 	void Start () {
@@ -64,8 +64,8 @@ public class LevelCreator : MonoBehaviour {
 	{
 		this.currPlayers=players;
 		currentLevel=level;
-		int lvWdith = testLevel[0].Length;
-		int lvHeight = testLevel.Length;
+		int lvWdith = level[0].Length;
+		int lvHeight = level.Length;
 		bool[,] lvArray = new bool[lvWdith+2,lvHeight+2];
 		float blockwd=  testSprite.GetComponent<SpriteRenderer>().bounds.size.x;
 		Vector3 mapTopLeft = this.transform.position - new Vector3(blockwd*lvWdith/2, blockwd*lvHeight/2);
@@ -111,7 +111,7 @@ public class LevelCreator : MonoBehaviour {
 					float dx = mapTopLeft.x+x*blockwd;
 					float dy = mapTopLeft.y+ (lvHeight-y)*blockwd + UIOFFSET;
 					GameObject obj = (GameObject)Instantiate(testSprite,new Vector3(dx,dy,0), Quaternion.identity);
-					obj.GetComponent<SpriteRenderer>().sprite=mossSprites[tileTable[tileIdx]];
+					obj.GetComponent<SpriteRenderer>().sprite=iceSprites[tileTable[tileIdx]];
 					currentTiles.Add(obj);
 				}
 			}

@@ -749,13 +749,13 @@ InputManager:
     positiveButton: joystick button 0
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1
+    gravity: 1000
     dead: .00100000005
-    sensitivity: 1
+    sensitivity: 1000
     snap: 0
     invert: 0
     type: 0
-    axis: 8
+    axis: 0
     joyNum: 1
   - serializedVersion: 3
     m_Name: AP2
@@ -765,13 +765,13 @@ InputManager:
     positiveButton: joystick button 0
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1
+    gravity: 1000
     dead: .00100000005
-    sensitivity: 1
+    sensitivity: 1000
     snap: 0
     invert: 0
     type: 0
-    axis: 8
+    axis: 0
     joyNum: 2
   - serializedVersion: 3
     m_Name: AP3
@@ -781,13 +781,13 @@ InputManager:
     positiveButton: joystick button 0
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1
+    gravity: 1000
     dead: .00100000005
-    sensitivity: 1
+    sensitivity: 1000
     snap: 0
     invert: 0
     type: 0
-    axis: 8
+    axis: 0
     joyNum: 3
   - serializedVersion: 3
     m_Name: BP1
@@ -803,8 +803,8 @@ InputManager:
     snap: 0
     invert: 0
     type: 0
-    axis: 8
-    joyNum: 4
+    axis: 0
+    joyNum: 1
   - serializedVersion: 3
     m_Name: BP2
     descriptiveName: 
@@ -813,14 +813,14 @@ InputManager:
     positiveButton: joystick button 1
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1
+    gravity: 1000
     dead: .00100000005
-    sensitivity: 1
+    sensitivity: 1000
     snap: 0
     invert: 0
     type: 0
-    axis: 8
-    joyNum: 4
+    axis: 0
+    joyNum: 2
   - serializedVersion: 3
     m_Name: AP4
     descriptiveName: 
@@ -829,13 +829,13 @@ InputManager:
     positiveButton: joystick button 0
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1
+    gravity: 1000
     dead: .00100000005
-    sensitivity: 1
+    sensitivity: 1000
     snap: 0
     invert: 0
     type: 0
-    axis: 8
+    axis: 0
     joyNum: 4
   - serializedVersion: 3
     m_Name: BP3
@@ -845,14 +845,14 @@ InputManager:
     positiveButton: joystick button 1
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1
+    gravity: 1000
     dead: .00100000005
-    sensitivity: 1
+    sensitivity: 1000
     snap: 0
     invert: 0
     type: 0
-    axis: 8
-    joyNum: 4
+    axis: 0
+    joyNum: 3
   - serializedVersion: 3
     m_Name: BP4
     descriptiveName: 
@@ -861,11 +861,11 @@ InputManager:
     positiveButton: joystick button 1
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1
+    gravity: 1000
     dead: .00100000005
-    sensitivity: 1
+    sensitivity: 1000
     snap: 0
     invert: 0
     type: 0
-    axis: 8
+    axis: 0
     joyNum: 4
