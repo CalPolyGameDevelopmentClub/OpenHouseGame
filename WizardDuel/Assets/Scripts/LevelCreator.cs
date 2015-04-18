@@ -5,6 +5,7 @@ public class LevelCreator : MonoBehaviour {
 	public GameObject testSprite;
 	public GameObject playerGameObject;
 	public int UIOFFSET;
+
 	Sprite[] mossSprites;
 	Sprite[] iceSprites;
 	string[] currentLevel;
