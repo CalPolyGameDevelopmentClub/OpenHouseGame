@@ -15,6 +15,10 @@ public class ProjectileOriginScript : MonoBehaviour {
 	void Start () {
 		gm = GameObject.FindGameObjectWithTag("GameMonitor").gameObject.GetComponent<GameMonitorScript>();
 		vars = gameObject.GetComponentInParent<PlayerVars>();
+		int playerNumber = int.Parse(""+vars.player[1]);
+		Sprite diamondSprite =  Resources.LoadAll<Sprite>(string.Format("New Shooty Things"))[playerNumber-1];
+		transform.GetComponent<SpriteRenderer>().sprite = diamondSprite;
+
 		dirX = 1.0f;
 		dirY = vars.rStickY;
 	}
