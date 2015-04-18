@@ -21,7 +21,7 @@ public class ProjectileOriginScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!gm.isGameOver())
+		if (!gm.isGameOver() && !gm.isGameStart())
 		{
 			float xOff = 0.03f;
 			// Get aim directions
