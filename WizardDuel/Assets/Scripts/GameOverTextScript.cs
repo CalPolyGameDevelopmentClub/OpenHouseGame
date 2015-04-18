@@ -59,10 +59,8 @@ public class GameOverTextScript : MonoBehaviour {
 		}
 		else if (gm.isGameOver())
 		{
-			Debug.Log("GameOver!");
 			if (winner == "P1")
 			{
-				Debug.Log("P1Sprite");
 				sp.sprite = RoundOverP1;
 			}
 			else if (winner == "P2")

@@ -19,7 +19,7 @@ public class DeathStarsParticles : MonoBehaviour {
 
 	public void Shoot(Vector2 pos, Vector2 dir, float vel, float ratio)
 	{
-		float spin = 5000.0f;
+		float spin = 2000.0f;
 		for (int i = 0; i < numStars * (int)ratio + numStars; i++)
 		{
 			GameObject star = (GameObject)Instantiate(particle, 
