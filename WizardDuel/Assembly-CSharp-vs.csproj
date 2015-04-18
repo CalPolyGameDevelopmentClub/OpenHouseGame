@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CrownScript.cs" />
+     <Compile Include="Assets\PressStartAnimation.cs" />
      <Compile Include="Assets\Scripts\BGM_Script.cs" />
      <Compile Include="Assets\Scripts\BoundsCheckerScript.cs" />
      <Compile Include="Assets\Scripts\DamagePercent.cs" />
