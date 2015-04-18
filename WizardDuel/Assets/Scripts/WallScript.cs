@@ -8,6 +8,7 @@ public class WallScript : MonoBehaviour {
 	public AudioClip breakSound;
 	public float shatterThreshhold;
 
+	bool isDead;
 	bool isWall = true;
 	bool isCollisionDisabled=false;
 	private AudioSource audioSource;
@@ -30,6 +31,10 @@ public class WallScript : MonoBehaviour {
 			//this.GetComponent<Rigidbody2D>().GetComponent<Collider2D>().isTrigger=true;
 			isCollisionDisabled=true;
 		}
+		if(isDead)
+		{
+			DestroyImmediate(gameObject);
+		}
 	
 	}
 	void OnCollisionEnter2D(Collision2D col)
@@ -41,8 +46,9 @@ public class WallScript : MonoBehaviour {
 				if(!col.gameObject.GetComponent<PlayerMovementScript>().isFlinching())
 					return;
 			}
-
-			Vector2 force = col.rigidbody.mass * col.rigidbody.velocity / Time.fixedDeltaTime;
+			Vector2 force = Vector2.zero;
+			if(col.rigidbody != null)
+				force = col.rigidbody.mass * col.rigidbody.velocity / Time.fixedDeltaTime;
 			if(force.magnitude > forceThreshhold)
 			{
 				breakThreshhold -= force.magnitude;
@@ -55,9 +61,7 @@ public class WallScript : MonoBehaviour {
 				}
 				else if(breakThreshhold < shatterThreshhold)
 				{
-					this.GetComponent<Rigidbody2D>().GetComponent<Collider2D>().isTrigger=true;
-					Destroy(this.GetComponent<Rigidbody2D>());
-					Destroy(gameObject);
+					isDead=true;
 				}
 				else
 				{
