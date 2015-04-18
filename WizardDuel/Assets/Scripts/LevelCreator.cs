@@ -189,9 +189,7 @@ public class LevelCreator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		loadSprites();
-		levelIndex = 6;
-		
-		
+		levelIndex = Random.Range(0, 8);
 	}
 	
 	
