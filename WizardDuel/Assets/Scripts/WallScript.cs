@@ -75,4 +75,22 @@ public class WallScript : MonoBehaviour {
 			}
 		}
 	}
+
+	public void dramaticFall()
+	{
+		Invoke("DramaFall",Mathf.Abs(transform.position.magnitude)/30.0f);
+	}
+	public void DramaFall() {
+
+		isWall=false;
+
+		Rigidbody2D body = this.GetComponent<Rigidbody2D>();
+		body.isKinematic = false;
+
+		Vector2 force = new Vector2(Random.Range(-20000,20000),Random.Range(-40000,-80000));
+		body.AddForce(new Vector2(-force.x,force.y));
+		body.AddTorque(Random.Range(-25f,25f));
+
+
+	}
 }
