@@ -16,8 +16,8 @@ public class GameMonitorScript : MonoBehaviour {
 	private PlayerInfo winner;
 	private bool gamePlaying;
 
-	private float gameOverTime = 5.0f;
-	private float gameOverOverTime = 7.0f;
+	private float gameOverTime = 4.0f;
+	private float gameOverOverTime = 6.0f;
 	//private float gameStartTime = 3.0f;
 
 	// Use this for initialization
@@ -123,7 +123,8 @@ public class GameMonitorScript : MonoBehaviour {
 						lc.gameObject.GetComponent<LevelCreator>().dramaticExplosion();
 					}
 				}
-				if (gameOverTimer >= gameOverOverTime)
+				if ((gameOverTimer >= gameOverOverTime && gameOverOver) ||
+				    (gameOverTimer >= gameOverTime && gameOver && !gameOverOver))
 				{
 					if (gameOverOver)
 					{

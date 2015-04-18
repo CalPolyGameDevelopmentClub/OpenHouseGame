@@ -1,18 +1,18 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerMenuHandler.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LevelCreator.cs">
     <Files>
-      <File FileName="Assets\Scripts\LevelCreator.cs" Line="11" Column="1" />
+      <File FileName="Assets\Scripts\PlayerMovementScript.cs" Line="372" Column="1" />
+      <File FileName="Assets\Scripts\LevelCreator.cs" Line="119" Column="18" />
       <File FileName="Assets\Scripts\GameMonitorScript.cs" Line="152" Column="17" />
-      <File FileName="Assets\Scripts\PlayerMovementScript.cs" Line="366" Column="1" />
       <File FileName="Assets\Scripts\PlayerFireScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ProjectileOriginScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\PlayerMenuHandler.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\DamagePercent.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\BGM_Script.cs" Line="12" Column="3" />
       <File FileName="Assets\Scripts\TestProjectileMovement.cs" Line="36" Column="3" />
-      <File FileName="Assets\Scripts\ExplosionScript.cs" Line="24" Column="53" />
-      <File FileName="Assets\Scripts\CrownScript.cs" Line="31" Column="65" />
+      <File FileName="Assets\Scripts\WinCountScript.cs" Line="19" Column="1" />
+      <File FileName="Assets\Scripts\GameOverTextScript.cs" Line="19" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

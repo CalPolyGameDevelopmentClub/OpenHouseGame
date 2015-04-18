@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\GameMonitorScript.cs" />
      <Compile Include="Assets\Scripts\GameObjectPhysics.cs" />
      <Compile Include="Assets\Scripts\GameOverTextScript.cs" />
+     <Compile Include="Assets\Scripts\GodScript.cs" />
      <Compile Include="Assets\Scripts\InitScript.cs" />
      <Compile Include="Assets\Scripts\LevelCreator.cs" />
      <Compile Include="Assets\Scripts\PlayerFireScript.cs" />
@@ -67,6 +68,7 @@
      <Compile Include="Assets\Scripts\PlayerVars.cs" />
      <Compile Include="Assets\Scripts\PressStartAnimation.cs" />
      <Compile Include="Assets\Scripts\ProjectileOriginScript.cs" />
+     <Compile Include="Assets\Scripts\ResetScript.cs" />
      <Compile Include="Assets\Scripts\TestProjectileExplostion.cs" />
      <Compile Include="Assets\Scripts\TestProjectileMovement.cs" />
      <Compile Include="Assets\Scripts\UIPlayerInfo.cs" />
