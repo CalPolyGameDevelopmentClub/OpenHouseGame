@@ -7,7 +7,8 @@ public class WallScript : MonoBehaviour {
 	public float forceThreshhold = 100f;
 	public AudioClip breakSound;
 	public float shatterThreshhold;
-
+	public float healthTotal;
+	WallShatterAnimationHandler wallscript;
 	bool isDead;
 	bool isWall = true;
 	bool isCollisionDisabled=false;
@@ -16,7 +17,9 @@ public class WallScript : MonoBehaviour {
 	void Start () {
 		audioSource = gameObject.GetComponent<AudioSource>();
 		this.GetComponent<Rigidbody2D>().isKinematic = true;
-		shatterThreshhold = -breakThreshhold * 2.0f;
+		shatterThreshhold = -breakThreshhold;
+		healthTotal = -shatterThreshhold + breakThreshhold;
+		wallscript=GetComponentInChildren<WallShatterAnimationHandler>();
 	}
 	
 	// Update is called once per frame
@@ -52,6 +55,8 @@ public class WallScript : MonoBehaviour {
 			if(force.magnitude > forceThreshhold)
 			{
 				breakThreshhold -= force.magnitude;
+				int frame = (int)Mathf.Clamp(4-(int)Mathf.Ceil((breakThreshhold - shatterThreshhold)/(healthTotal/4)),0,3);
+				wallscript.setDamage(frame);
 				if (breakThreshhold < 0 && isWall ) {
 					isWall = false;
 					Rigidbody2D body = this.GetComponent<Rigidbody2D>();

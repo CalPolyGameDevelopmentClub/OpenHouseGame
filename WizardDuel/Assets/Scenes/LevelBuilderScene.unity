@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d635bc7213a184ee7acfb408fba0ac86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testSprite: {fileID: 115148, guid: 4877ccf1549674f4cb38631b5a452582, type: 2}
+  testSprite: {fileID: 180610, guid: c4a3403b9b44343e69271ce7b7880b4f, type: 2}
   playerGameObject: {fileID: 144260, guid: fc1606a6d11bb0544860504fd0a3309a, type: 2}
   UIOFFSET: 6
 --- !u!1 &635902815
