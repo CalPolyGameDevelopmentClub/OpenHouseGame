@@ -47,6 +47,10 @@ public class PlayerMovementScript : MonoBehaviour {
 		flinch = false;
 		fTimer = 0;
 		animator = gameObject.GetComponent<Animator>();
+		//switch(vars.player) {
+		//case "P1":
+		//	animator.runtimeAnimatorController.set("Assets");
+		//}
 		isHit = false;
 		slowMo = false;
 	}
@@ -290,8 +294,29 @@ public class PlayerMovementScript : MonoBehaviour {
 		//1 is left idle
 		//2 is right walk
 		//3 is left walk
+		//4 is r jump
+		//5 is l jump
+		//6 is r fall
+		//7 is l fall
+
 		int rand = animator.GetInteger("Direction");
-		if (vars.lStickX == 0) {
+		if (inAir) {
+			if(rb.velocity.y > 0){
+				if(rb.velocity.x > 0) {
+					animator.SetInteger ("Direction", 4);
+				}
+				else 
+					animator.SetInteger ("Direction", 5);
+			}
+			else {
+				if(rb.velocity.x > 0) {
+					animator.SetInteger ("Direction", 6);
+				}
+				else 
+					animator.SetInteger ("Direction", 7);
+			}
+		}
+		else if (vars.lStickX == 0) {
 			if(rand == 2 || rand == 0) {
 				animator.SetInteger ("Direction", 0);
 			}
