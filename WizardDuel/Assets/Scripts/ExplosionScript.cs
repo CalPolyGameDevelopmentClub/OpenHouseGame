@@ -8,21 +8,14 @@ public class ExplosionScript : MonoBehaviour {
 	public float force;
 
 	private float explosionTimer;
-	private float r;
-	private Vector3 scale;
 
 	// Use this for initialization
 	void Start () {
 		explosionTimer = 0;
-		r = (float)gameObject.GetComponent<CircleCollider2D>().radius;
-		scale = gameObject.transform.localScale;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		/*gameObject.GetComponent<CircleCollider2D>().radius = r * (explosionTimer + 1.0f);*/
-		/*gameObject.transform.localScale = scale * (explosionTimer + 1.0f);*/
-
 		explosionTimer += Time.deltaTime;
 
 		if (explosionTimer >= explosionTime)
