@@ -164,7 +164,7 @@ public class PlayerMovementScript : MonoBehaviour {
 				}
 				
 				// Right wall jump
-				else if(rWallCheck.distance == 0)
+				else if(rWallCheck.distance == 0 && rWallCheck.collider.tag == "Platform")
 				{
 					if (rb.velocity.y < 0)
 					{
@@ -183,7 +183,7 @@ public class PlayerMovementScript : MonoBehaviour {
 					jumpCount++;
 				}
 				// Left wall jump
-				else if(lWallCheck.distance == 0)
+				else if(lWallCheck.distance == 0  && lWallCheck.collider.tag == "Platform")
 				{
 					if (rb.velocity.y < 0)
 					{
