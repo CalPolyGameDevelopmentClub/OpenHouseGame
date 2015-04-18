@@ -1195,7 +1195,7 @@ ParticleSystemRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a5d36d6f49fcd4f718d8f10d1742eb8e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1214,7 +1214,7 @@ ParticleSystemRenderer:
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
-  m_SortingFudge: 0
+  m_SortingFudge: -2.4000001
   m_NormalDirection: 1
   m_SortMode: 0
   m_Mesh: {fileID: 0}
