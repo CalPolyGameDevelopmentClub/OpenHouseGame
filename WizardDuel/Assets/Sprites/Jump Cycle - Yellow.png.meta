@@ -1,13 +1,11 @@
 fileFormatVersion: 2
-guid: 14573093b0155fb418734e1fd46655f4
-timeCreated: 1428897510
+guid: c6fefae0edc4df3418f162d08debe167
+timeCreated: 1429338688
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: HEAD_0
-    21300002: HEAD_1
-    21300004: HEAD_2
-    21300006: HEAD_3
+    21300000: Jump Cycle - Yellow_0
+    21300002: Jump Cycle - Yellow_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -53,43 +51,23 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: HEAD_0
+    - name: Jump Cycle - Yellow_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 100
-        height: 100
+        y: 1
+        width: 17
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: HEAD_1
+    - name: Jump Cycle - Yellow_1
       rect:
         serializedVersion: 2
-        x: 100
-        y: 0
-        width: 100
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: HEAD_2
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 0
-        width: 100
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: HEAD_3
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 0
-        width: 100
-        height: 100
+        x: 18
+        y: 1
+        width: 18
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
