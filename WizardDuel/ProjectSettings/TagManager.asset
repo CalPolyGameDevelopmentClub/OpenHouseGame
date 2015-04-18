@@ -16,6 +16,7 @@ TagManager:
   - LevelCreator
   - Sound
   - StartPrompt
+  - MenuManager
   layers:
   - Default
   - TransparentFX
