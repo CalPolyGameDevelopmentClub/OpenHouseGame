@@ -18,10 +18,10 @@ public class WinCountScript : MonoBehaviour {
 		GameMonitorScript gm = GameObject.FindGameObjectWithTag("GameMonitor").GetComponent<GameMonitorScript>();
 		foreach (PlayerInfo pi in gm.activePlayers)
 		{
-			if (pi.playerNum == player)
+			/*if (pi.playerNum == player)
 			{
 				gameObject.GetComponent<Text>().text = pi.wins.ToString();
-			}
+			}*/
 		}
 
 	}

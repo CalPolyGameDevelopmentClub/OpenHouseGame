@@ -5,12 +5,13 @@ public class LevelCreator : MonoBehaviour {
 	public GameObject testSprite;
 	public GameObject playerGameObject;
 	public int UIOFFSET;
-
+	public RuntimeAnimatorController[] playerAnimators;
+	
 	Sprite[] mossSprites;
 	Sprite[] iceSprites;
 	string[] currentLevel;
 	bool[] currPlayers;
-
+	
 	ArrayList currentTiles = new ArrayList();
 	ArrayList currentPlayers = new ArrayList();
 	//Lookup for uldr bstring to tilesheet.
@@ -34,172 +35,169 @@ public class LevelCreator : MonoBehaviour {
 		3
 	};
 	private string[][] levels ={new string[]{
-		"###########   ###########",
-		"                         ",
-		"                         ",
-		"####       ###       ####",
-		"           ###           ",
-		" 3         ###         4 ",
-		"###     1       2     ###",
-		"       ###     ###       ",
-		"                         ",
-		"####                 ####",
-		"#         # # #         #",
-		"#         #   #         #",
-		"    ##    #   #    ##    ",
-		"    ##    #   #    ##    ",
-		"###########   ###########"
-	}, new string[]
-	{
-		"###########   ###########",
-		"                         ",
-		"                         ",
-		"####       ###       ####",
-		"           ###           ",
-		" 3         ###         4 ",
-		"###     1       2     ###",
-		"       ###     ###       ",
-		"                         ",
-		"####                 ####",
-		"#         # # #         #",
-		"#         #   #         #",
-		"    ##    #   #    ##    ",
-		"    ##    #   #    ##    ",
-		"###########   ###########"
-	}, new string[]
-	{
-		"###########   ###########",
-		"                         ",
-		"                         ",
-		"####       ###       ####",
-		"           ###           ",
-		" 3         ###         4 ",
-		"###                   ###",
-		"        1       2        ",
-		"       ###     ###       ",
-		"####                 ####",
-		"#         # # #         #",
-		"#         #   #         #",
-		"    ##    #   #    ##    ",
-		"    ##    #   #    ##    ",
-		"###########   ###########"
-	}, new string[]
-	{
-		"###########   ###########",
-		"                         ",
-		"                         ",
-		"####       ###       ####",
-		"           ###           ",
-		" 3         ###         4 ",
-		"###     1       2     ###",
-		"       ###     ###       ",
-		"                         ",
-		"####                 ####",
-		"#         # # #         #",
-		"#         #   #         #",
-		"    ##    #   #    ##    ",
-		"    ##    #   #    ##    ",
-		"###########   ###########"
-	}, new string[]
-	{
-		"###########   ###########",
-		"                         ",
-		"                         ",
-		"####       ###       ####",
-		"           ###           ",
-		" 3         ###         4 ",
-		"###     1       2     ###",
-		"       ###     ###       ",
-		"                         ",
-		"####                 ####",
-		"#         # # #         #",
-		"#         #   #         #",
-		"    ##    #   #    ##    ",
-		"    ##    #   #    ##    ",
-		"###########   ###########"
-	},new string[]
-	{
-		"###########   ###########",
-		"                         ",
-		"                         ",
-		"####       ###       ####",
-		"           ###           ",
-		"#3         ###         4#",
-		"###     1       2     ###",
-		"       ###     ###       ",
-		"                         ",
-		"####                 ####",
-		"#         # # #         #",
-		"#         #   #         #",
-		"    ##    #   #    ##    ",
-		"    ##    #   #    ##    ",
-		"###########   ###########"
-	},new string[]
-	{   "###########################",
-		"#                         #",
-	    "#                         #",
-		"#	1                   2   #",
-		"#####     3     4     #####",
-	    "#####    ###   ###    #####",
-		"    ####           ####    ",
-		"    ####           ####    ",
-	    "      ###         ###      ",
-	    "      ###         ###      ",
-	    "        ##       ##        ",
-	    "        ##       ##        ",
-		"         ##     ##         ",
-	    "  ####    ##   ##    ####  ",
-	    "   ##        #        ##   "
-	},new string[]
-	{
-		"###########   ###########",
-		"#                       #",
-		"# 3                   4 #",
-		"####                 ####",
-		"                         ",
-		"                         ",
-		"###               # 2 #  ",
-		"   # 1#  #####    #####  ",
-		"   ####           #####  ",
-		"   ####            ###   ",
-		"    ##    #####    ###   ",
-		"    ##    # # #    ###   ",
-		"    ##    #####    ###   ",
-		"    ##    #####    ###   ",
-		"#########################"
-	},new string[]
-	{
-		"###########   ###########",
-		"#                       #",
-		"#                       #",
-		"#          ####         #",
-		"#       1        2      #",
-		"       ###  ##  ###      ",
-		"           ####          ",
-		"        3  ####  4       ",
-		"       ###  ##  ###      ",
-		"#####               #####",
-		"           ####          ",
-		"    ##             ##    ",
-		"    ##             ##    ",
-		"###########   ###########"
-	}};
+			"###########   ###########",
+			"                         ",
+			"                         ",
+			"####       ###       ####",
+			"           ###           ",
+			"#3         ###         4#",
+			"###     1       2     ###",
+			"       ###     ###       ",
+			"                         ",
+			"####                 ####",
+			"#         # # #         #",
+			"#         #   #         #",
+			"    ##    #   #    ##    ",
+			"    ##    #   #    ##    ",
+			"###########   ###########"
+		}, new string[]
+		{
+			"#           #           #",
+			"#           #           #",
+			"#           #           #",
+			"#           #           #",
+			"#           #           #",
+			"#           #           #",
+			"#   1               2   #",
+			"#  ###  ###   ###  ###  #",
+			"#           #           #",
+			"#     3     #     4     #",
+			"#    ###   ###   ###    #",
+			"#           #           #",
+			"#           #           #",
+			"#                       #",
+			"#    ##   #####   ##    #"
+		}, new string[]
+		{
+			"#########################",
+			"#########################",
+			"#########################",
+			"##                     ##",
+			"##             4       ##",
+			"##       3    ###      ##",
+			"##      ###            ##",
+			"##            2        ##",
+			"##      1    ###       ##",
+			"##     ###             ##",
+			"##                     ##",
+			"##                     ##",
+			"#########################",
+			"#########################",
+			"#########################"
+		}, new string[]
+		{
+			"#########################",
+			"#          ###          #",
+			"#          ###          #",
+			"#                       #",
+			"#          ###          #",
+			"#   1      ###      2   #",
+			"#  ###             ###  #",
+			"#                       #",
+			"#                       #",
+			"         ## # ##         ",
+			"  3      ## # ##      4  ",
+			"#####               #####",
+			"#                       #",
+			"     ###############     "
+		}, new string[]
+		{
+			"#########################",
+			"#           #           #",
+			"#     3     #     2     #",
+			"#     #     #     #     #",
+			"#     #     #     #     #",
+			"#           #           #",
+			"#           #           #",
+			"#########################",
+			"#           #           #",
+			"#     4     #     1     #",
+			"#     #     #     #     #",
+			"#     #     #     #     #",
+			"#           #           #",
+			"#           #           #",
+			"#########################"
+		},new string[]
+		{
+			"            #            ",
+			"#         #####         #",
+			"# 1         #         3 #",
+			"# ##  #############  ## #",
+			"    ###           ###    ",
+			"      #           #      ",
+			"      #    ###    #      ",
+			"#######    ###    ###### ",
+			"      #    ###    #      ",
+			"#     #           #     #",
+			"# 2 ###           ### 4 #",
+			"# ##  #############  ## #",
+			"            #            ",
+			"###    ###########    ###",
+			"            #            "
+		},new string[]
+		{   "###########################",
+			"#                         #",
+			"#                         #",
+			"#  1                   2  #",
+			"#####     3     4     #####",
+			"#####    ###   ###    #####",
+			"    ####           ####    ",
+			"    ####           ####    ",
+			"      ###         ###      ",
+			"      ###         ###      ",
+			"        ##       ##        ",
+			"        ##       ##        ",
+			"         ##     ##         ",
+			"  ####    ##   ##    ####  ",
+			"   ##        #        ##   "
+		},new string[]
+		{
+			"###########   ###########",
+			"#                       #",
+			"# 3                   4 #",
+			"####                 ####",
+			"                         ",
+			"                         ",
+			"###               # 2 #  ",
+			"   # 1#  #####    #####  ",
+			"   ####           #####  ",
+			"   ####            ###   ",
+			"    ##    #####    ###   ",
+			"    ##    # # #    ###   ",
+			"    ##    #####    ###   ",
+			"    ##    #####    ###   ",
+			"#########################"
+		},new string[]
+		{
+			"###########   ###########",
+			"#                       #",
+			"#                       #",
+			"#          ####         #",
+			"#       1        2      #",
+			"       ###  ##  ###      ",
+			"           ####          ",
+			"        3  ####  4       ",
+			"       ###  ##  ###      ",
+			"#####               #####",
+			"           ####          ",
+			"    ##             ##    ",
+			"    ##             ##    ",
+			"###########   ###########"
+		}};
 	int levelIndex;
-
+	
 	// Use this for initialization
 	void Start () {
 		loadSprites();
-		levelIndex = 6;
-
-
+		levelIndex = Random.Range(0, 8);
 	}
-
+	
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
 	}
-
+	
 	public void loadLevel(string[] level, bool[] players)
 	{
 		Debug.Log("Loading level " + levelIndex);
@@ -207,7 +205,7 @@ public class LevelCreator : MonoBehaviour {
 		currentLevel=level;
 		int lvWdith = level[0].Length;
 		int lvHeight = level.Length;
-
+		
 		bool[,] lvArray = new bool[lvWdith+2,lvHeight+2];
 		float blockwd=  testSprite.GetComponent<SpriteRenderer>().bounds.size.x;
 		Vector3 mapTopLeft = this.transform.position - new Vector3(blockwd*lvWdith/2, blockwd*lvHeight/2);
@@ -217,11 +215,11 @@ public class LevelCreator : MonoBehaviour {
 			for(int x = 0; x < lvWdith; x++)
 			{
 				int player;
-					if(level[y][x] == '#')
+				if(level[y][x] == '#')
 				{
 					lvArray[x+1,y+1] = true;
 				}
-
+				
 				else if(int.TryParse(""+level[y][x], out player)){
 					if(players[player-1])
 					{
@@ -229,8 +227,8 @@ public class LevelCreator : MonoBehaviour {
 						float dy = mapTopLeft.y+ (lvHeight-(y+1))*blockwd + UIOFFSET;
 						GameObject obj = (GameObject)Instantiate(playerGameObject,new Vector3(dx,dy,0), Quaternion.identity);
 						obj.GetComponent<PlayerVars>().player="P"+player;
-						/* SET ANIMATOR HERE!!*/
-						obj.GetComponent<Animator>(); 
+						
+						obj.GetComponent<Animator>().runtimeAnimatorController = playerAnimators[player - 1]; 
 						currentPlayers.Add (obj);
 					}
 				}
@@ -261,13 +259,13 @@ public class LevelCreator : MonoBehaviour {
 			}
 		}
 	}
-
+	
 	public void reset()
 	{
 		clear();
 		loadLevel(levels[(++levelIndex)%levels.Length],currPlayers);
 	}
-
+	
 	public void clear()
 	{
 		foreach(Object o in currentTiles)
@@ -289,14 +287,14 @@ public class LevelCreator : MonoBehaviour {
 				obj.GetComponent<WallScript>().dramaticFall();
 			}
 		}
-
+		
 	}
-
+	
 	void loadSprites()
 	{
 		iceSprites = Resources.LoadAll<Sprite>(string.Format("blocks"));
 		mossSprites = Resources.LoadAll<Sprite>(string.Format("stone blocks"));
-
+		
 	}
 	public string[] getLevel()
 	{
