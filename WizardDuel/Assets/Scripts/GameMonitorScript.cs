@@ -44,7 +44,7 @@ public class GameMonitorScript : MonoBehaviour {
 					if (child.gameObject.name == "StartText")
 					{
 						child.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
-						child.gameObject.GetComponent<Transform>().localScale = new Vector3(7f, 7f, 7f);
+						child.gameObject.GetComponent<Transform>().localScale = new Vector3(6f, 6f, 6f);
 						child.gameObject.GetComponent<SpriteRenderer>().sprite = startSprites[2];
 					}
 				}
@@ -57,7 +57,7 @@ public class GameMonitorScript : MonoBehaviour {
 					if (child.gameObject.name == "StartText")
 					{
 						child.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
-						child.gameObject.GetComponent<Transform>().localScale = new Vector3(8f, 8f, 8f);
+						child.gameObject.GetComponent<Transform>().localScale = new Vector3(7f, 7f, 7f);
 						child.gameObject.GetComponent<SpriteRenderer>().sprite = startSprites[1];
 					}
 				}
@@ -70,7 +70,7 @@ public class GameMonitorScript : MonoBehaviour {
 					if (child.gameObject.name == "StartText")
 					{
 						child.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
-						child.gameObject.GetComponent<Transform>().localScale = new Vector3(9f, 9f, 9f);
+						child.gameObject.GetComponent<Transform>().localScale = new Vector3(8f, 8f, 8f);
 						child.gameObject.GetComponent<SpriteRenderer>().sprite = startSprites[0];
 					}
 				}
@@ -83,7 +83,7 @@ public class GameMonitorScript : MonoBehaviour {
 					if (child.gameObject.name == "StartText")
 					{
 						child.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
-						child.gameObject.GetComponent<Transform>().localScale = new Vector3(10f, 10f, 10f);
+						child.gameObject.GetComponent<Transform>().localScale = new Vector3(9f, 9f, 9f);
 						child.gameObject.GetComponent<SpriteRenderer>().sprite = startSprites[3];
 					}
 				}

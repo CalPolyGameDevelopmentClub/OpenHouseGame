@@ -124,7 +124,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22405288, guid: bd233c12c0192d34192c2d19ab0086e5, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 22405288, guid: bd233c12c0192d34192c2d19ab0086e5, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -481,8 +481,8 @@ RectTransform:
   m_Children:
   - {fileID: 1683622752}
   - {fileID: 741030910}
-  - {fileID: 1881630546}
   - {fileID: 152562774}
+  - {fileID: 1881630546}
   m_Father: {fileID: 1166738026}
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 0}
@@ -719,22 +719,23 @@ Prefab:
     - target: {fileID: 11464080, guid: a6bd2a3b65eb48a41b84ad9cda354282, type: 2}
       propertyPath: startSprites.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: c42851d3880445b40966f10a3e6e08e1,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 11464080, guid: a6bd2a3b65eb48a41b84ad9cda354282, type: 2}
       propertyPath: startSprites.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 48b1df090ee01504bb92963b5c72eb87,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 11464080, guid: a6bd2a3b65eb48a41b84ad9cda354282, type: 2}
       propertyPath: startSprites.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: 90e6fa8e62626104a9a96540ae953c6e,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 11464080, guid: a6bd2a3b65eb48a41b84ad9cda354282, type: 2}
       propertyPath: startSprites.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: 86a4b8708c2c44045865eff75faf3553,
+      objectReference: {fileID: 0}
+    - target: {fileID: 11464080, guid: a6bd2a3b65eb48a41b84ad9cda354282, type: 2}
+      propertyPath: startText
+      value: 
+      objectReference: {fileID: 21300000, guid: be40e192f3caa244bb304627f65599d8,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6bd2a3b65eb48a41b84ad9cda354282, type: 2}
@@ -1249,7 +1250,7 @@ Transform:
 RectTransform:
   m_PrefabParentObject: {fileID: 22405288, guid: bd233c12c0192d34192c2d19ab0086e5,
     type: 2}
-  m_PrefabInternal: {fileID: 1893952633}
+  m_PrefabInternal: {fileID: 1881893779}
 --- !u!1001 &1881630545
 Prefab:
   m_ObjectHideFlags: 0
@@ -1287,7 +1288,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22405288, guid: bd233c12c0192d34192c2d19ab0086e5, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 22405288, guid: bd233c12c0192d34192c2d19ab0086e5, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -1362,7 +1363,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 22405288, guid: bd233c12c0192d34192c2d19ab0086e5,
     type: 2}
   m_PrefabInternal: {fileID: 1881630545}
---- !u!1001 &1893952633
+--- !u!1001 &1881893779
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1440,15 +1441,6 @@ Prefab:
     - target: {fileID: 22405288, guid: bd233c12c0192d34192c2d19ab0086e5, type: 2}
       propertyPath: m_Pivot.y
       value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11421532, guid: bd233c12c0192d34192c2d19ab0086e5, type: 2}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 4a52991b66c727b4994b2777be61f3e3,
-        type: 3}
-    - target: {fileID: 11421532, guid: bd233c12c0192d34192c2d19ab0086e5, type: 2}
-      propertyPath: m_FontData.m_FontStyle
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd233c12c0192d34192c2d19ab0086e5, type: 2}
