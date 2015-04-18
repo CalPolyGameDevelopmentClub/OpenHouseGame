@@ -317,11 +317,14 @@ public class PlayerMovementScript : MonoBehaviour {
 			}
 		}
 		else if (vars.lStickX == 0) {
-			if(rand == 2 || rand == 0) {
+			if(rand % 2 == 0 || rand == 0) {
 				animator.SetInteger ("Direction", 0);
 			}
-			else if(rand == 3 || rand == 1) {
+			else if(rand % 2 == 1 || rand == 1) {
 				animator.SetInteger ("Direction", 1);
+			}
+			else {
+				animator.SetInteger("Direction",0);
 			}
 		}
 		else {
@@ -330,6 +333,9 @@ public class PlayerMovementScript : MonoBehaviour {
 			}
 			else if(vars.lStickX < 0.0f) {
 				animator.SetInteger ("Direction", 3);
+			}
+			else {
+				animator.SetInteger("Direction",0);
 			}
 		}
 
