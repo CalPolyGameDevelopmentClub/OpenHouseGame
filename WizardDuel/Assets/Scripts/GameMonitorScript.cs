@@ -77,6 +77,9 @@ public class GameMonitorScript : MonoBehaviour {
 		if (numAlivePlayers == 1)
 		{
 			winner.wins++;
+		
+			Camera.main.transform.Find("Canvas").transform.Find("UI"+winner.playerNum).GetComponent<UIPlayerInfo>().addCrown();
+		
 
 			gameOver = true;
 		}
