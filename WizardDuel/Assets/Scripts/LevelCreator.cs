@@ -10,6 +10,7 @@ public class LevelCreator : MonoBehaviour {
 	Sprite[] iceSprites;
 	string[] currentLevel;
 	bool[] currPlayers;
+
 	ArrayList currentTiles = new ArrayList();
 	//Lookup for uldr bstring to tilesheet.
 	int[] tileTable=
@@ -31,7 +32,41 @@ public class LevelCreator : MonoBehaviour {
 		0,
 		3
 	};
-	private string[] testLevel ={
+	private string[][] levels ={new string[]{
+		"###########   ###########",
+		"                         ",
+		"                         ",
+		"####       ###       ####",
+		"           ###           ",
+		" 3         ###         4 ",
+		"###     1       2     ###",
+		"       ###     ###       ",
+		"                         ",
+		"####                 ####",
+		"#         # # #         #",
+		"#         #   #         #",
+		"    ##    #   #    ##    ",
+		"    ##    #   #    ##    ",
+		"###########   ###########"
+	}, new string[]
+	{
+		"###########   ###########",
+		"                         ",
+		"                         ",
+		"####       ###       ####",
+		"           ###           ",
+		" 3         ###         4 ",
+		"###     1       2     ###",
+		"       ###     ###       ",
+		"                         ",
+		"####                 ####",
+		"#         # # #         #",
+		"#         #   #         #",
+		"    ##    #   #    ##    ",
+		"    ##    #   #    ##    ",
+		"###########   ###########"
+	}, new string[]
+	{
 		"###########   ###########",
 		"                         ",
 		"                         ",
@@ -46,11 +81,114 @@ public class LevelCreator : MonoBehaviour {
 		"#         #   #         #",
 		"    ##    #   #    ##    ",
 		"    ##    #   #    ##    ",
-		"###########   ###########"};
+		"###########   ###########"
+	}, new string[]
+	{
+		"###########   ###########",
+		"                         ",
+		"                         ",
+		"####       ###       ####",
+		"           ###           ",
+		" 3         ###         4 ",
+		"###     1       2     ###",
+		"       ###     ###       ",
+		"                         ",
+		"####                 ####",
+		"#         # # #         #",
+		"#         #   #         #",
+		"    ##    #   #    ##    ",
+		"    ##    #   #    ##    ",
+		"###########   ###########"
+	}, new string[]
+	{
+		"###########   ###########",
+		"                         ",
+		"                         ",
+		"####       ###       ####",
+		"           ###           ",
+		" 3         ###         4 ",
+		"###     1       2     ###",
+		"       ###     ###       ",
+		"                         ",
+		"####                 ####",
+		"#         # # #         #",
+		"#         #   #         #",
+		"    ##    #   #    ##    ",
+		"    ##    #   #    ##    ",
+		"###########   ###########"
+	},new string[]
+	{
+		"###########   ###########",
+		"                         ",
+		"                         ",
+		"####       ###       ####",
+		"           ###           ",
+		" 3         ###         4 ",
+		"###     1       2     ###",
+		"       ###     ###       ",
+		"                         ",
+		"####                 ####",
+		"#         # # #         #",
+		"#         #   #         #",
+		"    ##    #   #    ##    ",
+		"    ##    #   #    ##    ",
+		"###########   ###########"
+	},new string[]
+	{   "###########################",
+		"#                         #",
+	    "#                         #",
+		"#	1      3     4      2   #",
+		"#####    ###   ###    #####",
+	    "#####                 #####",
+		"    ####           ####    ",
+		"    ####           ####    ",
+	    "      ###         ###      ",
+	    "      ###         ###      ",
+	    "        ##       ##        ",
+	    "        ##       ##        ",
+		"         ##     ##         ",
+	    "  ####    ##   ##    ####  ",
+	    "   ##        #        ##   "
+	},new string[]
+	{
+		"###########   ###########",
+		"#                       #",
+		"# 3                   4 #",
+		"####                 ####",
+		"                         ",
+		"                         ",
+		"###               # 2 #  ",
+		"   # 1#  #####    #####  ",
+		"   ####           #####  ",
+		"   ####            ###   ",
+		"    ##    #####    ###   ",
+		"    ##    # # #    ###   ",
+		"    ##    #####    ###   ",
+		"    ##    #####    ###   ",
+		"#########################"
+	},new string[]
+	{
+		"###########   ###########",
+		"#                       #",
+		"#                       #",
+		"#          ####         #",
+		"#       1        2      #",
+		"       ###  ##  ###      ",
+		"           ####          ",
+		"        3  ####  4       ",
+		"       ###  ##  ###      ",
+		"#####               #####",
+		"           ####          ",
+		"    ##             ##    ",
+		"    ##             ##    ",
+		"###########   ###########"
+	}};
+	int levelIndex;
 
 	// Use this for initialization
 	void Start () {
 		loadSprites();
+		levelIndex = 6;
 
 
 	}
@@ -63,10 +201,12 @@ public class LevelCreator : MonoBehaviour {
 
 	public void loadLevel(string[] level, bool[] players)
 	{
+		Debug.Log("Loading level " + levelIndex);
 		this.currPlayers=players;
 		currentLevel=level;
 		int lvWdith = level[0].Length;
 		int lvHeight = level.Length;
+		Debug.Log(lvWdith + " " + lvHeight);
 		bool[,] lvArray = new bool[lvWdith+2,lvHeight+2];
 		float blockwd=  testSprite.GetComponent<SpriteRenderer>().bounds.size.x;
 		Vector3 mapTopLeft = this.transform.position - new Vector3(blockwd*lvWdith/2, blockwd*lvHeight/2);
@@ -76,6 +216,7 @@ public class LevelCreator : MonoBehaviour {
 			for(int x = 0; x < lvWdith; x++)
 			{
 				int player;
+				Debug.Log(x + " " + y);
 				if(level[y][x] == '#')
 				{
 					lvArray[x+1,y+1] = true;
@@ -125,7 +266,7 @@ public class LevelCreator : MonoBehaviour {
 		{
 			DestroyImmediate(o);
 		}
-		loadLevel(currentLevel,currPlayers);
+		loadLevel(levels[(++levelIndex)%levels.Length],currPlayers);
 	}
 	void loadSprites()
 	{
@@ -135,6 +276,6 @@ public class LevelCreator : MonoBehaviour {
 	}
 	public string[] getLevel()
 	{
-		return testLevel;
+		return levels[levelIndex];
 	}
 }
