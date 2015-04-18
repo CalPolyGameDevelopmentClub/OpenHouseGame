@@ -71,7 +71,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -143,6 +143,8 @@ MonoBehaviour:
   breakThreshhold: 30000
   forceThreshhold: 8000
   breakSound: {fileID: 8300000, guid: e78df528965989d4c888b7a7a717b844, type: 3}
+  shatterThreshhold: 0
+  healthTotal: 0
 --- !u!212 &21202388
 SpriteRenderer:
   m_ObjectHideFlags: 1
