@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4eed1e0dc6aa7545879fb7d25a4e9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crownObject: {fileID: 102932, guid: c8a56b7dc4ea44e159c805f03802687c, type: 2}
+  crownObject: {fileID: 140664, guid: c8a56b7dc4ea44e159c805f03802687c, type: 2}
   player: P1
 --- !u!114 &11479576
 MonoBehaviour:
