@@ -46,8 +46,9 @@ public class WallScript : MonoBehaviour {
 				if(!col.gameObject.GetComponent<PlayerMovementScript>().isFlinching())
 					return;
 			}
-
-			Vector2 force = col.rigidbody.mass * col.rigidbody.velocity / Time.fixedDeltaTime;
+			Vector2 force = Vector2.zero;
+			if(col.rigidbody != null)
+				force = col.rigidbody.mass * col.rigidbody.velocity / Time.fixedDeltaTime;
 			if(force.magnitude > forceThreshhold)
 			{
 				breakThreshhold -= force.magnitude;
