@@ -46,10 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CrownScript.cs" />
-     <Compile Include="Assets\PressStartAnimation.cs" />
      <Compile Include="Assets\Scripts\BGM_Script.cs" />
      <Compile Include="Assets\Scripts\BoundsCheckerScript.cs" />
+     <Compile Include="Assets\Scripts\CrownScript.cs" />
      <Compile Include="Assets\Scripts\DamagePercent.cs" />
      <Compile Include="Assets\Scripts\DeathStarsParticles.cs" />
      <Compile Include="Assets\Scripts\DeathX.cs" />
@@ -66,6 +65,7 @@
      <Compile Include="Assets\Scripts\PlayerMovementScript.cs" />
      <Compile Include="Assets\Scripts\PlayerSlideScript.cs" />
      <Compile Include="Assets\Scripts\PlayerVars.cs" />
+     <Compile Include="Assets\Scripts\PressStartAnimation.cs" />
      <Compile Include="Assets\Scripts\ProjectileOriginScript.cs" />
      <Compile Include="Assets\Scripts\TestProjectileExplostion.cs" />
      <Compile Include="Assets\Scripts\TestProjectileMovement.cs" />
