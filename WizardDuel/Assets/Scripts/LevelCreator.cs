@@ -5,6 +5,7 @@ public class LevelCreator : MonoBehaviour {
 	public GameObject testSprite;
 	public GameObject playerGameObject;
 	public int UIOFFSET;
+	public Animator[] playerAnimators;
 
 	Sprite[] mossSprites;
 	Sprite[] iceSprites;
@@ -229,7 +230,7 @@ public class LevelCreator : MonoBehaviour {
 						float dy = mapTopLeft.y+ (lvHeight-(y+1))*blockwd + UIOFFSET;
 						GameObject obj = (GameObject)Instantiate(playerGameObject,new Vector3(dx,dy,0), Quaternion.identity);
 						obj.GetComponent<PlayerVars>().player="P"+player;
-						/* SET ANIMATOR HERE!!*/
+
 						obj.GetComponent<Animator>(); 
 						currentPlayers.Add (obj);
 					}
