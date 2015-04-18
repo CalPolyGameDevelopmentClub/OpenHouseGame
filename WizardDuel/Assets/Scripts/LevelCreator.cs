@@ -12,6 +12,7 @@ public class LevelCreator : MonoBehaviour {
 	bool[] currPlayers;
 
 	ArrayList currentTiles = new ArrayList();
+	ArrayList currentPlayers = new ArrayList();
 	//Lookup for uldr bstring to tilesheet.
 	int[] tileTable=
 	{
@@ -229,7 +230,7 @@ public class LevelCreator : MonoBehaviour {
 						float dy = mapTopLeft.y+ (lvHeight-(y+1))*blockwd + UIOFFSET;
 						GameObject obj = (GameObject)Instantiate(playerGameObject,new Vector3(dx,dy,0), Quaternion.identity);
 						obj.GetComponent<PlayerVars>().player="P"+player;
-						currentTiles.Add (obj);
+						currentPlayers.Add (obj);
 					}
 				}
 			}
@@ -262,12 +263,33 @@ public class LevelCreator : MonoBehaviour {
 
 	public void reset()
 	{
+		clear();
+		loadLevel(levels[(++levelIndex)%levels.Length],currPlayers);
+	}
+
+	public void clear()
+	{
 		foreach(Object o in currentTiles)
 		{
 			DestroyImmediate(o);
 		}
-		loadLevel(levels[(++levelIndex)%levels.Length],currPlayers);
+		foreach(Object o in currentPlayers)
+		{
+			DestroyImmediate(o);
+		}
 	}
+	public void dramaticExplosion()
+	{
+		foreach(Object o in currentTiles)
+		{
+			if(o != null)
+			{
+				GameObject obj = (GameObject) o;
+				obj.GetComponent<WallScript>().dramaticFall();
+			}
+		}
+	}
+
 	void loadSprites()
 	{
 		iceSprites = Resources.LoadAll<Sprite>(string.Format("blocks"));

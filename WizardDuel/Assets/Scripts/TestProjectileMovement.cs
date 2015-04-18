@@ -34,6 +34,10 @@ public class TestProjectileMovement : MonoBehaviour {
 		boom.GetComponent<ExplosionScript>().force = force;
 		
 		// Destroy self
+		Transform PE = transform.Find("FireballSystem");
+		PE.GetComponent<ParticleSystem>().Stop();
+		PE.transform.parent = null;
+		Destroy(PE.gameObject, 1.0f);
 		GameObject.Destroy(gameObject);
 	}
 	/*void OnTriggerEnter2D (Collider2D coll)

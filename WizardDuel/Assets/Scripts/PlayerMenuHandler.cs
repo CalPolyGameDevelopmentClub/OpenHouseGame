@@ -233,10 +233,15 @@ public class PlayerMenuHandler : MonoBehaviour {
 		{
 			transform.Translate(new Vector3(0f,-speed,0f));
 		}
-		else if(!gamePlaying && transform.position.y < 0)
+		else
 		{
-			transform.Translate(new Vector3(0f,speed,0f));
+			if(!gamePlaying && transform.localPosition.y < 0)
+			{
+				transform.Translate(new Vector3(0f,speed,0f));
+			}
+
 		}
+
 	}
 	void updatePlayer(int player)
 	{
