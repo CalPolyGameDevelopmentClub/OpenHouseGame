@@ -5,7 +5,7 @@ public class LevelCreator : MonoBehaviour {
 	public GameObject testSprite;
 	public GameObject playerGameObject;
 	public int UIOFFSET;
-	public Animator[] playerAnimators;
+	public RuntimeAnimatorController[] playerAnimators;
 
 	Sprite[] mossSprites;
 	Sprite[] iceSprites;
@@ -231,7 +231,7 @@ public class LevelCreator : MonoBehaviour {
 						GameObject obj = (GameObject)Instantiate(playerGameObject,new Vector3(dx,dy,0), Quaternion.identity);
 						obj.GetComponent<PlayerVars>().player="P"+player;
 
-						obj.GetComponent<Animator>(); 
+						obj.GetComponent<Animator>().runtimeAnimatorController = playerAnimators[player - 1]; 
 						currentPlayers.Add (obj);
 					}
 				}
