@@ -54,6 +54,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &178256
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22472222}
+  - 222: {fileID: 22299438}
+  - 114: {fileID: 11405044}
+  m_Layer: 5
+  m_Name: Percent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &182728
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +107,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &11405044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 6b3d3a0b69a3339479dd18ccacc242ad, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &11417566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,6 +139,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 649bb581ea3f8814b9ce716fb2777b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  white: {fileID: 21300000, guid: 6b3d3a0b69a3339479dd18ccacc242ad, type: 3}
+  yellow: {fileID: 21300000, guid: 0467a7d3f6f5e4846a315433cdd8daac, type: 3}
+  red: {fileID: 21300000, guid: eebffe62e5149aa4fbab497712987f18, type: 3}
 --- !u!114 &11419978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,9 +167,9 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 4a52991b66c727b4994b2777be61f3e3, type: 3}
     m_FontSize: 30
-    m_FontStyle: 3
+    m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -202,6 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4eed1e0dc6aa7545879fb7d25a4e9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crownObject: {fileID: 102932, guid: c8a56b7dc4ea44e159c805f03802687c, type: 2}
   player: P1
 --- !u!114 &11479576
 MonoBehaviour:
@@ -253,6 +295,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106270}
+--- !u!222 &22299438
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178256}
 --- !u!224 &22405288
 RectTransform:
   m_ObjectHideFlags: 1
@@ -271,7 +319,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 55, y: 65}
+  m_AnchoredPosition: {x: 91, y: 91}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22424336
@@ -300,13 +348,31 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 22472222}
   m_Father: {fileID: 22405288}
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -247, y: -281}
+  m_AnchoredPosition: {x: -264.799988, y: -281}
   m_SizeDelta: {x: 160, y: 70}
+  m_Pivot: {x: .5, y: .5}
+--- !u!224 &22472222
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 178256}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: .302607268, y: .302607417, z: .302607417}
+  m_Children: []
+  m_Father: {fileID: 22459930}
+  m_RootOrder: 0
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 34.3999939, y: 19.1000061}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22486682
 RectTransform:

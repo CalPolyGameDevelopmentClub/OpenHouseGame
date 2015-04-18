@@ -27,8 +27,8 @@ public class CrownScript : MonoBehaviour {
 			lerpTime+=Time.deltaTime ;
 			float iter  = interp(lerpTime * 2.718f);
 			transform.localPosition = Vector3.Lerp(startPosition,targPosition,iter);
-			transform.localRotation = Quaternion.Slerp(startAngle,targAngle,iter);
-			transform.GetComponent<CanvasRenderer>().SetAlpha(lerpTime);
+			transform.localRotation = Quaternion.Slerp(targAngle,startAngle,iter);
+			transform.GetComponent<CanvasRenderer>().SetAlpha(lerpTime * 0.6f);
 		}
 	}
 }

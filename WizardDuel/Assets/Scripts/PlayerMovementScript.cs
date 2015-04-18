@@ -58,7 +58,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (!gm.isGameOver())
+		if (!gm.isGameOver() && !gm.isGameStart())
 		{
 			slowMo = false;
 			float lJoyX = vars.lStickX;

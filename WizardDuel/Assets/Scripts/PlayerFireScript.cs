@@ -31,7 +31,7 @@ public class PlayerFireScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (!gm.isGameOver())
+		if (!gm.isGameOver() && !gm.isGameStart())
 		{
 			// Get aim directions
 			float stickX = vars.rStickX;

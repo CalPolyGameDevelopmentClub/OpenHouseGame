@@ -197,6 +197,7 @@ public class PlayerMenuHandler : MonoBehaviour {
 				audioSource.PlayOneShot(startSound);
 				PlayerInfo addPlayer;
 				gamePlaying = !gamePlaying;
+				GameObject.FindGameObjectWithTag("GameMonitor").gameObject.GetComponent<GameMonitorScript>().startGame();
 				creator.loadLevel(creator.getLevel(),new bool[]{player1In,player2In,player3In,player4In});
 				if (player1In)
 				{

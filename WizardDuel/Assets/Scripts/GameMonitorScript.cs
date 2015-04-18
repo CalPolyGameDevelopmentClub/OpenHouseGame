@@ -6,58 +6,146 @@ public class GameMonitorScript : MonoBehaviour {
 	public ArrayList activePlayers;
 	public int numWins = 3;
 
+	private Sprite[] startSprites;
 	private bool gameOver;
 	private bool gameOverOver;
 	private float gameOverTimer;
+	private float gameOverOverTimer;
+	private bool gameStart;
+	private float gameStartTimer;
 	private PlayerInfo winner;
+	private bool gamePlaying;
 
 	private float gameOverTime = 5.0f;
+	private float gameOverOverTime = 7.0f;
+	//private float gameStartTime = 3.0f;
 
 	// Use this for initialization
 	void Start () {
 		activePlayers = new ArrayList();
 		gameOverTimer = 0.0f;
+		gameStartTimer = 3.0f;
 		gameOver = false;
 		gameOverOver = false;
+		gameStart = false;
+		gamePlaying = false;
+		loadSprites();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!gameOver)
+		if (gamePlaying)
 		{
-			checkWin();
-		}
-		else 
-		{
-			foreach (PlayerInfo p in activePlayers)
+			if (!gameOver && !gameStart)
 			{
-				if (p.wins >= numWins)
-				{
-					winner = p;
-					gameOverOver = true;
-				}
+				checkWin();
 			}
-			if (gameOverTimer >= gameOverTime)
+			else if (gameStart)
 			{
-				if (gameOverOver)
+				
+				if (gameStartTimer <= 3.0f && gameStartTimer > 2.0f)
 				{
-					Debug.Log(winner.playerNum + " WINS!!");
-
-					foreach (PlayerInfo pl in activePlayers)
+					foreach (Transform child in transform)
 					{
-						pl.wins = 0;
+						if (child.gameObject.name == "StartText")
+						{
+							child.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+							child.gameObject.GetComponent<Transform>().localScale = new Vector3(6f, 6f, 6f);
+							child.gameObject.GetComponent<SpriteRenderer>().sprite = startSprites[2];
+						}
 					}
-
-					// Clear map
-					gameOverOver = false;
-					GameObject.FindGameObjectWithTag("MenuManager").gameObject.GetComponent<PlayerMenuHandler>().gamePlaying = false;
 				}
-				else
+				
+				else if (gameStartTimer <= 2.0f && gameStartTimer > 1.0f)
 				{
-					newGame();
+					foreach (Transform child in transform)
+					{
+						if (child.gameObject.name == "StartText")
+						{
+							child.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+							child.gameObject.GetComponent<Transform>().localScale = new Vector3(7f, 7f, 7f);
+							child.gameObject.GetComponent<SpriteRenderer>().sprite = startSprites[1];
+						}
+					}
 				}
+				
+				else if (gameStartTimer <= 1.0f && gameStartTimer > 0.0f)
+				{
+					foreach (Transform child in transform)
+					{
+						if (child.gameObject.name == "StartText")
+						{
+							child.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+							child.gameObject.GetComponent<Transform>().localScale = new Vector3(8f, 8f, 8f);
+							child.gameObject.GetComponent<SpriteRenderer>().sprite = startSprites[0];
+						}
+					}
+				}
+				
+				else if (gameStartTimer <= 0.0f && gameStartTimer > -1.0f)
+				{
+					foreach (Transform child in transform)
+					{
+						if (child.gameObject.name == "StartText")
+						{
+							child.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+							child.gameObject.GetComponent<Transform>().localScale = new Vector3(9f, 9f, 9f);
+							child.gameObject.GetComponent<SpriteRenderer>().sprite = startSprites[3];
+						}
+					}
+				}
+				
+				else if (gameStartTimer <= -1.0f)
+				{
+					foreach (Transform child in transform)
+					{
+						child.gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+					}
+				}
+				
+				
+				if (gameStartTimer <= -1.0f)
+				{
+					gameStart = false;
+				}
+				gameStartTimer -= Time.fixedDeltaTime;
 			}
-			gameOverTimer += Time.fixedDeltaTime;
+			else 
+			{
+				foreach (PlayerInfo p in activePlayers)
+				{
+					if (p.wins >= numWins)
+					{
+						winner = p;
+						gameOverOver = true;
+						// Clear map
+						GameObject lc = GameObject.FindGameObjectWithTag("LevelCreator");
+						lc.gameObject.GetComponent<LevelCreator>().dramaticExplosion();
+					}
+				}
+				if (gameOverTimer >= gameOverOverTime)
+				{
+					if (gameOverOver)
+					{
+						Debug.Log(winner.playerNum + " WINS!!");
+						
+						foreach (PlayerInfo pl in activePlayers)
+						{
+							pl.wins = 0;
+						}
+						
+						/*gameOverOver = false;
+						gamePlaying = false;
+						GameObject.FindGameObjectWithTag("MenuManager").gameObject.GetComponent<PlayerMenuHandler>().gamePlaying = false;*/
+						Application.LoadLevel("LevelBuilderScene");
+					}
+					else
+					{
+						newGame();
+					}
+				}
+				gameOverTimer += Time.fixedDeltaTime;
+			}
 		}
 	}
 
@@ -100,6 +188,11 @@ public class GameMonitorScript : MonoBehaviour {
 		gameOver = false;
 	}
 
+	void loadSprites()
+	{
+		startSprites = Resources.LoadAll<Sprite>(string.Format("StartSprites"));
+	}
+
 	public bool isGameOver()
 	{
 		return gameOver;
@@ -113,5 +206,17 @@ public class GameMonitorScript : MonoBehaviour {
 	public string getWinner()
 	{
 		return winner.playerNum;
+	}
+
+	public bool isGameStart()
+	{
+		return gameStart;
+	}
+
+	public void startGame()
+	{
+		gameStart = true;
+		gameStartTimer = 3.0f;
+		gamePlaying = true;
 	}
 }

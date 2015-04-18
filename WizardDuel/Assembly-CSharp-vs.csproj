@@ -46,7 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BGM_Script.cs" />
      <Compile Include="Assets\Scripts\BoundsCheckerScript.cs" />
+     <Compile Include="Assets\Scripts\CrownScript.cs" />
      <Compile Include="Assets\Scripts\DamagePercent.cs" />
      <Compile Include="Assets\Scripts\DeathStarsParticles.cs" />
      <Compile Include="Assets\Scripts\DeathX.cs" />
@@ -55,6 +57,7 @@
      <Compile Include="Assets\Scripts\GameMonitorScript.cs" />
      <Compile Include="Assets\Scripts\GameObjectPhysics.cs" />
      <Compile Include="Assets\Scripts\GameOverTextScript.cs" />
+     <Compile Include="Assets\Scripts\InitScript.cs" />
      <Compile Include="Assets\Scripts\LevelCreator.cs" />
      <Compile Include="Assets\Scripts\PlayerFireScript.cs" />
      <Compile Include="Assets\Scripts\PlayerInfo.cs" />
@@ -62,11 +65,13 @@
      <Compile Include="Assets\Scripts\PlayerMovementScript.cs" />
      <Compile Include="Assets\Scripts\PlayerSlideScript.cs" />
      <Compile Include="Assets\Scripts\PlayerVars.cs" />
+     <Compile Include="Assets\Scripts\PressStartAnimation.cs" />
      <Compile Include="Assets\Scripts\ProjectileOriginScript.cs" />
      <Compile Include="Assets\Scripts\TestProjectileExplostion.cs" />
      <Compile Include="Assets\Scripts\TestProjectileMovement.cs" />
      <Compile Include="Assets\Scripts\UIPlayerInfo.cs" />
      <Compile Include="Assets\Scripts\WallScript.cs" />
+     <Compile Include="Assets\Scripts\WallShatterAnimationHandler.cs" />
      <Compile Include="Assets\Scripts\WinCountScript.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
  <Reference Include="Assembly-UnityScript-firstpass">

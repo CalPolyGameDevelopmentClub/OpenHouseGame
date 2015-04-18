@@ -20,6 +20,10 @@ public class ExplosionScript : MonoBehaviour {
 
 		if (explosionTimer >= explosionTime)
 		{
+			// Destroy self
+			Transform PE = transform.Find("ExplosionSystem");
+			PE.transform.parent = null;
+			Destroy(PE.gameObject, 1.0f);
 			GameObject.Destroy(gameObject);
 		}
 	}
