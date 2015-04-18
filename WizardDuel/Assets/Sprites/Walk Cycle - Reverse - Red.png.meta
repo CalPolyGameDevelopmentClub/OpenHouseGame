@@ -1,9 +1,13 @@
 fileFormatVersion: 2
-guid: 76fd897fb6a8f894ca686b81f87b94be
-timeCreated: 1429314407
+guid: 467098612040028418a6bbc820e17946
+timeCreated: 1429330336
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Walk Cycle - Reverse - Red_0
+    21300002: Walk Cycle - Reverse - Red_1
+    21300004: Walk Cycle - Reverse - Red_2
+    21300006: Walk Cycle - Reverse - Red_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -29,7 +33,7 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 0
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -37,7 +41,7 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -48,7 +52,47 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Walk Cycle - Reverse - Red_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 1
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Walk Cycle - Reverse - Red_1
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 1
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Walk Cycle - Reverse - Red_2
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 1
+        width: 20
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Walk Cycle - Reverse - Red_3
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 1
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 
