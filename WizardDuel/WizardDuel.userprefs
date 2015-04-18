@@ -1,16 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerMenuHandler.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Standard Assets/Particles/Legacy Particles/TimedObjectDestructor.js">
     <Files>
-      <File FileName="Assets\Scripts\PlayerMenuHandler.cs" Line="38" Column="131" />
-      <File FileName="Assets\Scripts\LevelCreator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameMonitorScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\TestProjectileMovement.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BoundsCheckerScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ProjectileOriginScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\WallScript.cs" Line="46" Column="1" />
-      <File FileName="Assets\Scripts\ExplosionScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\UIPlayerInfo.cs" Line="18" Column="1" />
+      <File FileName="Assets/Scripts/WallScript.cs" Line="59" Column="1" />
+      <File FileName="Assets/Scripts/PlayerMenuHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerMovementScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerVars.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerSlideScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LevelCreator.cs" Line="262" Column="4" />
+      <File FileName="Assets/Standard Assets/Particles/Legacy Particles/TimedObjectDestructor.js" Line="1" Column="1" />
+      <File FileName="Assets/WallShatterAnimationHandler.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
