@@ -11,6 +11,7 @@ GameObject:
   - 222: {fileID: 22226462}
   - 114: {fileID: 11462122}
   - 225: {fileID: 22599286}
+  - 114: {fileID: 11465426}
   m_Layer: 5
   m_Name: Crown
   m_TagString: Untagged
@@ -39,6 +40,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11465426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 102932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2064764ef275c42efa20927019e96c1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpTime: 0
 --- !u!222 &22226462
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -69,7 +82,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 102932}
   m_Enabled: 1
-  m_Alpha: .600000024
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
