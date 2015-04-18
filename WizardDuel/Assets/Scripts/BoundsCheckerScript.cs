@@ -25,7 +25,6 @@ public class BoundsCheckerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Object[] deathXs = GameObject.FindGameObjectsWithTag("DeathX");
 		Object[] players = GameObject.FindGameObjectsWithTag("Player");
 		Vector2 dir = new Vector2 (0.0f, 0.0f);
 

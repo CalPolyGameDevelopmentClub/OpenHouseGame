@@ -5,12 +5,24 @@ using System.Collections.Generic;
 
 public class GameOverTextScript : MonoBehaviour {
 
+	public Sprite RoundOverP1;
+	public Sprite RoundOverP2;
+	public Sprite RoundOverP3;
+	public Sprite RoundOverP4;
+
+	public Sprite WinnerP1;
+	public Sprite WinnerP2;
+	public Sprite WinnerP3;
+	public Sprite WinnerP4;
+
 	private GameMonitorScript gm;
 	private Text text;
 	private string winner;
+	private SpriteRenderer sp;
 
 	// Use this for initialization
 	void Start () {
+		sp = gameObject.GetComponent<SpriteRenderer>();
 		text = gameObject.GetComponent<Text>();
 		gm = GameObject.FindGameObjectWithTag("GameMonitor").gameObject.GetComponent<GameMonitorScript>();
 	}
@@ -20,39 +32,58 @@ public class GameOverTextScript : MonoBehaviour {
 		if (gm.isGameOver() || gm.isGameOverOver())
 		{
 			winner = gm.getWinner();
-			Debug.Log(winner);
-			if (winner == "P1")
-			{
-				text.color = new Color(0.32f, 0.74f, 0.74f);
-			}
-			else if (winner == "P2")
-			{
-				text.color = new Color(0.75f, 0.21f, 0.21f);
-			}
-			else if (winner == "P3")
-			{
-				text.color = new Color(0.63f, 0.66f, 0.19f);
-			}
-			else if (winner == "P4")
-			{
-				text.color = new Color(0.50f, 0.28f, 0.67f);
-			}
-			else
-			{
-				text.color = new Color(1.0f, 1.0f, 1.0f);
-			}
 		}
 		if (gm.isGameOverOver())
 		{
-			text.text = winner + " WINS!!";
+			if (winner == "P1")
+			{
+				sp.sprite = WinnerP1;
+			}
+			else if (winner == "P2")
+			{
+				sp.sprite = WinnerP2;
+			}
+			else if (winner == "P3")
+			{
+				sp.sprite = WinnerP3;
+			}
+			else if (winner == "P4")
+			{
+				sp.sprite = WinnerP4;
+			}
+			else
+			{
+				sp.sprite = WinnerP1;
+			}
+			sp.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 		}
 		else if (gm.isGameOver())
 		{
-			text.text = "Round over!";
+			if (winner == "P1")
+			{
+				sp.sprite = RoundOverP1;
+			}
+			else if (winner == "P2")
+			{
+				sp.sprite = RoundOverP2;
+			}
+			else if (winner == "P3")
+			{
+				sp.sprite = RoundOverP3;
+			}
+			else if (winner == "P4")
+			{
+				sp.sprite = RoundOverP4;
+			}
+			else
+			{
+				sp.sprite = RoundOverP1;
+			}
+			sp.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 		}
 		else
 		{
-			gameObject.GetComponent<Text>().text = "";
+			sp.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
 		}
 	}
 }

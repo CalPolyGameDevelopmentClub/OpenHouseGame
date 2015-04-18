@@ -9,7 +9,7 @@ public class DeathStarsParticles : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame
@@ -19,6 +19,7 @@ public class DeathStarsParticles : MonoBehaviour {
 
 	public void Shoot(Vector2 pos, Vector2 dir, float vel, float ratio)
 	{
+		float spin = 2000.0f;
 		for (int i = 0; i < numStars * (int)ratio + numStars; i++)
 		{
 			GameObject star = (GameObject)Instantiate(particle, 
@@ -26,6 +27,7 @@ public class DeathStarsParticles : MonoBehaviour {
 			                                          Quaternion.identity);
 			star.GetComponent<Rigidbody2D>().velocity = 
 				new Vector2(dir.x * vel * Random.Range(-1.5f, 1.5f), dir.y * vel * Random.Range(-1.5f, 1.5f));
+			star.GetComponent<Rigidbody2D>().AddTorque(Random.Range(-spin, spin));
 		}
 	}
 }

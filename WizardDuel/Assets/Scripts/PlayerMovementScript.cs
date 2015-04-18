@@ -22,7 +22,6 @@ public class PlayerMovementScript : MonoBehaviour {
 	private int jumpCount;
 	private bool inAir;
 	private bool fastFall;
-	private bool featherFall;
 	private Rigidbody2D rb;
 	private bool flinch;
 	private float fTimer;
@@ -44,7 +43,6 @@ public class PlayerMovementScript : MonoBehaviour {
 		jumpCount = 0;
 		inAir = false;
 		fastFall = false;
-		featherFall = false;
 
 		flinch = false;
 		fTimer = 0;
@@ -75,7 +73,6 @@ public class PlayerMovementScript : MonoBehaviour {
 				else if (airCheck.distance <= 0 && rb.velocity.y <= 0)
 				{
 					inAir = false;
-					featherFall = false;
 					jumpCount = 0;
 				}
 			}
@@ -164,7 +161,7 @@ public class PlayerMovementScript : MonoBehaviour {
 				}
 				
 				// Right wall jump
-				else if(rWallCheck.distance == 0)
+				else if(rWallCheck.distance == 0 && rWallCheck.collider.tag == "Platform")
 				{
 					if (rb.velocity.y < 0)
 					{
@@ -183,7 +180,7 @@ public class PlayerMovementScript : MonoBehaviour {
 					jumpCount++;
 				}
 				// Left wall jump
-				else if(lWallCheck.distance == 0)
+				else if(lWallCheck.distance == 0  && lWallCheck.collider.tag == "Platform")
 				{
 					if (rb.velocity.y < 0)
 					{
@@ -231,25 +228,12 @@ public class PlayerMovementScript : MonoBehaviour {
 			if (!canJump && vars.jumpTrig < 0.3) {
 				canJump = true;
 			}
-			
-			/*// Featherfall
-			if (vars.lStickY > 0.55
-			    && inAir && !featherFall)
-			{
-				fastFall = false;
-				featherFall = true;
-			}
-			if (featherFall && rb.velocity.y <= 0.0f)
-			{
-				rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / featherForce);
-			}*/
 				
-				// Fastfall
-				if (vars.lStickY < -0.55
-				    && inAir && !fastFall && !flinch)
+			// Fastfall
+			if (vars.lStickY < -0.55
+			    && inAir && !fastFall && !flinch)
 			{
 				fastFall = true;
-				featherFall = false;
 				if (rb.velocity.y < 0)
 				{
 					rb.velocity = new Vector2 (rb.velocity.x, 0);
