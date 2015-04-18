@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BGM_Script.cs" />
      <Compile Include="Assets\Scripts\BoundsCheckerScript.cs" />
      <Compile Include="Assets\Scripts\DamagePercent.cs" />
      <Compile Include="Assets\Scripts\DeathStarsParticles.cs" />
@@ -55,6 +56,7 @@
      <Compile Include="Assets\Scripts\GameMonitorScript.cs" />
      <Compile Include="Assets\Scripts\GameObjectPhysics.cs" />
      <Compile Include="Assets\Scripts\GameOverTextScript.cs" />
+     <Compile Include="Assets\Scripts\InitScript.cs" />
      <Compile Include="Assets\Scripts\LevelCreator.cs" />
      <Compile Include="Assets\Scripts\PlayerFireScript.cs" />
      <Compile Include="Assets\Scripts\PlayerInfo.cs" />
@@ -67,8 +69,8 @@
      <Compile Include="Assets\Scripts\TestProjectileMovement.cs" />
      <Compile Include="Assets\Scripts\UIPlayerInfo.cs" />
      <Compile Include="Assets\Scripts\WallScript.cs" />
+     <Compile Include="Assets\Scripts\WallShatterAnimationHandler.cs" />
      <Compile Include="Assets\Scripts\WinCountScript.cs" />
-     <Compile Include="Assets\WallShatterAnimationHandler.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>D:/Documents/13 College/+CPGD+/Showcase 2015/OpenHouseGame/WizardDuel/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
